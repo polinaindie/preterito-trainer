@@ -66,6 +66,7 @@
     text-align: center;
     margin-bottom: 48px;
     position: relative;
+    padding-top: 8px;
   }
 
   .eyebrow {
@@ -288,15 +289,6 @@
     grid-template-columns: 1fr 1fr;
     gap: 0;
     margin-top: 16px;
-  }
-
-  .conj-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    padding: 14px 18px;
-    border-bottom: 1px dashed rgba(184, 134, 42, 0.4);
-    transition: background 0.2s ease;
   }
 
   .conj-row:hover {
@@ -777,8 +769,156 @@
 
   footer .heart { color: var(--terracotta); }
 
+  /* Speaker buttons */
+  .speaker-btn {
+    background: transparent;
+    border: 1.5px solid var(--ink-soft);
+    color: var(--ink-soft);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    padding: 0;
+    flex-shrink: 0;
+  }
+
+  .speaker-btn:hover {
+    background: var(--terracotta);
+    border-color: var(--terracotta);
+    color: var(--bg-cream);
+    transform: scale(1.08);
+  }
+
+  .speaker-btn:active {
+    transform: scale(0.95);
+  }
+
+  .speaker-btn.playing {
+    background: var(--terracotta);
+    border-color: var(--terracotta);
+    color: var(--bg-cream);
+    animation: pulse 0.8s ease-in-out infinite;
+  }
+
+  .speaker-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .speaker-btn-large {
+    width: 44px;
+    height: 44px;
+  }
+
+  .speaker-btn-large svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(196, 69, 54, 0.5); }
+    50% { transform: scale(1.06); box-shadow: 0 0 0 8px rgba(196, 69, 54, 0); }
+  }
+
+  /* Voice status indicator */
+  .voice-status {
+    position: absolute;
+    top: 44px;
+    right: 0;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.7rem;
+    color: var(--ink-soft);
+    letter-spacing: 0.05em;
+    max-width: 260px;
+    text-align: right;
+  }
+
+  /* Sound toggle in header */
+  .sound-toggle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: transparent;
+    border: 1.5px solid var(--ink);
+    color: var(--ink);
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+  }
+
+  .sound-toggle:hover {
+    background: var(--ink);
+    color: var(--bg-cream);
+  }
+
+  .sound-toggle.muted {
+    opacity: 0.5;
+  }
+
+  .sound-toggle svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* Quiz verb with speaker */
+  .quiz-verb-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 4px;
+  }
+
+  /* Conjugation row with speaker */
+  .conj-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-bottom: 1px dashed rgba(184, 134, 42, 0.4);
+    transition: background 0.2s ease;
+  }
+
+  .conj-row .speaker-btn {
+    width: 26px;
+    height: 26px;
+    border-width: 1px;
+  }
+
+  .conj-row .speaker-btn svg {
+    width: 12px;
+    height: 12px;
+  }
+
   /* Mobile */
   @media (max-width: 700px) {
+    .sound-toggle {
+      position: static;
+      margin-bottom: 8px;
+      font-size: 0.7rem;
+      padding: 6px 12px;
+    }
+    .voice-status {
+      position: static;
+      text-align: center;
+      max-width: 100%;
+      margin-bottom: 16px;
+    }
+    header { padding-top: 0; }
     .container { padding: 30px 16px 50px; }
     .content { padding: 28px 20px; }
     .ornament { display: none; }
@@ -816,6 +956,15 @@
 
 <div class="container">
   <header>
+    <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound">
+      <svg id="soundIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+      </svg>
+      <span id="soundLabel">Звук увімк.</span>
+    </button>
+    <div class="voice-status" id="voiceStatus">Завантаження голосу...</div>
     <div class="eyebrow">~ aprende español ~</div>
     <h1>Pretérito <span class="accent">Indefinido</span></h1>
     <div class="divider">
@@ -935,6 +1084,160 @@
 </div>
 
 <script>
+// ============== SPEECH SYNTHESIS ==============
+let soundEnabled = true;
+let spanishVoice = null;
+let voicesReady = false;
+
+// Load Spanish voice when available (browser loads voices async)
+function loadVoices() {
+  const voices = window.speechSynthesis.getVoices();
+  if (voices.length === 0) return false;
+
+  // Priority order: es-ES (Spain) > es-MX > es-US > any es-*
+  spanishVoice =
+    voices.find(v => v.lang === 'es-ES' && /Mónica|Monica|Marisol|Lucia/i.test(v.name)) ||
+    voices.find(v => v.lang === 'es-ES') ||
+    voices.find(v => v.lang === 'es_ES') ||
+    voices.find(v => v.lang.toLowerCase().startsWith('es-es')) ||
+    voices.find(v => v.lang.toLowerCase().startsWith('es-mx')) ||
+    voices.find(v => v.lang.toLowerCase().startsWith('es-us')) ||
+    voices.find(v => v.lang.toLowerCase().startsWith('es-')) ||
+    voices.find(v => v.lang.toLowerCase().startsWith('es')) ||
+    voices.find(v => /spanish|español/i.test(v.name));
+
+  voicesReady = true;
+  updateVoiceStatus();
+  return !!spanishVoice;
+}
+
+function updateVoiceStatus() {
+  const statusEl = document.getElementById('voiceStatus');
+  if (!statusEl) return;
+  if (spanishVoice) {
+    statusEl.innerHTML = `🇪🇸 ${spanishVoice.name}`;
+    statusEl.style.color = 'var(--olive)';
+  } else {
+    statusEl.innerHTML = `⚠️ Іспанський голос не знайдено — <a href="#" id="voiceHelpLink" style="color:var(--terracotta);text-decoration:underline;">як виправити?</a>`;
+    statusEl.style.color = 'var(--terracotta-deep)';
+    setTimeout(() => {
+      const helpLink = document.getElementById('voiceHelpLink');
+      if (helpLink) helpLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        showVoiceHelp();
+      });
+    }, 0);
+  }
+}
+
+function showVoiceHelp() {
+  const overlay = document.createElement('div');
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(42,24,16,0.7);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;';
+  overlay.innerHTML = `
+    <div style="background:var(--bg-paper);max-width:520px;border-radius:6px;padding:32px;box-shadow:0 20px 60px rgba(0,0,0,0.4);font-family:'Manrope',sans-serif;line-height:1.6;color:var(--ink);">
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;margin-bottom:16px;color:var(--terracotta);">Як додати іспанський голос</h3>
+      <p style="margin-bottom:14px;"><strong>На Mac:</strong></p>
+      <ol style="padding-left:20px;margin-bottom:16px;">
+        <li>Системні налаштування → Спеціальні можливості → Озвучений вміст</li>
+        <li>Системний голос → Керувати голосами</li>
+        <li>Знайди <strong>Mónica</strong> або <strong>Paulina</strong> (іспанські) → встанови</li>
+        <li>Перезавантаж браузер</li>
+      </ol>
+      <p style="margin-bottom:14px;"><strong>На Windows:</strong></p>
+      <ol style="padding-left:20px;margin-bottom:16px;">
+        <li>Параметри → Час і мова → Мова</li>
+        <li>Додати мову → Іспанська (Іспанія)</li>
+        <li>Параметри мови → завантажити пакет мови та озвучення</li>
+        <li>Перезавантаж браузер</li>
+      </ol>
+      <p style="margin-bottom:14px;"><strong>Найшвидше рішення:</strong> відкрий додаток у <strong>Google Chrome</strong> або <strong>Microsoft Edge</strong> — у них є власні іспанські голоси, що не залежать від системи.</p>
+      <button id="closeHelp" style="margin-top:12px;padding:10px 24px;background:var(--terracotta);color:var(--bg-cream);border:none;border-radius:100px;font-family:'Manrope',sans-serif;font-weight:600;cursor:pointer;">Зрозуміло</button>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+  document.getElementById('closeHelp').addEventListener('click', () => overlay.remove());
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.remove(); });
+}
+
+if ('speechSynthesis' in window) {
+  loadVoices();
+  window.speechSynthesis.onvoiceschanged = loadVoices;
+}
+
+function speak(text, options = {}) {
+  if (!soundEnabled) return;
+  if (!('speechSynthesis' in window)) return;
+
+  // Try to load voices again if not ready (some browsers need this)
+  if (!voicesReady) loadVoices();
+
+  // Cancel any ongoing speech
+  window.speechSynthesis.cancel();
+
+  const cleanText = text.trim();
+  const utterance = new SpeechSynthesisUtterance(cleanText);
+
+  // Set lang FIRST — this is critical for browser to pick the right voice
+  utterance.lang = 'es-ES';
+
+  // Then explicitly set voice if we found one
+  if (spanishVoice) {
+    utterance.voice = spanishVoice;
+  }
+
+  utterance.rate = options.rate || 0.85;
+  utterance.pitch = 1.0;
+  utterance.volume = 1.0;
+
+  if (options.onstart) utterance.onstart = options.onstart;
+  if (options.onend) utterance.onend = options.onend;
+
+  // Small delay helps avoid race conditions in Chrome
+  setTimeout(() => window.speechSynthesis.speak(utterance), 50);
+}
+
+// Sound toggle button
+const soundToggleBtn = document.getElementById('soundToggle');
+const soundLabel = document.getElementById('soundLabel');
+const soundIcon = document.getElementById('soundIcon');
+
+soundToggleBtn.addEventListener('click', () => {
+  soundEnabled = !soundEnabled;
+  if (soundEnabled) {
+    soundToggleBtn.classList.remove('muted');
+    soundLabel.textContent = 'Звук увімк.';
+    soundIcon.innerHTML = `
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+      <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+      <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>`;
+  } else {
+    window.speechSynthesis.cancel();
+    soundToggleBtn.classList.add('muted');
+    soundLabel.textContent = 'Звук вимк.';
+    soundIcon.innerHTML = `
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+      <line x1="23" y1="9" x2="17" y2="15"></line>
+      <line x1="17" y1="9" x2="23" y2="15"></line>`;
+  }
+});
+
+// SVG icon string for speaker buttons
+const SPEAKER_SVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+  <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+</svg>`;
+
+// Helper: attach speak handler with visual feedback
+function attachSpeakHandler(button, text) {
+  button.addEventListener('click', (e) => {
+    e.stopPropagation();
+    button.classList.add('playing');
+    speak(text, {
+      onend: () => button.classList.remove('playing')
+    });
+  });
+}
+
 // ============== VERB DATA ==============
 const VERBS = [
   // Group 1: Irregular stems (no accents on yo/él)
@@ -1051,7 +1354,10 @@ function renderVerbCard(idx) {
     <div class="verb-card">
       <div class="verb-header">
         <div>
-          <div class="verb-title">${v.inf}</div>
+          <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+            <div class="verb-title">${v.inf}</div>
+            <button class="speaker-btn speaker-btn-large" data-speak="${v.inf}" aria-label="Прослухати ${v.inf}">${SPEAKER_SVG}</button>
+          </div>
           <div class="verb-translation">~ ${v.meaning}</div>
         </div>
         <div class="verb-stem">${GROUP_LABELS[v.group]}</div>
@@ -1060,6 +1366,7 @@ function renderVerbCard(idx) {
         ${v.forms.map((f, i) => `
           <div class="conj-row">
             <div class="pronoun">${PRONOUNS[i]}</div>
+            <button class="speaker-btn" data-speak="${f}" aria-label="Прослухати ${f}">${SPEAKER_SVG}</button>
             <div class="conjugated">${highlightForm(f)}</div>
           </div>
         `).join('')}
@@ -1068,6 +1375,11 @@ function renderVerbCard(idx) {
     </div>
   `;
   document.getElementById('verbDisplay').innerHTML = html;
+
+  // Wire up all speaker buttons
+  document.querySelectorAll('#verbDisplay [data-speak]').forEach(btn => {
+    attachSpeakHandler(btn, btn.dataset.speak);
+  });
 }
 
 // ============== PRACTICE PANEL ==============
@@ -1188,7 +1500,10 @@ function renderQuestion() {
       </div>
 
       <div class="quiz-prompt">провідміняй</div>
-      <div class="quiz-verb">${q.verb.inf}</div>
+      <div class="quiz-verb-row">
+        <div class="quiz-verb">${q.verb.inf}</div>
+        <button class="speaker-btn speaker-btn-large" id="quizSpeakerBtn" aria-label="Прослухати">${SPEAKER_SVG}</button>
+      </div>
       <div class="quiz-meaning">~ ${q.verb.meaning}</div>
 
       <div class="quiz-pronoun">${PRONOUNS[q.person]}</div>
@@ -1215,6 +1530,29 @@ function renderQuestion() {
 
   const input = document.getElementById('quizInput');
   input.focus();
+
+  // Wire up speaker button
+  const speakerBtn = document.getElementById('quizSpeakerBtn');
+  attachSpeakHandler(speakerBtn, q.verb.inf);
+
+  // Auto-speak the infinitive when the question appears (with delay for voice loading)
+  if (soundEnabled) {
+    const triggerSpeak = () => {
+      speakerBtn.classList.add('playing');
+      speak(q.verb.inf, {
+        onend: () => speakerBtn.classList.remove('playing')
+      });
+    };
+    if (voicesReady) {
+      setTimeout(triggerSpeak, 200);
+    } else {
+      // Wait for voices to load
+      setTimeout(() => {
+        loadVoices();
+        triggerSpeak();
+      }, 500);
+    }
+  }
 
   document.getElementById('checkBtn').addEventListener('click', checkAnswer);
   document.getElementById('skipBtn').addEventListener('click', skipAnswer);
@@ -1259,6 +1597,9 @@ function checkAnswer() {
     feedbackEl.innerHTML = `Правильно: <strong>${expected}</strong>. ${q.verb.note}`;
   }
 
+  // Speak the correct form (slightly delayed so feedback appears first)
+  setTimeout(() => speak(expected, { rate: 0.8 }), 300);
+
   document.getElementById('quizActions').innerHTML =
     `<button class="btn btn-primary" id="nextBtn">${practiceState.current + 1 >= practiceState.questions.length ? 'Результат' : 'Далі →'}</button>`;
   document.getElementById('nextBtn').addEventListener('click', nextQuestion);
@@ -1274,6 +1615,9 @@ function skipAnswer() {
   feedbackEl.className = 'quiz-feedback incorrect';
   feedbackEl.innerHTML = `Правильно: <strong>${expected}</strong>. ${q.verb.note}`;
   document.getElementById('quizInput').classList.add('incorrect');
+
+  // Speak the correct form so user hears it
+  setTimeout(() => speak(expected, { rate: 0.8 }), 300);
 
   document.getElementById('quizActions').innerHTML =
     `<button class="btn btn-primary" id="nextBtn">${practiceState.current + 1 >= practiceState.questions.length ? 'Результат' : 'Далі →'}</button>`;
