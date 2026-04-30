@@ -1297,6 +1297,8 @@ const VERBS = [
 ];
 
 const PRONOUNS = ['yo', 'tú', 'él/ella', 'nosotros', 'vosotros', 'ellos/ellas'];
+// Cleaner pronouns for speech synthesis (no slashes — TTS reads "él, ella" naturally)
+const PRONOUNS_SPEAK = ['yo', 'tú', 'él', 'nosotros', 'vosotros', 'ellos'];
 const GROUP_LABELS = {
   'stem': 'Особлива основа',
   'j-stem': 'Основа на J',
@@ -1531,15 +1533,18 @@ function renderQuestion() {
   const input = document.getElementById('quizInput');
   input.focus();
 
-  // Wire up speaker button
-  const speakerBtn = document.getElementById('quizSpeakerBtn');
-  attachSpeakHandler(speakerBtn, q.verb.inf);
+  // What we say when announcing the question: "traer... ellos"
+  const announceText = `${q.verb.inf}... ${PRONOUNS_SPEAK[q.person]}`;
 
-  // Auto-speak the infinitive when the question appears (with delay for voice loading)
+  // Wire up speaker button — speaks verb + pronoun
+  const speakerBtn = document.getElementById('quizSpeakerBtn');
+  attachSpeakHandler(speakerBtn, announceText);
+
+  // Auto-speak the verb + pronoun when the question appears (with delay for voice loading)
   if (soundEnabled) {
     const triggerSpeak = () => {
       speakerBtn.classList.add('playing');
-      speak(q.verb.inf, {
+      speak(announceText, {
         onend: () => speakerBtn.classList.remove('playing')
       });
     };
@@ -1597,8 +1602,12 @@ function checkAnswer() {
     feedbackEl.innerHTML = `Правильно: <strong>${expected}</strong>. ${q.verb.note}`;
   }
 
-  // Speak the correct form (slightly delayed so feedback appears first)
-  setTimeout(() => speak(expected, { rate: 0.8 }), 300);
+  // Speak "pronoun + form" so user hears the natural phrasing (e.g. "ellos trajeron")
+  // For reflexive forms that already start with pronouns (me, te, se), don't add subject pronoun
+  const formText = q.verb.forms[q.person];
+  const isReflexive = /^(me|te|se|nos|os)\s/.test(formText);
+  const speakText = isReflexive ? formText : `${PRONOUNS_SPEAK[q.person]} ${formText}`;
+  setTimeout(() => speak(speakText, { rate: 0.8 }), 300);
 
   document.getElementById('quizActions').innerHTML =
     `<button class="btn btn-primary" id="nextBtn">${practiceState.current + 1 >= practiceState.questions.length ? 'Результат' : 'Далі →'}</button>`;
@@ -1616,8 +1625,10 @@ function skipAnswer() {
   feedbackEl.innerHTML = `Правильно: <strong>${expected}</strong>. ${q.verb.note}`;
   document.getElementById('quizInput').classList.add('incorrect');
 
-  // Speak the correct form so user hears it
-  setTimeout(() => speak(expected, { rate: 0.8 }), 300);
+  // Speak "pronoun + form" so user hears the natural phrasing
+  const isReflexive = /^(me|te|se|nos|os)\s/.test(expected);
+  const speakText = isReflexive ? expected : `${PRONOUNS_SPEAK[q.person]} ${expected}`;
+  setTimeout(() => speak(speakText, { rate: 0.8 }), 300);
 
   document.getElementById('quizActions').innerHTML =
     `<button class="btn btn-primary" id="nextBtn">${practiceState.current + 1 >= practiceState.questions.length ? 'Результат' : 'Далі →'}</button>`;
