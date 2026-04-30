@@ -837,6 +837,75 @@
     text-align: right;
   }
 
+  /* Mistakes preview on results screen */
+  .mistakes-preview {
+    margin: 32px auto;
+    max-width: 500px;
+    padding: 20px 24px;
+    background: rgba(212, 136, 43, 0.1);
+    border: 1px dashed var(--ochre);
+    border-radius: 4px;
+  }
+
+  .mistakes-title {
+    font-family: 'Caveat', cursive;
+    font-size: 1.3rem;
+    color: var(--terracotta);
+    margin-bottom: 12px;
+  }
+
+  .mistakes-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .mistake-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: var(--bg-cream);
+    border: 1px solid rgba(184, 134, 42, 0.4);
+    border-radius: 100px;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .mc-pronoun {
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+  }
+
+  .mc-form {
+    font-weight: 600;
+    color: var(--terracotta-deep);
+    font-size: 1rem;
+  }
+
+  .mistake-chip.more {
+    color: var(--ink-soft);
+    font-style: italic;
+    font-family: 'Caveat', cursive;
+    font-size: 1.1rem;
+  }
+
+  /* Review mode badge in quiz */
+  .review-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--ochre);
+    color: var(--bg-cream);
+    border-radius: 100px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
   /* Sound toggle in header */
   .sound-toggle {
     position: absolute;
@@ -1393,7 +1462,11 @@ let practiceState = {
   current: 0,
   correct: 0,
   incorrect: 0,
-  showingFeedback: false
+  showingFeedback: false,
+  mistakes: [],         // questions answered incorrectly in current round
+  reviewMode: false,    // are we in a review (mistakes-only) round?
+  reviewRound: 0,       // which review round we're on (0 = first pass)
+  totalCorrectEver: 0   // track all correct answers across rounds
 };
 
 function renderPracticeSetup() {
@@ -1468,7 +1541,35 @@ function startPractice() {
     current: 0,
     correct: 0,
     incorrect: 0,
-    showingFeedback: false
+    showingFeedback: false,
+    mistakes: [],
+    reviewMode: false,
+    reviewRound: 0,
+    totalCorrectEver: 0
+  };
+
+  renderQuestion();
+}
+
+// Start a review round with only the mistakes from previous round
+function startReview() {
+  // Shuffle the mistakes
+  const reviewQuestions = [...practiceState.mistakes];
+  for (let i = reviewQuestions.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [reviewQuestions[i], reviewQuestions[j]] = [reviewQuestions[j], reviewQuestions[i]];
+  }
+
+  practiceState = {
+    ...practiceState,
+    questions: reviewQuestions,
+    current: 0,
+    correct: 0,
+    incorrect: 0,
+    showingFeedback: false,
+    mistakes: [],
+    reviewMode: true,
+    reviewRound: practiceState.reviewRound + 1
   };
 
   renderQuestion();
@@ -1495,6 +1596,7 @@ function renderQuestion() {
 
   const html = `
     <div class="quiz-card">
+      ${practiceState.reviewMode ? `<div class="review-badge">⟲ Раунд повторення ${practiceState.reviewRound}</div>` : ''}
       <div class="quiz-progress">
         <span>${practiceState.current + 1}/${total}</span>
         <div class="progress-bar"><div class="progress-fill" style="width:${progress}%"></div></div>
@@ -1587,16 +1689,19 @@ function checkAnswer() {
 
   if (result === 'perfect') {
     practiceState.correct++;
+    practiceState.totalCorrectEver++;
     input.classList.add('correct');
     feedbackEl.className = 'quiz-feedback correct';
     feedbackEl.innerHTML = `¡Perfecto! <strong>${expected}</strong> ✓`;
   } else if (result === 'no-accent') {
     practiceState.correct++;
+    practiceState.totalCorrectEver++;
     input.classList.add('correct');
     feedbackEl.className = 'quiz-feedback correct';
     feedbackEl.innerHTML = `Майже! Правильна форма: <strong>${expected}</strong> — не забудь про наголос!`;
   } else {
     practiceState.incorrect++;
+    practiceState.mistakes.push(q);
     input.classList.add('incorrect');
     feedbackEl.className = 'quiz-feedback incorrect';
     feedbackEl.innerHTML = `Правильно: <strong>${expected}</strong>. ${q.verb.note}`;
@@ -1619,6 +1724,7 @@ function skipAnswer() {
   const expected = q.verb.forms[q.person];
   const feedbackEl = document.getElementById('quizFeedback');
   practiceState.incorrect++;
+  practiceState.mistakes.push(q);
   practiceState.showingFeedback = true;
 
   feedbackEl.className = 'quiz-feedback incorrect';
@@ -1648,29 +1754,108 @@ function nextQuestion() {
 function showResults() {
   const total = practiceState.questions.length;
   const pct = Math.round((practiceState.correct / total) * 100);
+  const hasMistakes = practiceState.mistakes.length > 0;
+  const isReview = practiceState.reviewMode;
+
   let emoji, title, subtitle;
-  if (pct === 100) { emoji = '🌹'; title = '¡Magnífico!'; subtitle = 'Ти володієш цим часом досконало'; }
-  else if (pct >= 80) { emoji = '✨'; title = '¡Muy bien!'; subtitle = 'Майже бездоганно — продовжуй!'; }
-  else if (pct >= 60) { emoji = '🍷'; title = '¡Bien hecho!'; subtitle = 'Гарний результат, але є над чим попрацювати'; }
-  else if (pct >= 40) { emoji = '📖'; title = 'Sigue practicando'; subtitle = 'Повернись до теорії та спробуй ще раз'; }
-  else { emoji = '🌱'; title = 'Empieza de nuevo'; subtitle = 'Не здавайся! Перевір таблиці у вкладці «Дієслова»'; }
+
+  // Special celebration for completing review with no mistakes
+  if (isReview && !hasMistakes) {
+    emoji = '🌹';
+    title = '¡Lo lograste!';
+    subtitle = `Усі помилки виправлені — ти запам'ятала їх назавжди`;
+  } else if (isReview && hasMistakes) {
+    // Still working on review
+    emoji = '🔄';
+    title = `Раунд ${practiceState.reviewRound}`;
+    subtitle = `Ще ${practiceState.mistakes.length} ${pluralize(practiceState.mistakes.length, 'форма', 'форми', 'форм')} потребують уваги`;
+  } else {
+    // First-pass results
+    if (pct === 100) { emoji = '🌹'; title = '¡Magnífico!'; subtitle = 'Ти володієш цим часом досконало'; }
+    else if (pct >= 80) { emoji = '✨'; title = '¡Muy bien!'; subtitle = 'Майже бездоганно — продовжуй!'; }
+    else if (pct >= 60) { emoji = '🍷'; title = '¡Bien hecho!'; subtitle = 'Гарний результат, але є над чим попрацювати'; }
+    else if (pct >= 40) { emoji = '📖'; title = 'Sigue practicando'; subtitle = 'Повернись до теорії та спробуй ще раз'; }
+    else { emoji = '🌱'; title = 'Empieza de nuevo'; subtitle = 'Не здавайся! Перевір таблиці у вкладці «Дієслова»'; }
+  }
+
+  // Build action buttons based on context
+  let actions = '';
+  if (hasMistakes) {
+    const reviewLabel = isReview
+      ? `Повторити ще раз (${practiceState.mistakes.length})`
+      : `Заучити помилки (${practiceState.mistakes.length}) →`;
+    actions += `<button class="btn btn-primary" id="reviewBtn">${reviewLabel}</button>`;
+    actions += `<button class="btn" id="restartBtn">Нова сесія</button>`;
+  } else {
+    actions += `<button class="btn btn-primary" id="restartBtn">Ще раз</button>`;
+    actions += `<button class="btn" id="backBtn">Налаштування</button>`;
+  }
+
+  // Show mistakes list if there are mistakes (motivational/informational)
+  let mistakesList = '';
+  if (hasMistakes) {
+    const uniqueMistakes = {};
+    practiceState.mistakes.forEach(m => {
+      const key = `${m.verb.inf}-${m.person}`;
+      uniqueMistakes[key] = m;
+    });
+    const items = Object.values(uniqueMistakes).slice(0, 8);
+    mistakesList = `
+      <div class="mistakes-preview">
+        <div class="mistakes-title">${isReview ? 'Залишилось закріпити:' : 'Над чим попрацюємо:'}</div>
+        <div class="mistakes-chips">
+          ${items.map(m => `
+            <div class="mistake-chip">
+              <span class="mc-pronoun">${PRONOUNS[m.person]}</span>
+              <span class="mc-form">${m.verb.forms[m.person]}</span>
+            </div>
+          `).join('')}
+          ${Object.values(uniqueMistakes).length > 8 ? `<div class="mistake-chip more">+ ${Object.values(uniqueMistakes).length - 8}</div>` : ''}
+        </div>
+      </div>
+    `;
+  }
 
   const html = `
     <div class="results">
       <div class="results-emoji">${emoji}</div>
       <div class="results-title">${title}</div>
       <div class="results-subtitle">${subtitle}</div>
-      <div class="results-score">${pct}%</div>
-      <div class="results-score-label">${practiceState.correct} з ${total} правильно</div>
+      ${!isReview || (isReview && !hasMistakes) ? `
+        <div class="results-score">${pct}%</div>
+        <div class="results-score-label">${practiceState.correct} з ${total} правильно${isReview ? ` · раунд ${practiceState.reviewRound}` : ''}</div>
+      ` : `
+        <div style="margin: 24px 0;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:600;color:var(--olive);">${practiceState.correct}<span style="color:var(--ink-soft);font-size:1.5rem;"> / ${total}</span></div>
+          <div style="font-family:'Caveat',cursive;font-size:1.2rem;color:var(--ink-soft);margin-top:4px;">виправлено цього раунду</div>
+        </div>
+      `}
+      ${mistakesList}
       <div class="quiz-actions">
-        <button class="btn btn-primary" id="restartBtn">Ще раз</button>
-        <button class="btn" id="backBtn">Налаштування</button>
+        ${actions}
       </div>
     </div>
   `;
   document.getElementById('practiceContent').innerHTML = html;
-  document.getElementById('restartBtn').addEventListener('click', startPractice);
-  document.getElementById('backBtn').addEventListener('click', renderPracticeSetup);
+
+  if (hasMistakes) {
+    document.getElementById('reviewBtn').addEventListener('click', startReview);
+    document.getElementById('restartBtn').addEventListener('click', renderPracticeSetup);
+  } else {
+    document.getElementById('restartBtn').addEventListener('click', startPractice);
+    if (document.getElementById('backBtn')) {
+      document.getElementById('backBtn').addEventListener('click', renderPracticeSetup);
+    }
+  }
+}
+
+// Helper: Ukrainian pluralization
+function pluralize(n, one, few, many) {
+  const mod10 = n % 10;
+  const mod100 = n % 100;
+  if (mod10 === 1 && mod100 !== 11) return one;
+  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 10 || mod100 >= 20)) return few;
+  return many;
 }
 
 // ============== INIT ==============
