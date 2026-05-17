@@ -535,7 +535,7 @@ let quizState = null;
 
 function initQuizState(questions, options = {}) {
   quizState = {
-    questions: shuffle(questions).slice(0, options.limit || 20),
+    questions: options.limit ? shuffle(questions).slice(0, options.limit) : shuffle(questions),
     current: 0,
     correct: 0,
     incorrect: 0,
@@ -1645,7 +1645,7 @@ function startDuracionQuiz() {
     ...q,
     quizMode: mode === 'mixed' ? (Math.random() < 0.5 ? 'multiple' : 'fill') : mode
   }));
-  initQuizState(questions, { limit: 15 });
+  initQuizState(questions);
   renderDuracionQuestion();
 }
 
@@ -1942,7 +1942,7 @@ function startComplementosQuiz() {
     ...q,
     quizMode: mode === 'mixed' ? (Math.random() < 0.5 ? 'multiple' : 'fill') : mode
   }));
-  initQuizState(questions, { limit: 15 });
+  initQuizState(questions);
   renderComplementosQuestion();
 }
 
