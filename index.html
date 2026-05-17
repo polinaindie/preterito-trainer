@@ -960,7 +960,25 @@ const PERFECTO_VERBS = [
   { inf: 'poner', meaning: 'класти', part: 'puesto', regular: false, group: 'irregular', note: 'poner → puesto' },
   { inf: 'romper', meaning: 'ламати', part: 'roto', regular: false, group: 'irregular', note: 'romper → roto' },
   { inf: 'morir', meaning: 'помирати', part: 'muerto', regular: false, group: 'irregular', note: 'morir → muerto' },
-  { inf: 'descubrir', meaning: 'відкривати (нове)', part: 'descubierto', regular: false, group: 'irregular', note: 'descubrir → descubierto' },
+  { inf: 'descubrir', meaning: 'відкривати (нове)', part: 'descubierto', regular: false, group: 'irregular', note: 'descubrir → descubierto (як abrir → abierto)' },
+  { inf: 'cubrir', meaning: 'покривати', part: 'cubierto', regular: false, group: 'irregular', note: 'cubrir → cubierto' },
+  { inf: 'resolver', meaning: 'вирішувати', part: 'resuelto', regular: false, group: 'irregular', note: 'resolver → resuelto (як volver → vuelto)' },
+  { inf: 'devolver', meaning: 'повертати (щось)', part: 'devuelto', regular: false, group: 'irregular', note: 'devolver → devuelto (як volver)' },
+  { inf: 'envolver', meaning: 'загортати', part: 'envuelto', regular: false, group: 'irregular', note: 'envolver → envuelto (як volver)' },
+  { inf: 'componer', meaning: 'складати, компонувати', part: 'compuesto', regular: false, group: 'irregular', note: 'componer → compuesto (як poner → puesto)' },
+  { inf: 'suponer', meaning: 'припускати', part: 'supuesto', regular: false, group: 'irregular', note: 'suponer → supuesto (як poner)' },
+  { inf: 'proponer', meaning: 'пропонувати', part: 'propuesto', regular: false, group: 'irregular', note: 'proponer → propuesto (як poner)' },
+  { inf: 'imponer', meaning: 'нав\'язувати', part: 'impuesto', regular: false, group: 'irregular', note: 'imponer → impuesto (як poner)' },
+  { inf: 'oponer', meaning: 'протиставляти', part: 'opuesto', regular: false, group: 'irregular', note: 'oponer → opuesto (як poner)' },
+  { inf: 'deshacer', meaning: 'руйнувати, розв\'язувати', part: 'deshecho', regular: false, group: 'irregular', note: 'deshacer → deshecho (як hacer → hecho)' },
+  { inf: 'rehacer', meaning: 'переробляти', part: 'rehecho', regular: false, group: 'irregular', note: 'rehacer → rehecho (як hacer)' },
+  { inf: 'prever', meaning: 'передбачати', part: 'previsto', regular: false, group: 'irregular', note: 'prever → previsto (як ver → visto)' },
+  { inf: 'revisar', meaning: 'перевіряти', part: 'revisado', regular: true, group: 'regular-ar', note: 'УВАГА: revisar — ПРАВИЛЬНЕ (revisado), не плутати з ver!' },
+  { inf: 'describir', meaning: 'описувати', part: 'descrito', regular: false, group: 'irregular', note: 'describir → descrito (як escribir → escrito)' },
+  { inf: 'inscribir', meaning: 'записувати, реєструвати', part: 'inscrito', regular: false, group: 'irregular', note: 'inscribir → inscrito (як escribir)' },
+  { inf: 'freír', meaning: 'смажити', part: 'frito', regular: false, group: 'irregular', note: 'freír → frito (також можна freído, але frito поширеніше)' },
+  { inf: 'imprimir', meaning: 'друкувати', part: 'impreso', regular: false, group: 'irregular', note: 'imprimir → impreso (також impreso vs imprimido — обидва ОК, impreso частіше)' },
+  { inf: 'satisfacer', meaning: 'задовольняти', part: 'satisfecho', regular: false, group: 'irregular', note: 'satisfacer → satisfecho (як hacer → hecho)' },
 ];
 
 const PERFECTO_GROUPS = {
@@ -1254,23 +1272,42 @@ function renderPerfectoReference(root) {
           <tr><td><i>ver</i></td><td class="ending">visto</td></tr>
           <tr><td><i>escribir</i></td><td class="ending">escrito</td></tr>
           <tr><td><i>abrir</i></td><td class="ending">abierto</td></tr>
+          <tr><td><i>cubrir</i></td><td class="ending">cubierto</td></tr>
           <tr><td><i>volver</i></td><td class="ending">vuelto</td></tr>
+          <tr><td><i>resolver</i></td><td class="ending">resuelto</td></tr>
           <tr><td><i>poner</i></td><td class="ending">puesto</td></tr>
           <tr><td><i>romper</i></td><td class="ending">roto</td></tr>
           <tr><td><i>morir</i></td><td class="ending">muerto</td></tr>
-          <tr><td><i>descubrir</i></td><td class="ending">descubierto</td></tr>
+          <tr><td><i>freír</i></td><td class="ending">frito</td></tr>
+          <tr><td><i>imprimir</i></td><td class="ending">impreso</td></tr>
+          <tr><td><i>satisfacer</i></td><td class="ending">satisfecho</td></tr>
         </tbody>
       </table>
     </div>
     <div class="reference-section">
-      <h3 class="ref-section-title"><span class="num">iv.</span>Коли вживати</h3>
+      <h3 class="ref-section-title"><span class="num">iv.</span>Похідні дієслова</h3>
+      <p class="ref-text">Якщо запам'ятати основні неправильні форми — їх «родичі» з префіксами працюють так само:</p>
+      <table class="endings-table">
+        <thead><tr><th>Корінь</th><th>Похідні</th></tr></thead>
+        <tbody>
+          <tr><td><i>hacer → hecho</i></td><td>deshacer → des<b style="color:var(--terracotta);">hecho</b>, rehacer → re<b style="color:var(--terracotta);">hecho</b>, satisfacer → satis<b style="color:var(--terracotta);">fecho</b></td></tr>
+          <tr><td><i>poner → puesto</i></td><td>componer → com<b style="color:var(--terracotta);">puesto</b>, suponer → su<b style="color:var(--terracotta);">puesto</b>, proponer → pro<b style="color:var(--terracotta);">puesto</b>, imponer → im<b style="color:var(--terracotta);">puesto</b></td></tr>
+          <tr><td><i>volver → vuelto</i></td><td>devolver → de<b style="color:var(--terracotta);">vuelto</b>, resolver → re<b style="color:var(--terracotta);">suelto</b>, envolver → en<b style="color:var(--terracotta);">vuelto</b></td></tr>
+          <tr><td><i>escribir → escrito</i></td><td>describir → des<b style="color:var(--terracotta);">crito</b>, inscribir → ins<b style="color:var(--terracotta);">crito</b></td></tr>
+          <tr><td><i>abrir → abierto</i></td><td>cubrir → <b style="color:var(--terracotta);">cubierto</b>, descubrir → des<b style="color:var(--terracotta);">cubierto</b></td></tr>
+          <tr><td><i>ver → visto</i></td><td>prever → pre<b style="color:var(--terracotta);">visto</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="reference-section">
+      <h3 class="ref-section-title"><span class="num">v.</span>Коли вживати</h3>
       <p class="ref-text"><strong>Маркери часу:</strong> hoy, esta mañana, esta semana, este mes, este año, ya, todavía, nunca, alguna vez, últimamente, hace un rato.</p>
       <div class="example-box"><div class="es"><b>Hoy he comido</b> paella.</div><div class="uk">Сьогодні я їв паелью.</div></div>
       <div class="example-box"><div class="es">¿<b>Has visto</b> esta película?</div><div class="uk">Ти бачив цей фільм? (колись у житті)</div></div>
       <div class="example-box"><div class="es">Todavía no <b>he terminado</b>.</div><div class="uk">Я ще не закінчив.</div></div>
     </div>
     <div class="reference-section">
-      <h3 class="ref-section-title"><span class="num">v.</span>Перфекто vs Індефінідо</h3>
+      <h3 class="ref-section-title"><span class="num">vi.</span>Перфекто vs Індефінідо</h3>
       <p class="ref-text"><strong>Perfecto</strong> — зв'язок з теперішнім (hoy, este año, ya, nunca).<br><strong>Indefinido</strong> — конкретний момент у минулому (ayer, en 2010, hace dos años).</p>
       <div class="example-box"><div class="es"><b>Esta mañana he desayunado</b> tostadas. (perfecto)</div><div class="uk">Сьогодні зранку я снідав тостами.</div></div>
       <div class="example-box"><div class="es"><b>Ayer desayuné</b> tostadas. (indefinido)</div><div class="uk">Учора я снідав тостами.</div></div>
