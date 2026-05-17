@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pretérito Indefinido — Тренер неправильних дієслів</title>
+<title>Español — Тренажери граматики</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Manrope:wght@300;400;500;600;700;800&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
@@ -22,17 +22,8 @@
     --shadow: rgba(42, 24, 16, 0.15);
     --shadow-deep: rgba(42, 24, 16, 0.35);
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html, body {
-    background: var(--bg-cream);
-    color: var(--ink);
-    font-family: 'Manrope', sans-serif;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
+  html, body { background: var(--bg-cream); color: var(--ink); font-family: 'Manrope', sans-serif; min-height: 100vh; overflow-x: hidden; }
   body {
     background-image:
       radial-gradient(ellipse at top left, rgba(196, 69, 54, 0.08), transparent 50%),
@@ -40,1141 +31,256 @@
       url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.16 0 0 0 0 0.09 0 0 0 0 0.06 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     background-attachment: fixed;
   }
-
-  /* Decorative ornaments */
-  .ornament {
-    position: fixed;
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.12;
-  }
+  .ornament { position: fixed; pointer-events: none; z-index: 0; opacity: 0.12; }
   .ornament-1 { top: 40px; left: 40px; width: 120px; }
   .ornament-2 { top: 40px; right: 40px; width: 120px; transform: scaleX(-1); }
   .ornament-3 { bottom: 40px; left: 40px; width: 100px; transform: rotate(180deg) scaleX(-1); }
   .ornament-4 { bottom: 40px; right: 40px; width: 100px; transform: rotate(180deg); }
+  .container { max-width: 1200px; margin: 0 auto; padding: 50px 32px 80px; position: relative; z-index: 1; }
 
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 50px 32px 80px;
-    position: relative;
-    z-index: 1;
-  }
-
-  /* Header */
-  header {
-    text-align: center;
-    margin-bottom: 48px;
-    position: relative;
-    padding-top: 8px;
-  }
-
-  .eyebrow {
-    font-family: 'Caveat', cursive;
-    font-size: 1.4rem;
-    color: var(--terracotta);
-    letter-spacing: 2px;
-    margin-bottom: 8px;
-    transform: rotate(-2deg);
-    display: inline-block;
-  }
-
-  h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 600;
-    font-size: clamp(2.5rem, 7vw, 5rem);
-    line-height: 0.95;
-    color: var(--ink);
-    letter-spacing: -0.02em;
-    margin-bottom: 16px;
-  }
-
-  h1 .accent {
-    font-style: italic;
-    color: var(--terracotta);
-    font-weight: 500;
-  }
-
-  h1 .accent::before, h1 .accent::after {
-    content: '·';
-    color: var(--gold);
-    margin: 0 0.3em;
-    font-style: normal;
-  }
-
-  .subtitle {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 1.25rem;
-    color: var(--ink-soft);
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.5;
-  }
-
-  .divider {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    margin: 24px auto;
-    color: var(--gold);
-  }
-  .divider::before, .divider::after {
-    content: '';
-    width: 60px;
-    height: 1px;
-    background: var(--gold);
-  }
+  header { text-align: center; margin-bottom: 40px; position: relative; padding-top: 8px; }
+  .eyebrow { font-family: 'Caveat', cursive; font-size: 1.4rem; color: var(--terracotta); letter-spacing: 2px; margin-bottom: 8px; transform: rotate(-2deg); display: inline-block; }
+  h1 { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(2.2rem, 6vw, 4.2rem); line-height: 0.95; color: var(--ink); letter-spacing: -0.02em; margin-bottom: 12px; }
+  h1 .accent { font-style: italic; color: var(--terracotta); font-weight: 500; }
+  h1 .accent::before, h1 .accent::after { content: '·'; color: var(--gold); margin: 0 0.3em; font-style: normal; }
+  .subtitle { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.15rem; color: var(--ink-soft); max-width: 600px; margin: 0 auto; line-height: 1.5; }
+  .divider { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 20px auto; color: var(--gold); }
+  .divider::before, .divider::after { content: ''; width: 60px; height: 1px; background: var(--gold); }
   .divider svg { width: 16px; height: 16px; }
 
-  /* Tab navigation */
-  .tabs {
-    display: flex;
-    justify-content: center;
-    gap: 0;
-    margin-bottom: 40px;
-    flex-wrap: wrap;
-    background: var(--bg-paper);
-    border-radius: 4px;
-    padding: 6px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    box-shadow: inset 0 1px 3px var(--shadow);
-    border: 1px solid rgba(184, 134, 42, 0.2);
-  }
+  .top-controls { position: absolute; top: 0; right: 0; display: flex; gap: 8px; align-items: flex-end; flex-direction: column; }
+  .back-btn, .sound-toggle { background: transparent; border: 1.5px solid var(--ink); color: var(--ink); padding: 8px 16px; border-radius: 100px; font-family: 'Manrope', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s ease; }
+  .back-btn:hover, .sound-toggle:hover { background: var(--ink); color: var(--bg-cream); }
+  .sound-toggle.muted { opacity: 0.5; }
+  .sound-toggle svg { width: 14px; height: 14px; }
+  .voice-status { font-family: 'Manrope', sans-serif; font-size: 0.7rem; color: var(--ink-soft); letter-spacing: 0.05em; max-width: 260px; text-align: right; }
 
-  .tab {
-    flex: 1;
-    min-width: 120px;
-    padding: 12px 20px;
-    background: transparent;
-    border: none;
-    font-family: 'Manrope', sans-serif;
-    font-weight: 600;
-    font-size: 0.85rem;
-    color: var(--ink-soft);
-    cursor: pointer;
-    border-radius: 2px;
-    transition: all 0.3s ease;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
+  .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-top: 24px; }
+  .menu-card { background: var(--bg-paper); border: 1px solid rgba(184, 134, 42, 0.3); border-radius: 6px; padding: 28px 24px; cursor: pointer; transition: all 0.3s ease; position: relative; overflow: hidden; box-shadow: 0 4px 16px -4px var(--shadow); display: flex; flex-direction: column; gap: 12px; min-height: 220px; }
+  .menu-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px -8px var(--shadow-deep); border-color: var(--terracotta); }
+  .menu-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--accent-color, var(--terracotta)); }
+  .menu-card-level { font-family: 'Caveat', cursive; font-size: 1rem; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.1em; }
+  .menu-card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; font-weight: 600; color: var(--ink); line-height: 1.1; }
+  .menu-card-title .it { font-style: italic; color: var(--accent-color, var(--terracotta)); }
+  .menu-card-desc { font-family: 'Manrope', sans-serif; font-size: 0.85rem; color: var(--ink-soft); line-height: 1.5; flex: 1; }
+  .menu-card-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; border-top: 1px dashed rgba(184, 134, 42, 0.4); }
+  .menu-card-tag { font-family: 'Manrope', sans-serif; font-size: 0.7rem; color: var(--ink-soft); letter-spacing: 0.1em; text-transform: uppercase; }
+  .menu-card-arrow { color: var(--accent-color, var(--terracotta)); font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; }
 
+  .tabs { display: flex; justify-content: center; gap: 0; margin-bottom: 32px; flex-wrap: wrap; background: var(--bg-paper); border-radius: 4px; padding: 6px; max-width: 600px; margin-left: auto; margin-right: auto; box-shadow: inset 0 1px 3px var(--shadow); border: 1px solid rgba(184, 134, 42, 0.2); }
+  .tab { flex: 1; min-width: 100px; padding: 12px 18px; background: transparent; border: none; font-family: 'Manrope', sans-serif; font-weight: 600; font-size: 0.85rem; color: var(--ink-soft); cursor: pointer; border-radius: 2px; transition: all 0.3s ease; letter-spacing: 0.05em; text-transform: uppercase; }
   .tab:hover { color: var(--ink); }
+  .tab.active { background: var(--ink); color: var(--bg-cream); box-shadow: 0 2px 8px var(--shadow-deep); }
 
-  .tab.active {
-    background: var(--ink);
-    color: var(--bg-cream);
-    box-shadow: 0 2px 8px var(--shadow-deep);
-  }
-
-  /* Content area */
-  .content {
-    background: var(--bg-paper);
-    border-radius: 6px;
-    padding: 48px;
-    box-shadow:
-      0 1px 0 rgba(255, 255, 255, 0.6) inset,
-      0 20px 60px -20px var(--shadow-deep),
-      0 4px 16px -4px var(--shadow);
-    border: 1px solid rgba(184, 134, 42, 0.25);
-    position: relative;
-    min-height: 500px;
-  }
-
-  .content::before {
-    content: '';
-    position: absolute;
-    inset: 8px;
-    border: 1px solid rgba(184, 134, 42, 0.2);
-    border-radius: 3px;
-    pointer-events: none;
-  }
-
+  .content { background: var(--bg-paper); border-radius: 6px; padding: 40px; box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 0 20px 60px -20px var(--shadow-deep), 0 4px 16px -4px var(--shadow); border: 1px solid rgba(184, 134, 42, 0.25); position: relative; min-height: 500px; }
+  .content::before { content: ''; position: absolute; inset: 8px; border: 1px solid rgba(184, 134, 42, 0.2); border-radius: 3px; pointer-events: none; }
   .panel { display: none; }
-  .panel.active { display: block; animation: fadeIn 0.5s ease; }
+  .panel.active { display: block; animation: fadeIn 0.4s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .screen { display: none; }
+  .screen.active { display: block; animation: fadeIn 0.4s ease; }
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+  .verb-selector { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; justify-content: center; }
+  .verb-chip { padding: 8px 18px; background: transparent; border: 1.5px solid var(--ink); border-radius: 100px; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05rem; color: var(--ink); cursor: pointer; transition: all 0.25s ease; font-weight: 500; }
+  .verb-chip:hover { background: var(--ink); color: var(--bg-cream); transform: translateY(-2px); }
+  .verb-chip.active { background: var(--terracotta); border-color: var(--terracotta); color: var(--bg-cream); }
 
-  /* === EXPLORE PANEL === */
-  .verb-selector {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 32px;
-    justify-content: center;
-  }
+  .verb-card { background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0)); border-radius: 4px; padding: 32px; margin-bottom: 24px; border: 1px solid rgba(184, 134, 42, 0.3); }
+  .verb-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 12px; border-bottom: 1px solid rgba(184, 134, 42, 0.4); padding-bottom: 16px; margin-bottom: 24px; }
+  .verb-title { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 600; color: var(--ink); line-height: 1; }
+  .verb-translation { font-family: 'Caveat', cursive; font-size: 1.5rem; color: var(--terracotta); }
+  .verb-stem { display: inline-block; background: var(--ink); color: var(--bg-cream); padding: 4px 14px; border-radius: 100px; font-family: 'Manrope', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; margin-bottom: 24px; }
 
-  .verb-chip {
-    padding: 8px 18px;
-    background: transparent;
-    border: 1.5px solid var(--ink);
-    border-radius: 100px;
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 1.05rem;
-    color: var(--ink);
-    cursor: pointer;
-    transition: all 0.25s ease;
-    font-weight: 500;
-  }
-
-  .verb-chip:hover {
-    background: var(--ink);
-    color: var(--bg-cream);
-    transform: translateY(-2px);
-  }
-
-  .verb-chip.active {
-    background: var(--terracotta);
-    border-color: var(--terracotta);
-    color: var(--bg-cream);
-  }
-
-  .verb-card {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
-    border-radius: 4px;
-    padding: 36px;
-    margin-bottom: 24px;
-    border: 1px solid rgba(184, 134, 42, 0.3);
-  }
-
-  .verb-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 8px;
-    flex-wrap: wrap;
-    gap: 12px;
-    border-bottom: 1px solid rgba(184, 134, 42, 0.4);
-    padding-bottom: 16px;
-    margin-bottom: 28px;
-  }
-
-  .verb-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3rem;
-    font-weight: 600;
-    color: var(--ink);
-    line-height: 1;
-  }
-
-  .verb-translation {
-    font-family: 'Caveat', cursive;
-    font-size: 1.5rem;
-    color: var(--terracotta);
-  }
-
-  .verb-stem {
-    display: inline-block;
-    background: var(--ink);
-    color: var(--bg-cream);
-    padding: 4px 14px;
-    border-radius: 100px;
-    font-family: 'Manrope', sans-serif;
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    font-weight: 600;
-    margin-bottom: 24px;
-  }
-
-  .conjugation-table {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    margin-top: 16px;
-  }
-
-  .conj-row:hover {
-    background: rgba(196, 69, 54, 0.06);
-  }
-
+  .conjugation-table { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 16px; }
+  .conj-row { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px; padding: 12px 14px; border-bottom: 1px dashed rgba(184, 134, 42, 0.4); transition: background 0.2s ease; }
+  .conj-row:hover { background: rgba(196, 69, 54, 0.06); }
   .conj-row:nth-last-child(-n+2) { border-bottom: none; }
   .conj-row:nth-child(odd) { border-right: 1px dashed rgba(184, 134, 42, 0.4); }
+  .pronoun { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--ink-soft); font-size: 1rem; }
+  .conjugated { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 1.35rem; color: var(--ink); text-align: right; }
+  .conjugated .ending { color: var(--terracotta); }
+  .verb-note { margin-top: 20px; padding: 16px 20px; background: rgba(212, 136, 43, 0.12); border-left: 3px solid var(--ochre); border-radius: 2px; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: var(--ink-soft); line-height: 1.5; }
 
-  .pronoun {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    color: var(--ink-soft);
-    font-size: 1rem;
-  }
+  .speaker-btn { background: transparent; border: 1.5px solid var(--ink-soft); color: var(--ink-soft); width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; transition: all 0.2s ease; padding: 0; flex-shrink: 0; }
+  .speaker-btn:hover { background: var(--terracotta); border-color: var(--terracotta); color: var(--bg-cream); transform: scale(1.08); }
+  .speaker-btn:active { transform: scale(0.95); }
+  .speaker-btn.playing { background: var(--terracotta); border-color: var(--terracotta); color: var(--bg-cream); animation: pulse 0.8s ease-in-out infinite; }
+  .speaker-btn svg { width: 16px; height: 16px; }
+  .speaker-btn-large { width: 44px; height: 44px; }
+  .speaker-btn-large svg { width: 22px; height: 22px; }
+  .conj-row .speaker-btn { width: 26px; height: 26px; border-width: 1px; }
+  .conj-row .speaker-btn svg { width: 12px; height: 12px; }
+  @keyframes pulse { 0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(196, 69, 54, 0.5); } 50% { transform: scale(1.06); box-shadow: 0 0 0 8px rgba(196, 69, 54, 0); } }
 
-  .conjugated {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 600;
-    font-size: 1.4rem;
-    color: var(--ink);
-    text-align: right;
-  }
+  .practice-setup { text-align: center; margin-bottom: 24px; }
+  .practice-setup h2 { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 1.9rem; color: var(--ink); margin-bottom: 12px; }
+  .filter-group { margin-bottom: 22px; }
+  .filter-label { font-family: 'Caveat', cursive; font-size: 1.2rem; color: var(--terracotta); margin-bottom: 8px; display: block; }
+  .filter-options { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+  .filter-option { padding: 6px 14px; background: transparent; border: 1.5px solid var(--ink-soft); border-radius: 4px; font-family: 'Manrope', sans-serif; font-size: 0.85rem; font-weight: 500; color: var(--ink-soft); cursor: pointer; transition: all 0.2s ease; }
+  .filter-option:hover { border-color: var(--ink); color: var(--ink); }
+  .filter-option.active { background: var(--wine); border-color: var(--wine); color: var(--bg-cream); }
+  .start-btn { margin-top: 20px; padding: 14px 40px; background: var(--terracotta); color: var(--bg-cream); border: none; border-radius: 100px; font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; box-shadow: 0 4px 16px rgba(196, 69, 54, 0.3); transition: all 0.3s ease; }
+  .start-btn:hover { background: var(--terracotta-deep); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(196, 69, 54, 0.4); }
 
-  .conjugated .ending {
-    color: var(--terracotta);
-  }
+  .quiz-card { text-align: center; padding: 16px 0; }
+  .review-badge { display: inline-block; padding: 4px 12px; background: var(--ochre); color: var(--bg-cream); border-radius: 100px; font-family: 'Manrope', sans-serif; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; margin-bottom: 12px; }
+  .quiz-progress { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; font-family: 'Caveat', cursive; font-size: 1.3rem; color: var(--ink-soft); }
+  .progress-bar { flex: 1; height: 4px; background: rgba(184, 134, 42, 0.2); margin: 0 16px; border-radius: 2px; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--ochre), var(--terracotta)); border-radius: 2px; transition: width 0.5s ease; }
+  .quiz-prompt { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--ink-soft); font-size: 1.1rem; margin-bottom: 8px; }
+  .quiz-verb-row { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 4px; flex-wrap: wrap; }
+  .quiz-verb { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 600; color: var(--ink); line-height: 1; }
+  .quiz-meaning { font-family: 'Caveat', cursive; font-size: 1.4rem; color: var(--terracotta); margin-bottom: 22px; }
+  .quiz-pronoun { display: inline-block; padding: 8px 24px; background: var(--ink); color: var(--bg-cream); border-radius: 4px; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.5rem; margin-bottom: 28px; }
+  .quiz-sentence { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; line-height: 1.5; color: var(--ink); margin: 20px auto; max-width: 600px; text-align: center; }
+  .quiz-sentence .blank { display: inline-block; border-bottom: 2px solid var(--terracotta); min-width: 120px; padding: 0 8px; color: var(--terracotta); font-weight: 600; }
+  .quiz-sentence .infinitive-hint { font-style: italic; color: var(--ink-soft); font-size: 0.9em; }
+  .quiz-hint { font-family: 'Caveat', cursive; font-size: 1.2rem; color: var(--ink-soft); margin: 12px 0 18px; }
+  .quiz-input { width: 100%; max-width: 400px; padding: 14px 20px; background: var(--bg-cream); border: 2px solid var(--ink-soft); border-radius: 4px; font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--ink); text-align: center; outline: none; transition: all 0.2s ease; }
+  .quiz-input:focus { border-color: var(--terracotta); box-shadow: 0 0 0 4px rgba(196, 69, 54, 0.1); }
+  .quiz-input.correct { border-color: var(--olive); background: rgba(107, 111, 61, 0.1); }
+  .quiz-input.incorrect { border-color: var(--terracotta-deep); background: rgba(196, 69, 54, 0.1); animation: shake 0.4s ease; }
+  @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-8px); } 75% { transform: translateX(8px); } }
 
-  .verb-note {
-    margin-top: 20px;
-    padding: 16px 20px;
-    background: rgba(212, 136, 43, 0.12);
-    border-left: 3px solid var(--ochre);
-    border-radius: 2px;
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 1rem;
-    color: var(--ink-soft);
-    line-height: 1.5;
-  }
+  .choice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; max-width: 600px; margin: 20px auto; }
+  .choice-btn { padding: 14px 18px; background: var(--bg-cream); border: 2px solid var(--ink-soft); border-radius: 4px; font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--ink); cursor: pointer; transition: all 0.2s ease; }
+  .choice-btn:hover:not(:disabled) { background: var(--ink); color: var(--bg-cream); border-color: var(--ink); transform: translateY(-2px); }
+  .choice-btn.correct { background: var(--olive); border-color: var(--olive); color: var(--bg-cream); }
+  .choice-btn.incorrect { background: var(--terracotta-deep); border-color: var(--terracotta-deep); color: var(--bg-cream); animation: shake 0.4s ease; }
+  .choice-btn:disabled { cursor: not-allowed; opacity: 0.85; }
 
-  /* === PRACTICE PANEL === */
-  .practice-setup {
-    text-align: center;
-    margin-bottom: 32px;
-  }
-
-  .practice-setup h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 500;
-    font-size: 2rem;
-    color: var(--ink);
-    margin-bottom: 16px;
-  }
-
-  .filter-group {
-    margin-bottom: 24px;
-  }
-
-  .filter-label {
-    font-family: 'Caveat', cursive;
-    font-size: 1.2rem;
-    color: var(--terracotta);
-    margin-bottom: 8px;
-    display: block;
-  }
-
-  .filter-options {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-  }
-
-  .filter-option {
-    padding: 6px 14px;
-    background: transparent;
-    border: 1.5px solid var(--ink-soft);
-    border-radius: 4px;
-    font-family: 'Manrope', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--ink-soft);
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-
-  .filter-option:hover {
-    border-color: var(--ink);
-    color: var(--ink);
-  }
-
-  .filter-option.active {
-    background: var(--wine);
-    border-color: var(--wine);
-    color: var(--bg-cream);
-  }
-
-  .start-btn {
-    margin-top: 24px;
-    padding: 14px 40px;
-    background: var(--terracotta);
-    color: var(--bg-cream);
-    border: none;
-    border-radius: 100px;
-    font-family: 'Manrope', sans-serif;
-    font-weight: 700;
-    font-size: 0.9rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    cursor: pointer;
-    box-shadow: 0 4px 16px rgba(196, 69, 54, 0.3);
-    transition: all 0.3s ease;
-  }
-
-  .start-btn:hover {
-    background: var(--terracotta-deep);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(196, 69, 54, 0.4);
-  }
-
-  /* Quiz card */
-  .quiz-card {
-    text-align: center;
-    padding: 20px 0;
-  }
-
-  .quiz-progress {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 32px;
-    font-family: 'Caveat', cursive;
-    font-size: 1.3rem;
-    color: var(--ink-soft);
-  }
-
-  .progress-bar {
-    flex: 1;
-    height: 4px;
-    background: rgba(184, 134, 42, 0.2);
-    margin: 0 16px;
-    border-radius: 2px;
-    overflow: hidden;
-  }
-
-  .progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--ochre), var(--terracotta));
-    border-radius: 2px;
-    transition: width 0.5s ease;
-  }
-
-  .quiz-prompt {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    color: var(--ink-soft);
-    font-size: 1.1rem;
-    margin-bottom: 12px;
-  }
-
-  .quiz-verb {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 4rem;
-    font-weight: 600;
-    color: var(--ink);
-    margin-bottom: 4px;
-    line-height: 1;
-  }
-
-  .quiz-meaning {
-    font-family: 'Caveat', cursive;
-    font-size: 1.4rem;
-    color: var(--terracotta);
-    margin-bottom: 24px;
-  }
-
-  .quiz-pronoun {
-    display: inline-block;
-    padding: 8px 24px;
-    background: var(--ink);
-    color: var(--bg-cream);
-    border-radius: 4px;
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 1.6rem;
-    margin-bottom: 32px;
-  }
-
-  .quiz-input {
-    width: 100%;
-    max-width: 400px;
-    padding: 14px 20px;
-    background: var(--bg-cream);
-    border: 2px solid var(--ink-soft);
-    border-radius: 4px;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
-    color: var(--ink);
-    text-align: center;
-    outline: none;
-    transition: all 0.2s ease;
-  }
-
-  .quiz-input:focus {
-    border-color: var(--terracotta);
-    box-shadow: 0 0 0 4px rgba(196, 69, 54, 0.1);
-  }
-
-  .quiz-input.correct {
-    border-color: var(--olive);
-    background: rgba(107, 111, 61, 0.1);
-  }
-
-  .quiz-input.incorrect {
-    border-color: var(--terracotta-deep);
-    background: rgba(196, 69, 54, 0.1);
-    animation: shake 0.4s ease;
-  }
-
-  @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-8px); }
-    75% { transform: translateX(8px); }
-  }
-
-  .quiz-feedback {
-    margin-top: 20px;
-    min-height: 60px;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
-    font-style: italic;
-  }
-
+  .quiz-feedback { margin-top: 20px; min-height: 60px; font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-style: italic; }
   .quiz-feedback.correct { color: var(--olive); }
   .quiz-feedback.incorrect { color: var(--terracotta-deep); }
+  .quiz-feedback strong { font-weight: 700; font-style: normal; }
+  .quiz-actions { display: flex; justify-content: center; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+  .btn { padding: 10px 24px; border: 2px solid var(--ink); background: transparent; color: var(--ink); border-radius: 100px; font-family: 'Manrope', sans-serif; font-weight: 600; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all 0.2s ease; }
+  .btn:hover { background: var(--ink); color: var(--bg-cream); }
+  .btn-primary { background: var(--terracotta); border-color: var(--terracotta); color: var(--bg-cream); }
+  .btn-primary:hover { background: var(--terracotta-deep); border-color: var(--terracotta-deep); color: var(--bg-cream); }
 
-  .quiz-feedback strong {
-    font-weight: 700;
-    font-style: normal;
-  }
-
-  .quiz-actions {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 24px;
-    flex-wrap: wrap;
-  }
-
-  .btn {
-    padding: 10px 24px;
-    border: 2px solid var(--ink);
-    background: transparent;
-    color: var(--ink);
-    border-radius: 100px;
-    font-family: 'Manrope', sans-serif;
-    font-weight: 600;
-    font-size: 0.85rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-
-  .btn:hover {
-    background: var(--ink);
-    color: var(--bg-cream);
-  }
-
-  .btn-primary {
-    background: var(--terracotta);
-    border-color: var(--terracotta);
-    color: var(--bg-cream);
-  }
-
-  .btn-primary:hover {
-    background: var(--terracotta-deep);
-    border-color: var(--terracotta-deep);
-    color: var(--bg-cream);
-  }
-
-  /* Stats */
-  .stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-top: 32px;
-    padding-top: 24px;
-    border-top: 1px dashed rgba(184, 134, 42, 0.4);
-  }
-
-  .stat {
-    text-align: center;
-  }
-
-  .stat-value {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: var(--ink);
-    line-height: 1;
-  }
-
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; padding-top: 20px; border-top: 1px dashed rgba(184, 134, 42, 0.4); }
+  .stat { text-align: center; }
+  .stat-value { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 600; color: var(--ink); line-height: 1; }
   .stat-value.success { color: var(--olive); }
   .stat-value.error { color: var(--terracotta); }
+  .stat-label { font-family: 'Caveat', cursive; font-size: 1.1rem; color: var(--ink-soft); margin-top: 4px; }
 
-  .stat-label {
-    font-family: 'Caveat', cursive;
-    font-size: 1.1rem;
-    color: var(--ink-soft);
-    margin-top: 4px;
-  }
+  .results { text-align: center; padding: 20px; }
+  .results-emoji { font-size: 4rem; margin-bottom: 16px; }
+  .results-title { font-family: 'Cormorant Garamond', serif; font-size: 2.3rem; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+  .results-subtitle { font-family: 'Caveat', cursive; font-size: 1.4rem; color: var(--terracotta); margin-bottom: 28px; }
+  .results-score { font-family: 'Cormorant Garamond', serif; font-size: 4.5rem; font-weight: 600; color: var(--terracotta); line-height: 1; }
+  .results-score-label { font-family: 'Manrope', sans-serif; font-size: 0.85rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-soft); margin-top: 8px; margin-bottom: 28px; }
 
-  /* Results screen */
-  .results {
-    text-align: center;
-    padding: 20px;
-  }
+  .mistakes-preview { margin: 28px auto; max-width: 500px; padding: 18px 22px; background: rgba(212, 136, 43, 0.1); border: 1px dashed var(--ochre); border-radius: 4px; }
+  .mistakes-title { font-family: 'Caveat', cursive; font-size: 1.3rem; color: var(--terracotta); margin-bottom: 10px; }
+  .mistakes-chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .mistake-chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: var(--bg-cream); border: 1px solid rgba(184, 134, 42, 0.4); border-radius: 100px; font-family: 'Cormorant Garamond', serif; }
+  .mc-pronoun { font-style: italic; color: var(--ink-soft); font-size: 0.9rem; }
+  .mc-form { font-weight: 600; color: var(--terracotta-deep); font-size: 1rem; }
+  .mistake-chip.more { color: var(--ink-soft); font-style: italic; font-family: 'Caveat', cursive; font-size: 1.1rem; }
 
-  .results-emoji {
-    font-size: 4rem;
-    margin-bottom: 16px;
-  }
+  .reference-intro { text-align: center; margin-bottom: 36px; }
+  .reference-intro h2 { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 2rem; color: var(--ink); margin-bottom: 8px; }
+  .reference-intro p { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--ink-soft); max-width: 700px; margin: 0 auto; line-height: 1.6; }
+  .reference-section { margin-bottom: 36px; }
+  .ref-section-title { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.5rem; color: var(--terracotta); margin-bottom: 14px; border-bottom: 1px solid rgba(184, 134, 42, 0.4); padding-bottom: 8px; }
+  .ref-section-title .num { font-family: 'Caveat', cursive; font-style: normal; font-size: 1.8rem; color: var(--gold); margin-right: 8px; }
+  .ref-text { font-family: 'Manrope', sans-serif; line-height: 1.7; color: var(--ink-soft); margin-bottom: 14px; }
+  .ref-text strong { color: var(--ink); }
+  .endings-table { width: 100%; border-collapse: collapse; margin: 14px 0; background: rgba(255, 255, 255, 0.3); }
+  .endings-table th, .endings-table td { padding: 9px 13px; text-align: left; border: 1px solid rgba(184, 134, 42, 0.3); font-family: 'Cormorant Garamond', serif; }
+  .endings-table th { background: var(--ink); color: var(--bg-cream); font-weight: 600; font-style: italic; }
+  .endings-table td.ending { font-weight: 700; color: var(--terracotta); font-size: 1.05rem; }
+  .example-box { background: rgba(255, 255, 255, 0.4); border-left: 3px solid var(--terracotta); padding: 14px 18px; margin: 10px 0; border-radius: 2px; }
+  .example-box .es { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.15rem; color: var(--ink); margin-bottom: 4px; }
+  .example-box .uk { font-family: 'Manrope', sans-serif; font-size: 0.85rem; color: var(--ink-soft); }
+  .example-box .es b { color: var(--terracotta); font-weight: 700; font-style: normal; }
 
-  .results-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: var(--ink);
-    margin-bottom: 8px;
-  }
-
-  .results-subtitle {
-    font-family: 'Caveat', cursive;
-    font-size: 1.5rem;
-    color: var(--terracotta);
-    margin-bottom: 32px;
-  }
-
-  .results-score {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 5rem;
-    font-weight: 600;
-    color: var(--terracotta);
-    line-height: 1;
-  }
-
-  .results-score-label {
-    font-family: 'Manrope', sans-serif;
-    font-size: 0.85rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    margin-top: 8px;
-    margin-bottom: 32px;
-  }
-
-  /* Reference panel */
-  .reference-intro {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-
-  .reference-intro h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 500;
-    font-size: 2.2rem;
-    color: var(--ink);
-    margin-bottom: 8px;
-  }
-
-  .reference-intro p {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    color: var(--ink-soft);
-    max-width: 700px;
-    margin: 0 auto;
-    line-height: 1.6;
-  }
-
-  .reference-section {
-    margin-bottom: 40px;
-  }
-
-  .ref-section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 1.6rem;
-    color: var(--terracotta);
-    margin-bottom: 16px;
-    border-bottom: 1px solid rgba(184, 134, 42, 0.4);
-    padding-bottom: 8px;
-  }
-
-  .ref-section-title .num {
-    font-family: 'Caveat', cursive;
-    font-style: normal;
-    font-size: 2rem;
-    color: var(--gold);
-    margin-right: 8px;
-  }
-
-  .ref-text {
-    font-family: 'Manrope', sans-serif;
-    line-height: 1.7;
-    color: var(--ink-soft);
-    margin-bottom: 16px;
-  }
-
-  .ref-text strong {
-    color: var(--ink);
-  }
-
-  .endings-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 16px 0;
-    background: rgba(255, 255, 255, 0.3);
-  }
-
-  .endings-table th, .endings-table td {
-    padding: 10px 14px;
-    text-align: left;
-    border: 1px solid rgba(184, 134, 42, 0.3);
-    font-family: 'Cormorant Garamond', serif;
-  }
-
-  .endings-table th {
-    background: var(--ink);
-    color: var(--bg-cream);
-    font-weight: 600;
-    font-style: italic;
-  }
-
-  .endings-table td.ending {
-    font-weight: 700;
-    color: var(--terracotta);
-    font-size: 1.1rem;
-  }
-
-  .example-box {
-    background: rgba(255, 255, 255, 0.4);
-    border-left: 3px solid var(--terracotta);
-    padding: 16px 20px;
-    margin: 12px 0;
-    border-radius: 2px;
-  }
-
-  .example-box .es {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 1.2rem;
-    color: var(--ink);
-    margin-bottom: 4px;
-  }
-
-  .example-box .uk {
-    font-family: 'Manrope', sans-serif;
-    font-size: 0.9rem;
-    color: var(--ink-soft);
-  }
-
-  .example-box .es b {
-    color: var(--terracotta);
-    font-weight: 700;
-    font-style: normal;
-  }
-
-  /* Footer */
-  footer {
-    text-align: center;
-    margin-top: 48px;
-    font-family: 'Caveat', cursive;
-    color: var(--ink-soft);
-    font-size: 1.1rem;
-  }
-
+  footer { text-align: center; margin-top: 40px; font-family: 'Caveat', cursive; color: var(--ink-soft); font-size: 1.1rem; }
   footer .heart { color: var(--terracotta); }
 
-  /* Speaker buttons */
-  .speaker-btn {
-    background: transparent;
-    border: 1.5px solid var(--ink-soft);
-    color: var(--ink-soft);
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-    padding: 0;
-    flex-shrink: 0;
-  }
-
-  .speaker-btn:hover {
-    background: var(--terracotta);
-    border-color: var(--terracotta);
-    color: var(--bg-cream);
-    transform: scale(1.08);
-  }
-
-  .speaker-btn:active {
-    transform: scale(0.95);
-  }
-
-  .speaker-btn.playing {
-    background: var(--terracotta);
-    border-color: var(--terracotta);
-    color: var(--bg-cream);
-    animation: pulse 0.8s ease-in-out infinite;
-  }
-
-  .speaker-btn svg {
-    width: 16px;
-    height: 16px;
-  }
-
-  .speaker-btn-large {
-    width: 44px;
-    height: 44px;
-  }
-
-  .speaker-btn-large svg {
-    width: 22px;
-    height: 22px;
-  }
-
-  @keyframes pulse {
-    0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(196, 69, 54, 0.5); }
-    50% { transform: scale(1.06); box-shadow: 0 0 0 8px rgba(196, 69, 54, 0); }
-  }
-
-  /* Voice status indicator */
-  .voice-status {
-    position: absolute;
-    top: 44px;
-    right: 0;
-    font-family: 'Manrope', sans-serif;
-    font-size: 0.7rem;
-    color: var(--ink-soft);
-    letter-spacing: 0.05em;
-    max-width: 260px;
-    text-align: right;
-  }
-
-  /* Mistakes preview on results screen */
-  .mistakes-preview {
-    margin: 32px auto;
-    max-width: 500px;
-    padding: 20px 24px;
-    background: rgba(212, 136, 43, 0.1);
-    border: 1px dashed var(--ochre);
-    border-radius: 4px;
-  }
-
-  .mistakes-title {
-    font-family: 'Caveat', cursive;
-    font-size: 1.3rem;
-    color: var(--terracotta);
-    margin-bottom: 12px;
-  }
-
-  .mistakes-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    justify-content: center;
-  }
-
-  .mistake-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 12px;
-    background: var(--bg-cream);
-    border: 1px solid rgba(184, 134, 42, 0.4);
-    border-radius: 100px;
-    font-family: 'Cormorant Garamond', serif;
-  }
-
-  .mc-pronoun {
-    font-style: italic;
-    color: var(--ink-soft);
-    font-size: 0.9rem;
-  }
-
-  .mc-form {
-    font-weight: 600;
-    color: var(--terracotta-deep);
-    font-size: 1rem;
-  }
-
-  .mistake-chip.more {
-    color: var(--ink-soft);
-    font-style: italic;
-    font-family: 'Caveat', cursive;
-    font-size: 1.1rem;
-  }
-
-  /* Review mode badge in quiz */
-  .review-badge {
-    display: inline-block;
-    padding: 4px 12px;
-    background: var(--ochre);
-    color: var(--bg-cream);
-    border-radius: 100px;
-    font-family: 'Manrope', sans-serif;
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    font-weight: 700;
-    margin-bottom: 12px;
-  }
-
-  /* Sound toggle in header */
-  .sound-toggle {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background: transparent;
-    border: 1.5px solid var(--ink);
-    color: var(--ink);
-    padding: 8px 16px;
-    border-radius: 100px;
-    font-family: 'Manrope', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: all 0.2s ease;
-  }
-
-  .sound-toggle:hover {
-    background: var(--ink);
-    color: var(--bg-cream);
-  }
-
-  .sound-toggle.muted {
-    opacity: 0.5;
-  }
-
-  .sound-toggle svg {
-    width: 14px;
-    height: 14px;
-  }
-
-  /* Quiz verb with speaker */
-  .quiz-verb-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    margin-bottom: 4px;
-  }
-
-  /* Conjugation row with speaker */
-  .conj-row {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 14px;
-    border-bottom: 1px dashed rgba(184, 134, 42, 0.4);
-    transition: background 0.2s ease;
-  }
-
-  .conj-row .speaker-btn {
-    width: 26px;
-    height: 26px;
-    border-width: 1px;
-  }
-
-  .conj-row .speaker-btn svg {
-    width: 12px;
-    height: 12px;
-  }
-
-  /* Mobile */
   @media (max-width: 700px) {
-    .sound-toggle {
-      position: static;
-      margin-bottom: 8px;
-      font-size: 0.7rem;
-      padding: 6px 12px;
-    }
-    .voice-status {
-      position: static;
-      text-align: center;
-      max-width: 100%;
-      margin-bottom: 16px;
-    }
-    header { padding-top: 0; }
     .container { padding: 30px 16px 50px; }
-    .content { padding: 28px 20px; }
+    .content { padding: 24px 16px; }
     .ornament { display: none; }
     .conjugation-table { grid-template-columns: 1fr; }
     .conj-row:nth-child(odd) { border-right: none; }
-    .verb-title { font-size: 2.2rem; }
-    .quiz-verb { font-size: 2.8rem; }
+    .verb-title { font-size: 2rem; }
+    .quiz-verb { font-size: 2.4rem; }
+    .quiz-sentence { font-size: 1.3rem; }
     .stats { grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
-    .stat-value { font-size: 1.8rem; }
-    .tab { font-size: 0.75rem; padding: 10px 12px; }
+    .stat-value { font-size: 1.6rem; }
+    .tab { font-size: 0.7rem; padding: 9px 10px; min-width: 80px; }
+    .top-controls { position: static; flex-direction: row; flex-wrap: wrap; justify-content: center; margin-bottom: 16px; align-items: center; }
+    .voice-status { text-align: center; max-width: 100%; }
+    header { padding-top: 0; }
+    .menu-card { min-height: auto; }
+    .menu-card-title { font-size: 1.4rem; }
   }
 </style>
 </head>
 <body>
 
-<!-- Decorative SVG ornaments -->
-<svg class="ornament ornament-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <path d="M10,50 Q30,20 50,50 T90,50" stroke="#722f37" stroke-width="1.5" fill="none"/>
-  <path d="M10,60 Q30,30 50,60 T90,60" stroke="#722f37" stroke-width="1.5" fill="none"/>
-  <circle cx="50" cy="50" r="3" fill="#b8862a"/>
-</svg>
-<svg class="ornament ornament-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <path d="M10,50 Q30,20 50,50 T90,50" stroke="#722f37" stroke-width="1.5" fill="none"/>
-  <path d="M10,60 Q30,30 50,60 T90,60" stroke="#722f37" stroke-width="1.5" fill="none"/>
-  <circle cx="50" cy="50" r="3" fill="#b8862a"/>
-</svg>
-<svg class="ornament ornament-3" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <path d="M10,50 Q30,20 50,50 T90,50" stroke="#722f37" stroke-width="1.5" fill="none"/>
-  <circle cx="50" cy="50" r="3" fill="#b8862a"/>
-</svg>
-<svg class="ornament ornament-4" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <path d="M10,50 Q30,20 50,50 T90,50" stroke="#722f37" stroke-width="1.5" fill="none"/>
-  <circle cx="50" cy="50" r="3" fill="#b8862a"/>
-</svg>
+<svg class="ornament ornament-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M10,50 Q30,20 50,50 T90,50" stroke="#722f37" stroke-width="1.5" fill="none"/><path d="M10,60 Q30,30 50,60 T90,60" stroke="#722f37" stroke-width="1.5" fill="none"/><circle cx="50" cy="50" r="3" fill="#b8862a"/></svg>
+<svg class="ornament ornament-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M10,50 Q30,20 50,50 T90,50" stroke="#722f37" stroke-width="1.5" fill="none"/><path d="M10,60 Q30,30 50,60 T90,60" stroke="#722f37" stroke-width="1.5" fill="none"/><circle cx="50" cy="50" r="3" fill="#b8862a"/></svg>
+<svg class="ornament ornament-3" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M10,50 Q30,20 50,50 T90,50" stroke="#722f37" stroke-width="1.5" fill="none"/><circle cx="50" cy="50" r="3" fill="#b8862a"/></svg>
+<svg class="ornament ornament-4" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M10,50 Q30,20 50,50 T90,50" stroke="#722f37" stroke-width="1.5" fill="none"/><circle cx="50" cy="50" r="3" fill="#b8862a"/></svg>
 
 <div class="container">
   <header>
-    <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound">
-      <svg id="soundIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
-      </svg>
-      <span id="soundLabel">Звук увімк.</span>
-    </button>
-    <div class="voice-status" id="voiceStatus">Завантаження голосу...</div>
-    <div class="eyebrow">~ aprende español ~</div>
-    <h1>Pretérito <span class="accent">Indefinido</span></h1>
-    <div class="divider">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z"/></svg>
+    <div class="top-controls">
+      <button class="back-btn" id="backBtn" style="display:none;">← До меню</button>
+      <button class="sound-toggle" id="soundToggle">
+        <svg id="soundIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+          <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+        </svg>
+        <span id="soundLabel">Звук увімк.</span>
+      </button>
+      <div class="voice-status" id="voiceStatus">Завантаження голосу...</div>
     </div>
-    <p class="subtitle">Тренажер неправильних дієслів. Усі особи, усі форми, усі винятки — знайдеш тут.</p>
+    <div class="eyebrow">~ aprende español ~</div>
+    <h1 id="appTitle">Español <span class="accent">grammar</span></h1>
+    <div class="divider"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z"/></svg></div>
+    <p class="subtitle" id="appSubtitle">Тренажери граматики для тих, хто хоче говорити природно.</p>
   </header>
 
-  <div class="tabs">
-    <button class="tab active" data-tab="explore">Дієслова</button>
-    <button class="tab" data-tab="practice">Практика</button>
-    <button class="tab" data-tab="reference">Теорія</button>
+  <div class="screen active" id="screen-menu">
+    <div class="menu-grid" id="menuGrid"></div>
   </div>
 
-  <div class="content">
-
-    <!-- EXPLORE PANEL -->
-    <div class="panel active" id="panel-explore">
-      <div class="verb-selector" id="verbSelector"></div>
-      <div id="verbDisplay"></div>
-    </div>
-
-    <!-- PRACTICE PANEL -->
-    <div class="panel" id="panel-practice">
-      <div id="practiceContent"></div>
-    </div>
-
-    <!-- REFERENCE PANEL -->
-    <div class="panel" id="panel-reference">
-      <div class="reference-intro">
-        <h2>Усе, що треба знати</h2>
-        <p>Pretérito indefinido — це доконаний минулий час. Вживається для дій, що завершилися в конкретний момент у минулому. Українською часто перекладається доконаним видом: «зробив», «прийшов», «сказав».</p>
-      </div>
-
-      <div class="reference-section">
-        <h3 class="ref-section-title"><span class="num">i.</span>Коли вживати</h3>
-        <p class="ref-text">Pretérito indefinido використовуємо для конкретних подій у минулому, які мали початок і кінець. Він відповідає на питання <strong>«що сталося?»</strong>.</p>
-        <p class="ref-text"><strong>Маркери часу:</strong> ayer, anteayer, anoche, la semana pasada, el mes pasado, el año pasado, en 2010, hace dos días, el lunes, una vez, dos veces.</p>
-        <div class="example-box">
-          <div class="es"><b>Ayer fui</b> al cine.</div>
-          <div class="uk">Учора я ходив у кіно.</div>
-        </div>
-        <div class="example-box">
-          <div class="es"><b>El año pasado estuve</b> en Madrid.</div>
-          <div class="uk">Минулого року я був у Мадриді.</div>
-        </div>
-      </div>
-
-      <div class="reference-section">
-        <h3 class="ref-section-title"><span class="num">ii.</span>Закінчення правильних дієслів</h3>
-        <p class="ref-text">Перш ніж занурюватись у винятки, варто пам'ятати «нормальні» закінчення:</p>
-        <table class="endings-table">
-          <thead>
-            <tr><th>Особа</th><th>-AR (hablar)</th><th>-ER (comer)</th><th>-IR (vivir)</th></tr>
-          </thead>
-          <tbody>
-            <tr><td><i>yo</i></td><td class="ending">-é</td><td class="ending">-í</td><td class="ending">-í</td></tr>
-            <tr><td><i>tú</i></td><td class="ending">-aste</td><td class="ending">-iste</td><td class="ending">-iste</td></tr>
-            <tr><td><i>él/ella/usted</i></td><td class="ending">-ó</td><td class="ending">-ió</td><td class="ending">-ió</td></tr>
-            <tr><td><i>nosotros</i></td><td class="ending">-amos</td><td class="ending">-imos</td><td class="ending">-imos</td></tr>
-            <tr><td><i>vosotros</i></td><td class="ending">-asteis</td><td class="ending">-isteis</td><td class="ending">-isteis</td></tr>
-            <tr><td><i>ellos/ellas/ustedes</i></td><td class="ending">-aron</td><td class="ending">-ieron</td><td class="ending">-ieron</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="reference-section">
-        <h3 class="ref-section-title"><span class="num">iii.</span>Дієслова з нестандартною основою</h3>
-        <p class="ref-text">Найпідступніша група. Ці дієслова мають <strong>особливу основу</strong> + спільні закінчення без наголосу: <span style="color:var(--terracotta);font-weight:600">-e, -iste, -o, -imos, -isteis, -ieron</span>. Жодних акцентів у 1-й та 3-й особі однини!</p>
-        <table class="endings-table">
-          <thead><tr><th>Інфінітив</th><th>Основа</th><th>Yo</th></tr></thead>
-          <tbody>
-            <tr><td><i>tener</i></td><td>tuv-</td><td>tuve</td></tr>
-            <tr><td><i>estar</i></td><td>estuv-</td><td>estuve</td></tr>
-            <tr><td><i>poder</i></td><td>pud-</td><td>pude</td></tr>
-            <tr><td><i>poner</i></td><td>pus-</td><td>puse</td></tr>
-            <tr><td><i>saber</i></td><td>sup-</td><td>supe</td></tr>
-            <tr><td><i>hacer</i></td><td>hic- (hiz- у 3 ос. одн.)</td><td>hice</td></tr>
-            <tr><td><i>querer</i></td><td>quis-</td><td>quise</td></tr>
-            <tr><td><i>venir</i></td><td>vin-</td><td>vine</td></tr>
-            <tr><td><i>decir</i></td><td>dij-</td><td>dije</td></tr>
-            <tr><td><i>traer</i></td><td>traj-</td><td>traje</td></tr>
-          </tbody>
-        </table>
-        <p class="ref-text" style="margin-top:12px;"><strong>Увага:</strong> після основи на <strong>j</strong> (decir → dij-, traer → traj-, conducir → conduj-) у 3-й ос. множини закінчення скорочується до <span style="color:var(--terracotta);font-weight:600">-eron</span>, а не -ieron: <i>dijeron, trajeron, condujeron</i>.</p>
-      </div>
-
-      <div class="reference-section">
-        <h3 class="ref-section-title"><span class="num">iv.</span>Чергування e→i, o→u (тільки -IR)</h3>
-        <p class="ref-text">Деякі дієслова на <strong>-ir</strong>, які мають чергування у presente, у preterito indefinido змінюють голосну в основі <strong>тільки в 3-й особі однини та множини</strong>: <i>pedir → pidió, pidieron</i>; <i>dormir → durmió, durmieron</i>.</p>
-        <p class="ref-text"><strong>Сюди належать:</strong> pedir, servir, repetir, seguir, sentir, mentir, preferir, dormir, morir, divertirse, vestirse.</p>
-      </div>
-
-      <div class="reference-section">
-        <h3 class="ref-section-title"><span class="num">v.</span>Орфографічні зміни</h3>
-        <p class="ref-text">Щоб зберегти звук, у <strong>1-й особі однини</strong> змінюється написання:</p>
-        <ul style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;line-height:1.8;color:var(--ink);padding-left:24px;">
-          <li><strong>-car</strong> → <strong>-qué</strong>: buscar → bus<b style="color:var(--terracotta)">qué</b>, tocar → to<b style="color:var(--terracotta)">qué</b></li>
-          <li><strong>-gar</strong> → <strong>-gué</strong>: llegar → lle<b style="color:var(--terracotta)">gué</b>, jugar → ju<b style="color:var(--terracotta)">gué</b></li>
-          <li><strong>-zar</strong> → <strong>-cé</strong>: empezar → empe<b style="color:var(--terracotta)">cé</b>, almorzar → almor<b style="color:var(--terracotta)">cé</b></li>
-        </ul>
-        <p class="ref-text" style="margin-top:12px;">У 3-й особі дієслів типу <i>leer, oír, caer, construir</i> ненаголошене <strong>i</strong> між голосними переходить у <strong>y</strong>: <i>leyó, leyeron; oyó, oyeron</i>.</p>
-      </div>
-
-      <div class="reference-section">
-        <h3 class="ref-section-title"><span class="num">vi.</span>SER, IR і DAR — особливі</h3>
-        <p class="ref-text"><strong>Ser</strong> та <strong>ir</strong> у preterito indefinido мають <strong>однакову форму</strong>! Контекст підкаже значення: <i>Fui profesor</i> — Я був вчителем; <i>Fui a Madrid</i> — Я поїхав у Мадрид.</p>
-        <p class="ref-text"><strong>Dar</strong> бере закінчення -ER/-IR дієслів, без наголосів: <i>di, diste, dio, dimos, disteis, dieron</i>.</p>
-      </div>
-    </div>
-
+  <div class="screen" id="screen-trainer">
+    <div class="tabs" id="tabsContainer"></div>
+    <div class="content" id="trainerContent"></div>
   </div>
 
-  <footer>
-    <p>Зроблено з <span class="heart">❦</span> для тих, хто любить іспанську</p>
-  </footer>
+  <footer><p>Зроблено з <span class="heart">❦</span> для тих, хто любить іспанську</p></footer>
 </div>
 
 <script>
-// ============== SPEECH SYNTHESIS ==============
+// =============================================================================
+// SPEECH SYNTHESIS
+// =============================================================================
 let soundEnabled = true;
 let spanishVoice = null;
 let voicesReady = false;
 
-// Load Spanish voice when available (browser loads voices async)
 function loadVoices() {
   const voices = window.speechSynthesis.getVoices();
   if (voices.length === 0) return false;
-
-  // Priority order: es-ES (Spain) > es-MX > es-US > any es-*
   spanishVoice =
     voices.find(v => v.lang === 'es-ES' && /Mónica|Monica|Marisol|Lucia/i.test(v.name)) ||
     voices.find(v => v.lang === 'es-ES') ||
     voices.find(v => v.lang === 'es_ES') ||
     voices.find(v => v.lang.toLowerCase().startsWith('es-es')) ||
     voices.find(v => v.lang.toLowerCase().startsWith('es-mx')) ||
-    voices.find(v => v.lang.toLowerCase().startsWith('es-us')) ||
     voices.find(v => v.lang.toLowerCase().startsWith('es-')) ||
     voices.find(v => v.lang.toLowerCase().startsWith('es')) ||
     voices.find(v => /spanish|español/i.test(v.name));
-
   voicesReady = true;
   updateVoiceStatus();
   return !!spanishVoice;
@@ -1187,45 +293,9 @@ function updateVoiceStatus() {
     statusEl.innerHTML = `🇪🇸 ${spanishVoice.name}`;
     statusEl.style.color = 'var(--olive)';
   } else {
-    statusEl.innerHTML = `⚠️ Іспанський голос не знайдено — <a href="#" id="voiceHelpLink" style="color:var(--terracotta);text-decoration:underline;">як виправити?</a>`;
+    statusEl.innerHTML = `⚠️ Іспанський голос не знайдено`;
     statusEl.style.color = 'var(--terracotta-deep)';
-    setTimeout(() => {
-      const helpLink = document.getElementById('voiceHelpLink');
-      if (helpLink) helpLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        showVoiceHelp();
-      });
-    }, 0);
   }
-}
-
-function showVoiceHelp() {
-  const overlay = document.createElement('div');
-  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(42,24,16,0.7);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;';
-  overlay.innerHTML = `
-    <div style="background:var(--bg-paper);max-width:520px;border-radius:6px;padding:32px;box-shadow:0 20px 60px rgba(0,0,0,0.4);font-family:'Manrope',sans-serif;line-height:1.6;color:var(--ink);">
-      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;margin-bottom:16px;color:var(--terracotta);">Як додати іспанський голос</h3>
-      <p style="margin-bottom:14px;"><strong>На Mac:</strong></p>
-      <ol style="padding-left:20px;margin-bottom:16px;">
-        <li>Системні налаштування → Спеціальні можливості → Озвучений вміст</li>
-        <li>Системний голос → Керувати голосами</li>
-        <li>Знайди <strong>Mónica</strong> або <strong>Paulina</strong> (іспанські) → встанови</li>
-        <li>Перезавантаж браузер</li>
-      </ol>
-      <p style="margin-bottom:14px;"><strong>На Windows:</strong></p>
-      <ol style="padding-left:20px;margin-bottom:16px;">
-        <li>Параметри → Час і мова → Мова</li>
-        <li>Додати мову → Іспанська (Іспанія)</li>
-        <li>Параметри мови → завантажити пакет мови та озвучення</li>
-        <li>Перезавантаж браузер</li>
-      </ol>
-      <p style="margin-bottom:14px;"><strong>Найшвидше рішення:</strong> відкрий додаток у <strong>Google Chrome</strong> або <strong>Microsoft Edge</strong> — у них є власні іспанські голоси, що не залежать від системи.</p>
-      <button id="closeHelp" style="margin-top:12px;padding:10px 24px;background:var(--terracotta);color:var(--bg-cream);border:none;border-radius:100px;font-family:'Manrope',sans-serif;font-weight:600;cursor:pointer;">Зрозуміло</button>
-    </div>
-  `;
-  document.body.appendChild(overlay);
-  document.getElementById('closeHelp').addEventListener('click', () => overlay.remove());
-  overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.remove(); });
 }
 
 if ('speechSynthesis' in window) {
@@ -1236,343 +306,59 @@ if ('speechSynthesis' in window) {
 function speak(text, options = {}) {
   if (!soundEnabled) return;
   if (!('speechSynthesis' in window)) return;
-
-  // Try to load voices again if not ready (some browsers need this)
   if (!voicesReady) loadVoices();
-
-  // Cancel any ongoing speech
   window.speechSynthesis.cancel();
-
-  const cleanText = text.trim();
-  const utterance = new SpeechSynthesisUtterance(cleanText);
-
-  // Set lang FIRST — this is critical for browser to pick the right voice
+  const utterance = new SpeechSynthesisUtterance(text.trim());
   utterance.lang = 'es-ES';
-
-  // Then explicitly set voice if we found one
-  if (spanishVoice) {
-    utterance.voice = spanishVoice;
-  }
-
+  if (spanishVoice) utterance.voice = spanishVoice;
   utterance.rate = options.rate || 0.85;
   utterance.pitch = 1.0;
   utterance.volume = 1.0;
-
   if (options.onstart) utterance.onstart = options.onstart;
   if (options.onend) utterance.onend = options.onend;
-
-  // Small delay helps avoid race conditions in Chrome
   setTimeout(() => window.speechSynthesis.speak(utterance), 50);
 }
 
-// Sound toggle button
-const soundToggleBtn = document.getElementById('soundToggle');
-const soundLabel = document.getElementById('soundLabel');
-const soundIcon = document.getElementById('soundIcon');
+const SPEAKER_SVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>`;
 
-soundToggleBtn.addEventListener('click', () => {
-  soundEnabled = !soundEnabled;
-  if (soundEnabled) {
-    soundToggleBtn.classList.remove('muted');
-    soundLabel.textContent = 'Звук увімк.';
-    soundIcon.innerHTML = `
-      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-      <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-      <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>`;
-  } else {
-    window.speechSynthesis.cancel();
-    soundToggleBtn.classList.add('muted');
-    soundLabel.textContent = 'Звук вимк.';
-    soundIcon.innerHTML = `
-      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-      <line x1="23" y1="9" x2="17" y2="15"></line>
-      <line x1="17" y1="9" x2="23" y2="15"></line>`;
-  }
-});
-
-// SVG icon string for speaker buttons
-const SPEAKER_SVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-  <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-</svg>`;
-
-// Helper: attach speak handler with visual feedback
 function attachSpeakHandler(button, text) {
   button.addEventListener('click', (e) => {
     e.stopPropagation();
     button.classList.add('playing');
-    speak(text, {
-      onend: () => button.classList.remove('playing')
-    });
+    speak(text, { onend: () => button.classList.remove('playing') });
   });
 }
 
-// ============== VERB DATA ==============
-const VERBS = [
-  // Group 1: Irregular stems (no accents on yo/él)
-  { inf: 'tener', meaning: 'мати', group: 'stem', stem: 'tuv', forms: ['tuve','tuviste','tuvo','tuvimos','tuvisteis','tuvieron'], note: 'Основа змінюється на tuv-, закінчення без наголосу.' },
-  { inf: 'estar', meaning: 'бути (де?), перебувати', group: 'stem', stem: 'estuv', forms: ['estuve','estuviste','estuvo','estuvimos','estuvisteis','estuvieron'], note: 'Основа estuv- + закінчення без наголосу.' },
-  { inf: 'poder', meaning: 'могти', group: 'stem', stem: 'pud', forms: ['pude','pudiste','pudo','pudimos','pudisteis','pudieron'], note: 'Зміна o→u в основі, закінчення без наголосу.' },
-  { inf: 'poner', meaning: 'класти, ставити', group: 'stem', stem: 'pus', forms: ['puse','pusiste','puso','pusimos','pusisteis','pusieron'], note: 'Основа pus-, закінчення без наголосу.' },
-  { inf: 'saber', meaning: 'знати', group: 'stem', stem: 'sup', forms: ['supe','supiste','supo','supimos','supisteis','supieron'], note: 'Основа sup-. У preterito часто означає «дізнатися».' },
-  { inf: 'hacer', meaning: 'робити', group: 'stem', stem: 'hic', forms: ['hice','hiciste','hizo','hicimos','hicisteis','hicieron'], note: 'Увага: у 3-й ос. одн. — hiZo (через z, для збереження звуку).' },
-  { inf: 'querer', meaning: 'хотіти, кохати', group: 'stem', stem: 'quis', forms: ['quise','quisiste','quiso','quisimos','quisisteis','quisieron'], note: 'Основа quis-. Без наголосів у yo/él.' },
-  { inf: 'venir', meaning: 'приходити', group: 'stem', stem: 'vin', forms: ['vine','viniste','vino','vinimos','vinisteis','vinieron'], note: 'Основа vin-, закінчення без наголосу.' },
-  { inf: 'andar', meaning: 'ходити (пішки)', group: 'stem', stem: 'anduv', forms: ['anduve','anduviste','anduvo','anduvimos','anduvisteis','anduvieron'], note: 'Несподівана основа anduv-.' },
-  { inf: 'caber', meaning: 'вміщатися', group: 'stem', stem: 'cup', forms: ['cupe','cupiste','cupo','cupimos','cupisteis','cupieron'], note: 'Дуже неправильне: основа cup-.' },
-  { inf: 'haber', meaning: 'бути (як допоміжне)', group: 'stem', stem: 'hub', forms: ['hube','hubiste','hubo','hubimos','hubisteis','hubieron'], note: 'У значенні «був/була» (безособово) — тільки hubo.' },
-
-  // Group 2: J-stem (3rd plural -eron, not -ieron)
-  { inf: 'decir', meaning: 'казати, говорити', group: 'j-stem', stem: 'dij', forms: ['dije','dijiste','dijo','dijimos','dijisteis','dijeron'], note: 'Основа на J → 3 ос. множини закінчується на -eron, а не -ieron!' },
-  { inf: 'traer', meaning: 'приносити', group: 'j-stem', stem: 'traj', forms: ['traje','trajiste','trajo','trajimos','trajisteis','trajeron'], note: 'Основа traj- → trajeron (без i).' },
-  { inf: 'conducir', meaning: 'вести (авто)', group: 'j-stem', stem: 'conduj', forms: ['conduje','condujiste','condujo','condujimos','condujisteis','condujeron'], note: 'Усі -ducir дієслова: traducir, producir, reducir.' },
-  { inf: 'traducir', meaning: 'перекладати', group: 'j-stem', stem: 'traduj', forms: ['traduje','tradujiste','tradujo','tradujimos','tradujisteis','tradujeron'], note: 'Поводиться як conducir.' },
-
-  // Group 3: e→i, o→u (only 3rd person)
-  { inf: 'pedir', meaning: 'просити, замовляти', group: 'vowel', stem: 'ped/pid', forms: ['pedí','pediste','pidió','pedimos','pedisteis','pidieron'], note: 'Зміна e→i ТІЛЬКИ в 3-й особі (одн. та мн.).' },
-  { inf: 'servir', meaning: 'служити, подавати', group: 'vowel', stem: 'serv/sirv', forms: ['serví','serviste','sirvió','servimos','servisteis','sirvieron'], note: 'e→i у 3-й особі.' },
-  { inf: 'sentir', meaning: 'відчувати', group: 'vowel', stem: 'sent/sint', forms: ['sentí','sentiste','sintió','sentimos','sentisteis','sintieron'], note: 'e→i у 3-й особі.' },
-  { inf: 'preferir', meaning: 'віддавати перевагу', group: 'vowel', stem: 'prefer/prefir', forms: ['preferí','preferiste','prefirió','preferimos','preferisteis','prefirieron'], note: 'e→i у 3-й особі.' },
-  { inf: 'dormir', meaning: 'спати', group: 'vowel', stem: 'dorm/durm', forms: ['dormí','dormiste','durmió','dormimos','dormisteis','durmieron'], note: 'o→u ТІЛЬКИ в 3-й особі.' },
-  { inf: 'morir', meaning: 'помирати', group: 'vowel', stem: 'mor/mur', forms: ['morí','moriste','murió','morimos','moristeis','murieron'], note: 'o→u у 3-й особі.' },
-  { inf: 'repetir', meaning: 'повторювати', group: 'vowel', stem: 'repet/repit', forms: ['repetí','repetiste','repitió','repetimos','repetisteis','repitieron'], note: 'e→i у 3-й особі.' },
-  { inf: 'seguir', meaning: 'слідувати, продовжувати', group: 'vowel', stem: 'segu/sigu', forms: ['seguí','seguiste','siguió','seguimos','seguisteis','siguieron'], note: 'e→i у 3-й особі.' },
-  { inf: 'mentir', meaning: 'брехати', group: 'vowel', stem: 'ment/mint', forms: ['mentí','mentiste','mintió','mentimos','mentisteis','mintieron'], note: 'e→i у 3-й особі.' },
-  { inf: 'vestirse', meaning: 'одягатися', group: 'vowel', stem: 'vest/vist', forms: ['me vestí','te vestiste','se vistió','nos vestimos','os vestisteis','se vistieron'], note: 'Зворотне: e→i у 3-й особі.' },
-  { inf: 'divertirse', meaning: 'розважатися', group: 'vowel', stem: 'divert/divirt', forms: ['me divertí','te divertiste','se divirtió','nos divertimos','os divertisteis','se divirtieron'], note: 'Зворотне: e→i у 3-й особі.' },
-
-  // Group 4: i→y in 3rd person
-  { inf: 'leer', meaning: 'читати', group: 'iy', stem: 'le', forms: ['leí','leíste','leyó','leímos','leísteis','leyeron'], note: 'i→y у 3-й особі (між голосними). Наголос у 1-й, 2-й особах.' },
-  { inf: 'oír', meaning: 'чути', group: 'iy', stem: 'o', forms: ['oí','oíste','oyó','oímos','oísteis','oyeron'], note: 'i→y у 3-й особі.' },
-  { inf: 'caer', meaning: 'падати', group: 'iy', stem: 'ca', forms: ['caí','caíste','cayó','caímos','caísteis','cayeron'], note: 'i→y у 3-й особі.' },
-  { inf: 'creer', meaning: 'вірити, думати', group: 'iy', stem: 'cre', forms: ['creí','creíste','creyó','creímos','creísteis','creyeron'], note: 'i→y у 3-й особі.' },
-  { inf: 'construir', meaning: 'будувати', group: 'iy', stem: 'constru', forms: ['construí','construiste','construyó','construimos','construisteis','construyeron'], note: 'i→y у 3-й особі. Без наголосу в tú/nosotros.' },
-
-  // Group 5: Spelling change in yo
-  { inf: 'buscar', meaning: 'шукати', group: 'spelling', stem: 'busc/busqu', forms: ['busqué','buscaste','buscó','buscamos','buscasteis','buscaron'], note: 'c→qu в 1-й особі однини (yo busqué).' },
-  { inf: 'tocar', meaning: 'торкатися, грати', group: 'spelling', stem: 'toc/toqu', forms: ['toqué','tocaste','tocó','tocamos','tocasteis','tocaron'], note: 'c→qu в 1-й особі однини.' },
-  { inf: 'sacar', meaning: 'виймати, діставати', group: 'spelling', stem: 'sac/saqu', forms: ['saqué','sacaste','sacó','sacamos','sacasteis','sacaron'], note: 'c→qu в 1-й особі однини.' },
-  { inf: 'llegar', meaning: 'прибувати', group: 'spelling', stem: 'lleg/llegu', forms: ['llegué','llegaste','llegó','llegamos','llegasteis','llegaron'], note: 'g→gu в 1-й особі однини (yo llegué).' },
-  { inf: 'pagar', meaning: 'платити', group: 'spelling', stem: 'pag/pagu', forms: ['pagué','pagaste','pagó','pagamos','pagasteis','pagaron'], note: 'g→gu в 1-й особі однини.' },
-  { inf: 'jugar', meaning: 'грати (в гру)', group: 'spelling', stem: 'jug/jugu', forms: ['jugué','jugaste','jugó','jugamos','jugasteis','jugaron'], note: 'g→gu в 1-й особі однини.' },
-  { inf: 'empezar', meaning: 'починати', group: 'spelling', stem: 'empez/empec', forms: ['empecé','empezaste','empezó','empezamos','empezasteis','empezaron'], note: 'z→c в 1-й особі однини (yo empecé).' },
-  { inf: 'almorzar', meaning: 'обідати', group: 'spelling', stem: 'almorz/almorc', forms: ['almorcé','almorzaste','almorzó','almorzamos','almorzasteis','almorzaron'], note: 'z→c в 1-й особі однини.' },
-
-  // Group 6: Special unique verbs
-  { inf: 'ser', meaning: 'бути (ким?)', group: 'special', stem: 'fu', forms: ['fui','fuiste','fue','fuimos','fuisteis','fueron'], note: 'УВАГА! Ser та ir мають ОДНАКОВІ форми. Без наголосів!' },
-  { inf: 'ir', meaning: 'іти, їхати', group: 'special', stem: 'fu', forms: ['fui','fuiste','fue','fuimos','fuisteis','fueron'], note: 'УВАГА! Ir та ser мають ОДНАКОВІ форми. Контекст вирішує.' },
-  { inf: 'dar', meaning: 'давати', group: 'special', stem: 'd', forms: ['di','diste','dio','dimos','disteis','dieron'], note: 'Бере закінчення -ER/-IR без наголосів. Найкоротші форми!' },
-  { inf: 'ver', meaning: 'бачити', group: 'special', stem: 'v', forms: ['vi','viste','vio','vimos','visteis','vieron'], note: 'Майже як правильне -ER, але без наголосів у vi/vio.' },
-];
-
-const PRONOUNS = ['yo', 'tú', 'él/ella', 'nosotros', 'vosotros', 'ellos/ellas'];
-// Cleaner pronouns for speech synthesis (no slashes — TTS reads "él, ella" naturally)
-const PRONOUNS_SPEAK = ['yo', 'tú', 'él', 'nosotros', 'vosotros', 'ellos'];
-const GROUP_LABELS = {
-  'stem': 'Особлива основа',
-  'j-stem': 'Основа на J',
-  'vowel': 'Чергування e→i, o→u',
-  'iy': 'Зміна i→y',
-  'spelling': 'Орфографічні',
-  'special': 'Унікальні (ser/ir/dar/ver)'
-};
-
-// ============== TAB SWITCHING ==============
-document.querySelectorAll('.tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    const target = tab.dataset.tab;
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-    tab.classList.add('active');
-    document.getElementById('panel-' + target).classList.add('active');
-  });
+document.getElementById('soundToggle').addEventListener('click', () => {
+  soundEnabled = !soundEnabled;
+  const btn = document.getElementById('soundToggle');
+  const lbl = document.getElementById('soundLabel');
+  const ico = document.getElementById('soundIcon');
+  if (soundEnabled) {
+    btn.classList.remove('muted');
+    lbl.textContent = 'Звук увімк.';
+    ico.innerHTML = `<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>`;
+  } else {
+    window.speechSynthesis.cancel();
+    btn.classList.add('muted');
+    lbl.textContent = 'Звук вимк.';
+    ico.innerHTML = `<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line>`;
+  }
 });
 
-// ============== EXPLORE PANEL ==============
-function renderVerbSelector() {
-  const sel = document.getElementById('verbSelector');
-  sel.innerHTML = '';
-  VERBS.forEach((v, idx) => {
-    const btn = document.createElement('button');
-    btn.className = 'verb-chip' + (idx === 0 ? ' active' : '');
-    btn.textContent = v.inf;
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.verb-chip').forEach(c => c.classList.remove('active'));
-      btn.classList.add('active');
-      renderVerbCard(idx);
-    });
-    sel.appendChild(btn);
-  });
-  renderVerbCard(0);
-}
+// =============================================================================
+// UTILITIES
+// =============================================================================
+const PRONOUNS = ['yo', 'tú', 'él/ella', 'nosotros', 'vosotros', 'ellos/ellas'];
+const PRONOUNS_SPEAK = ['yo', 'tú', 'él', 'nosotros', 'vosotros', 'ellos'];
 
-function highlightForm(form, inf) {
-  // Highlight the irregular stem differently from endings
-  const regularEndings = ['é','aste','ó','amos','asteis','aron','í','iste','ió','imos','isteis','ieron','eron','ieron'];
-  // Just color the last 2-4 chars (ending) as accent
-  const endingMatches = form.match(/(aron|asteis|ieron|isteis|imos|aste|iste|amos|eron|í|é|ó|i|o)$/);
-  if (endingMatches) {
-    const ending = endingMatches[0];
-    const stem = form.slice(0, form.length - ending.length);
-    return `${stem}<span class="ending">${ending}</span>`;
-  }
-  return form;
-}
-
-function renderVerbCard(idx) {
-  const v = VERBS[idx];
-  const html = `
-    <div class="verb-card">
-      <div class="verb-header">
-        <div>
-          <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
-            <div class="verb-title">${v.inf}</div>
-            <button class="speaker-btn speaker-btn-large" data-speak="${v.inf}" aria-label="Прослухати ${v.inf}">${SPEAKER_SVG}</button>
-          </div>
-          <div class="verb-translation">~ ${v.meaning}</div>
-        </div>
-        <div class="verb-stem">${GROUP_LABELS[v.group]}</div>
-      </div>
-      <div class="conjugation-table">
-        ${v.forms.map((f, i) => `
-          <div class="conj-row">
-            <div class="pronoun">${PRONOUNS[i]}</div>
-            <button class="speaker-btn" data-speak="${f}" aria-label="Прослухати ${f}">${SPEAKER_SVG}</button>
-            <div class="conjugated">${highlightForm(f)}</div>
-          </div>
-        `).join('')}
-      </div>
-      <div class="verb-note">✦ ${v.note}</div>
-    </div>
-  `;
-  document.getElementById('verbDisplay').innerHTML = html;
-
-  // Wire up all speaker buttons
-  document.querySelectorAll('#verbDisplay [data-speak]').forEach(btn => {
-    attachSpeakHandler(btn, btn.dataset.speak);
-  });
-}
-
-// ============== PRACTICE PANEL ==============
-let practiceState = {
-  active: false,
-  groups: ['stem','j-stem','vowel','iy','spelling','special'],
-  persons: [0,1,2,3,4,5],
-  questions: [],
-  current: 0,
-  correct: 0,
-  incorrect: 0,
-  showingFeedback: false,
-  mistakes: [],         // questions answered incorrectly in current round
-  reviewMode: false,    // are we in a review (mistakes-only) round?
-  reviewRound: 0,       // which review round we're on (0 = first pass)
-  totalCorrectEver: 0   // track all correct answers across rounds
-};
-
-function renderPracticeSetup() {
-  const html = `
-    <div class="practice-setup">
-      <h2>Налаштуй тренування</h2>
-      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--ink-soft);margin-bottom:24px;">Обери групи дієслів та особи, на яких хочеш зосередитись.</p>
-
-      <div class="filter-group">
-        <span class="filter-label">~ групи дієслів ~</span>
-        <div class="filter-options" id="groupFilters">
-          ${Object.entries(GROUP_LABELS).map(([k, label]) => `
-            <button class="filter-option active" data-group="${k}">${label}</button>
-          `).join('')}
-        </div>
-      </div>
-
-      <div class="filter-group">
-        <span class="filter-label">~ особи ~</span>
-        <div class="filter-options" id="personFilters">
-          ${PRONOUNS.map((p, i) => `
-            <button class="filter-option active" data-person="${i}">${p}</button>
-          `).join('')}
-        </div>
-      </div>
-
-      <button class="start-btn" id="startBtn">Почати ¡Vamos!</button>
-    </div>
-  `;
-  document.getElementById('practiceContent').innerHTML = html;
-
-  // Wire up filters
-  document.querySelectorAll('#groupFilters .filter-option').forEach(btn => {
-    btn.addEventListener('click', () => btn.classList.toggle('active'));
-  });
-  document.querySelectorAll('#personFilters .filter-option').forEach(btn => {
-    btn.addEventListener('click', () => btn.classList.toggle('active'));
-  });
-  document.getElementById('startBtn').addEventListener('click', startPractice);
-}
-
-function startPractice() {
-  const groups = Array.from(document.querySelectorAll('#groupFilters .filter-option.active'))
-    .map(b => b.dataset.group);
-  const persons = Array.from(document.querySelectorAll('#personFilters .filter-option.active'))
-    .map(b => parseInt(b.dataset.person));
-
-  if (groups.length === 0 || persons.length === 0) {
-    alert('Обери хоча б одну групу та одну особу.');
-    return;
-  }
-
-  // Build question pool
-  const filteredVerbs = VERBS.filter(v => groups.includes(v.group));
-  const questions = [];
-  filteredVerbs.forEach(v => {
-    persons.forEach(p => {
-      questions.push({ verb: v, person: p });
-    });
-  });
-
-  // Shuffle
-  for (let i = questions.length - 1; i > 0; i--) {
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [questions[i], questions[j]] = [questions[j], questions[i]];
+    [a[i], a[j]] = [a[j], a[i]];
   }
-
-  // Limit to 20 questions max
-  practiceState = {
-    active: true,
-    questions: questions.slice(0, Math.min(20, questions.length)),
-    current: 0,
-    correct: 0,
-    incorrect: 0,
-    showingFeedback: false,
-    mistakes: [],
-    reviewMode: false,
-    reviewRound: 0,
-    totalCorrectEver: 0
-  };
-
-  renderQuestion();
-}
-
-// Start a review round with only the mistakes from previous round
-function startReview() {
-  // Shuffle the mistakes
-  const reviewQuestions = [...practiceState.mistakes];
-  for (let i = reviewQuestions.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [reviewQuestions[i], reviewQuestions[j]] = [reviewQuestions[j], reviewQuestions[i]];
-  }
-
-  practiceState = {
-    ...practiceState,
-    questions: reviewQuestions,
-    current: 0,
-    correct: 0,
-    incorrect: 0,
-    showingFeedback: false,
-    mistakes: [],
-    reviewMode: true,
-    reviewRound: practiceState.reviewRound + 1
-  };
-
-  renderQuestion();
+  return a;
 }
 
 function normalize(s) {
@@ -1581,275 +367,12 @@ function normalize(s) {
     .replace(/ó/g, 'o').replace(/ú/g, 'u').replace(/ñ/g, 'n');
 }
 
-function isCorrect(answer, expected) {
-  // Strict check (with accents)
+function isCorrectAnswer(answer, expected) {
   if (answer.toLowerCase().trim() === expected.toLowerCase().trim()) return 'perfect';
-  // Lax check (without accents) - still counts as correct but flags
   if (normalize(answer) === normalize(expected)) return 'no-accent';
   return 'wrong';
 }
 
-function renderQuestion() {
-  const q = practiceState.questions[practiceState.current];
-  const total = practiceState.questions.length;
-  const progress = ((practiceState.current) / total) * 100;
-
-  const html = `
-    <div class="quiz-card">
-      ${practiceState.reviewMode ? `<div class="review-badge">⟲ Раунд повторення ${practiceState.reviewRound}</div>` : ''}
-      <div class="quiz-progress">
-        <span>${practiceState.current + 1}/${total}</span>
-        <div class="progress-bar"><div class="progress-fill" style="width:${progress}%"></div></div>
-        <span style="color:var(--olive);">✓ ${practiceState.correct}</span>
-      </div>
-
-      <div class="quiz-prompt">провідміняй</div>
-      <div class="quiz-verb-row">
-        <div class="quiz-verb">${q.verb.inf}</div>
-        <button class="speaker-btn speaker-btn-large" id="quizSpeakerBtn" aria-label="Прослухати">${SPEAKER_SVG}</button>
-      </div>
-      <div class="quiz-meaning">~ ${q.verb.meaning}</div>
-
-      <div class="quiz-pronoun">${PRONOUNS[q.person]}</div>
-
-      <div>
-        <input type="text" id="quizInput" class="quiz-input" placeholder="напиши форму..." autocomplete="off" autocapitalize="off" spellcheck="false">
-      </div>
-
-      <div class="quiz-feedback" id="quizFeedback"></div>
-
-      <div class="quiz-actions" id="quizActions">
-        <button class="btn btn-primary" id="checkBtn">Перевірити</button>
-        <button class="btn" id="skipBtn">Не знаю</button>
-      </div>
-
-      <div class="stats">
-        <div class="stat"><div class="stat-value success">${practiceState.correct}</div><div class="stat-label">правильно</div></div>
-        <div class="stat"><div class="stat-value error">${practiceState.incorrect}</div><div class="stat-label">помилок</div></div>
-        <div class="stat"><div class="stat-value">${total - practiceState.current}</div><div class="stat-label">залишилось</div></div>
-      </div>
-    </div>
-  `;
-  document.getElementById('practiceContent').innerHTML = html;
-
-  const input = document.getElementById('quizInput');
-  input.focus();
-
-  // What we say when announcing the question: "traer... ellos"
-  const announceText = `${q.verb.inf}... ${PRONOUNS_SPEAK[q.person]}`;
-
-  // Wire up speaker button — speaks verb + pronoun
-  const speakerBtn = document.getElementById('quizSpeakerBtn');
-  attachSpeakHandler(speakerBtn, announceText);
-
-  // Auto-speak the verb + pronoun when the question appears (with delay for voice loading)
-  if (soundEnabled) {
-    const triggerSpeak = () => {
-      speakerBtn.classList.add('playing');
-      speak(announceText, {
-        onend: () => speakerBtn.classList.remove('playing')
-      });
-    };
-    if (voicesReady) {
-      setTimeout(triggerSpeak, 200);
-    } else {
-      // Wait for voices to load
-      setTimeout(() => {
-        loadVoices();
-        triggerSpeak();
-      }, 500);
-    }
-  }
-
-  document.getElementById('checkBtn').addEventListener('click', checkAnswer);
-  document.getElementById('skipBtn').addEventListener('click', skipAnswer);
-  input.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      if (practiceState.showingFeedback) nextQuestion();
-      else checkAnswer();
-    }
-  });
-}
-
-function checkAnswer() {
-  if (practiceState.showingFeedback) {
-    nextQuestion();
-    return;
-  }
-  const q = practiceState.questions[practiceState.current];
-  const expected = q.verb.forms[q.person];
-  const input = document.getElementById('quizInput');
-  const answer = input.value;
-  if (!answer.trim()) return;
-
-  const result = isCorrect(answer, expected);
-  const feedbackEl = document.getElementById('quizFeedback');
-
-  practiceState.showingFeedback = true;
-
-  if (result === 'perfect') {
-    practiceState.correct++;
-    practiceState.totalCorrectEver++;
-    input.classList.add('correct');
-    feedbackEl.className = 'quiz-feedback correct';
-    feedbackEl.innerHTML = `¡Perfecto! <strong>${expected}</strong> ✓`;
-  } else if (result === 'no-accent') {
-    practiceState.correct++;
-    practiceState.totalCorrectEver++;
-    input.classList.add('correct');
-    feedbackEl.className = 'quiz-feedback correct';
-    feedbackEl.innerHTML = `Майже! Правильна форма: <strong>${expected}</strong> — не забудь про наголос!`;
-  } else {
-    practiceState.incorrect++;
-    practiceState.mistakes.push(q);
-    input.classList.add('incorrect');
-    feedbackEl.className = 'quiz-feedback incorrect';
-    feedbackEl.innerHTML = `Правильно: <strong>${expected}</strong>. ${q.verb.note}`;
-  }
-
-  // Speak "pronoun + form" so user hears the natural phrasing (e.g. "ellos trajeron")
-  // For reflexive forms that already start with pronouns (me, te, se), don't add subject pronoun
-  const formText = q.verb.forms[q.person];
-  const isReflexive = /^(me|te|se|nos|os)\s/.test(formText);
-  const speakText = isReflexive ? formText : `${PRONOUNS_SPEAK[q.person]} ${formText}`;
-  setTimeout(() => speak(speakText, { rate: 0.8 }), 300);
-
-  document.getElementById('quizActions').innerHTML =
-    `<button class="btn btn-primary" id="nextBtn">${practiceState.current + 1 >= practiceState.questions.length ? 'Результат' : 'Далі →'}</button>`;
-  document.getElementById('nextBtn').addEventListener('click', nextQuestion);
-}
-
-function skipAnswer() {
-  const q = practiceState.questions[practiceState.current];
-  const expected = q.verb.forms[q.person];
-  const feedbackEl = document.getElementById('quizFeedback');
-  practiceState.incorrect++;
-  practiceState.mistakes.push(q);
-  practiceState.showingFeedback = true;
-
-  feedbackEl.className = 'quiz-feedback incorrect';
-  feedbackEl.innerHTML = `Правильно: <strong>${expected}</strong>. ${q.verb.note}`;
-  document.getElementById('quizInput').classList.add('incorrect');
-
-  // Speak "pronoun + form" so user hears the natural phrasing
-  const isReflexive = /^(me|te|se|nos|os)\s/.test(expected);
-  const speakText = isReflexive ? expected : `${PRONOUNS_SPEAK[q.person]} ${expected}`;
-  setTimeout(() => speak(speakText, { rate: 0.8 }), 300);
-
-  document.getElementById('quizActions').innerHTML =
-    `<button class="btn btn-primary" id="nextBtn">${practiceState.current + 1 >= practiceState.questions.length ? 'Результат' : 'Далі →'}</button>`;
-  document.getElementById('nextBtn').addEventListener('click', nextQuestion);
-}
-
-function nextQuestion() {
-  practiceState.current++;
-  practiceState.showingFeedback = false;
-  if (practiceState.current >= practiceState.questions.length) {
-    showResults();
-  } else {
-    renderQuestion();
-  }
-}
-
-function showResults() {
-  const total = practiceState.questions.length;
-  const pct = Math.round((practiceState.correct / total) * 100);
-  const hasMistakes = practiceState.mistakes.length > 0;
-  const isReview = practiceState.reviewMode;
-
-  let emoji, title, subtitle;
-
-  // Special celebration for completing review with no mistakes
-  if (isReview && !hasMistakes) {
-    emoji = '🌹';
-    title = '¡Lo lograste!';
-    subtitle = `Усі помилки виправлені — ти запам'ятала їх назавжди`;
-  } else if (isReview && hasMistakes) {
-    // Still working on review
-    emoji = '🔄';
-    title = `Раунд ${practiceState.reviewRound}`;
-    subtitle = `Ще ${practiceState.mistakes.length} ${pluralize(practiceState.mistakes.length, 'форма', 'форми', 'форм')} потребують уваги`;
-  } else {
-    // First-pass results
-    if (pct === 100) { emoji = '🌹'; title = '¡Magnífico!'; subtitle = 'Ти володієш цим часом досконало'; }
-    else if (pct >= 80) { emoji = '✨'; title = '¡Muy bien!'; subtitle = 'Майже бездоганно — продовжуй!'; }
-    else if (pct >= 60) { emoji = '🍷'; title = '¡Bien hecho!'; subtitle = 'Гарний результат, але є над чим попрацювати'; }
-    else if (pct >= 40) { emoji = '📖'; title = 'Sigue practicando'; subtitle = 'Повернись до теорії та спробуй ще раз'; }
-    else { emoji = '🌱'; title = 'Empieza de nuevo'; subtitle = 'Не здавайся! Перевір таблиці у вкладці «Дієслова»'; }
-  }
-
-  // Build action buttons based on context
-  let actions = '';
-  if (hasMistakes) {
-    const reviewLabel = isReview
-      ? `Повторити ще раз (${practiceState.mistakes.length})`
-      : `Заучити помилки (${practiceState.mistakes.length}) →`;
-    actions += `<button class="btn btn-primary" id="reviewBtn">${reviewLabel}</button>`;
-    actions += `<button class="btn" id="restartBtn">Нова сесія</button>`;
-  } else {
-    actions += `<button class="btn btn-primary" id="restartBtn">Ще раз</button>`;
-    actions += `<button class="btn" id="backBtn">Налаштування</button>`;
-  }
-
-  // Show mistakes list if there are mistakes (motivational/informational)
-  let mistakesList = '';
-  if (hasMistakes) {
-    const uniqueMistakes = {};
-    practiceState.mistakes.forEach(m => {
-      const key = `${m.verb.inf}-${m.person}`;
-      uniqueMistakes[key] = m;
-    });
-    const items = Object.values(uniqueMistakes).slice(0, 8);
-    mistakesList = `
-      <div class="mistakes-preview">
-        <div class="mistakes-title">${isReview ? 'Залишилось закріпити:' : 'Над чим попрацюємо:'}</div>
-        <div class="mistakes-chips">
-          ${items.map(m => `
-            <div class="mistake-chip">
-              <span class="mc-pronoun">${PRONOUNS[m.person]}</span>
-              <span class="mc-form">${m.verb.forms[m.person]}</span>
-            </div>
-          `).join('')}
-          ${Object.values(uniqueMistakes).length > 8 ? `<div class="mistake-chip more">+ ${Object.values(uniqueMistakes).length - 8}</div>` : ''}
-        </div>
-      </div>
-    `;
-  }
-
-  const html = `
-    <div class="results">
-      <div class="results-emoji">${emoji}</div>
-      <div class="results-title">${title}</div>
-      <div class="results-subtitle">${subtitle}</div>
-      ${!isReview || (isReview && !hasMistakes) ? `
-        <div class="results-score">${pct}%</div>
-        <div class="results-score-label">${practiceState.correct} з ${total} правильно${isReview ? ` · раунд ${practiceState.reviewRound}` : ''}</div>
-      ` : `
-        <div style="margin: 24px 0;">
-          <div style="font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:600;color:var(--olive);">${practiceState.correct}<span style="color:var(--ink-soft);font-size:1.5rem;"> / ${total}</span></div>
-          <div style="font-family:'Caveat',cursive;font-size:1.2rem;color:var(--ink-soft);margin-top:4px;">виправлено цього раунду</div>
-        </div>
-      `}
-      ${mistakesList}
-      <div class="quiz-actions">
-        ${actions}
-      </div>
-    </div>
-  `;
-  document.getElementById('practiceContent').innerHTML = html;
-
-  if (hasMistakes) {
-    document.getElementById('reviewBtn').addEventListener('click', startReview);
-    document.getElementById('restartBtn').addEventListener('click', renderPracticeSetup);
-  } else {
-    document.getElementById('restartBtn').addEventListener('click', startPractice);
-    if (document.getElementById('backBtn')) {
-      document.getElementById('backBtn').addEventListener('click', renderPracticeSetup);
-    }
-  }
-}
-
-// Helper: Ukrainian pluralization
 function pluralize(n, one, few, many) {
   const mod10 = n % 10;
   const mod100 = n % 100;
@@ -1858,10 +381,1750 @@ function pluralize(n, one, few, many) {
   return many;
 }
 
-// ============== INIT ==============
-renderVerbSelector();
-renderPracticeSetup();
-</script>
+// =============================================================================
+// TRAINER REGISTRY
+// =============================================================================
+const TRAINERS = {
+  indefinido: {
+    id: 'indefinido',
+    title: 'Pretérito <span class="accent">Indefinido</span>',
+    subtitle: 'Тренажер неправильних дієслів. Доконаний минулий час: «зробив», «прийшов», «сказав».',
+    cardTitle: 'Pretérito <span class="it">Indefinido</span>',
+    cardDesc: 'Неправильні дієслова доконаного минулого. Усі особи, усі форми.',
+    cardTag: 'Минулий час',
+    level: 'A2',
+    color: '#c44536',
+    tabs: [
+      { id: 'explore', label: 'Дієслова' },
+      { id: 'practice', label: 'Практика' },
+      { id: 'reference', label: 'Теорія' }
+    ],
+    render: renderIndefinidoTrainer
+  },
+  perfecto: {
+    id: 'perfecto',
+    title: 'Pretérito <span class="accent">Perfecto</span>',
+    subtitle: 'Тренажер доконаного теперішнього часу. «Я зробив сьогодні», «я ще не їв».',
+    cardTitle: 'Pretérito <span class="it">Perfecto</span>',
+    cardDesc: 'haber + participio. Зв\'язок з теперішнім: hoy, esta semana, ya, todavía.',
+    cardTag: 'Минулий час',
+    level: 'A2',
+    color: '#722f37',
+    tabs: [
+      { id: 'explore', label: 'Дієслова' },
+      { id: 'practice', label: 'Практика' },
+      { id: 'reference', label: 'Теорія' }
+    ],
+    render: renderPerfectoTrainer
+  },
+  gerundio: {
+    id: 'gerundio',
+    title: '<span class="accent">Gerundio</span>',
+    subtitle: 'Дієслово на -ndo. «Що роблячи?» Естою comiendo, ti estás durmiendo.',
+    cardTitle: '<span class="it">Gerundio</span>',
+    cardDesc: 'Форма дієслова на -ando / -iendo. Естар + герундій = тривала дія.',
+    cardTag: 'Дієслово',
+    level: 'A2',
+    color: '#d4882b',
+    tabs: [
+      { id: 'explore', label: 'Дієслова' },
+      { id: 'practice', label: 'Практика' },
+      { id: 'reference', label: 'Теорія' }
+    ],
+    render: renderGerundioTrainer
+  },
+  duracion: {
+    id: 'duracion',
+    title: '<span class="accent">Duración</span>',
+    subtitle: 'desde, hace, desde hace, llevar + gerundio. Як говорити, скільки часу триває дія.',
+    cardTitle: '<span class="it">Duración</span>',
+    cardDesc: 'desde / hace / desde hace / llevar. Тривалість дії: «з 2020 року», «уже 5 років».',
+    cardTag: 'Конструкції',
+    level: 'A2',
+    color: '#6b6f3d',
+    tabs: [
+      { id: 'practice', label: 'Практика' },
+      { id: 'reference', label: 'Теорія' }
+    ],
+    render: renderDuracionTrainer
+  },
+  complementos: {
+    id: 'complementos',
+    title: 'Complementos <span class="accent">OD / OI</span>',
+    subtitle: 'Прямий і непрямий додаток: me, te, lo, la, le, nos, os, los, las, les.',
+    cardTitle: '<span class="it">OD / OI</span>',
+    cardDesc: 'Займенники-додатки: lo veo, le digo, se lo doy. Найважче для початківців.',
+    cardTag: 'Займенники',
+    level: 'A2',
+    color: '#b8862a',
+    tabs: [
+      { id: 'practice', label: 'Практика' },
+      { id: 'reference', label: 'Теорія' }
+    ],
+    render: renderComplementosTrainer
+  }
+};
 
+// =============================================================================
+// ROUTING
+// =============================================================================
+let currentTrainer = null;
+
+function showMenu() {
+  currentTrainer = null;
+  document.getElementById('screen-menu').classList.add('active');
+  document.getElementById('screen-trainer').classList.remove('active');
+  document.getElementById('backBtn').style.display = 'none';
+  document.getElementById('appTitle').innerHTML = `Español <span class="accent">grammar</span>`;
+  document.getElementById('appSubtitle').textContent = 'Тренажери граматики для тих, хто хоче говорити природно.';
+  document.documentElement.style.setProperty('--accent-color', '');
+  window.scrollTo(0, 0);
+}
+
+function openTrainer(id) {
+  const trainer = TRAINERS[id];
+  if (!trainer) return;
+  currentTrainer = trainer;
+  document.getElementById('screen-menu').classList.remove('active');
+  document.getElementById('screen-trainer').classList.add('active');
+  document.getElementById('backBtn').style.display = 'inline-flex';
+  document.getElementById('appTitle').innerHTML = trainer.title;
+  document.getElementById('appSubtitle').textContent = trainer.subtitle;
+  document.documentElement.style.setProperty('--accent-color', trainer.color);
+
+  // Build tabs
+  const tabsHtml = trainer.tabs.map((t, i) => `<button class="tab ${i === 0 ? 'active' : ''}" data-tab="${t.id}">${t.label}</button>`).join('');
+  document.getElementById('tabsContainer').innerHTML = tabsHtml;
+  document.querySelectorAll('#tabsContainer .tab').forEach(t => {
+    t.addEventListener('click', () => {
+      document.querySelectorAll('#tabsContainer .tab').forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+      trainer.render(t.dataset.tab);
+    });
+  });
+
+  // Render first tab
+  trainer.render(trainer.tabs[0].id);
+  window.scrollTo(0, 0);
+}
+
+document.getElementById('backBtn').addEventListener('click', showMenu);
+
+function renderMenu() {
+  const html = Object.values(TRAINERS).map(t => `
+    <div class="menu-card" data-trainer="${t.id}" style="--accent-color: ${t.color};">
+      <div class="menu-card-level">${t.level}</div>
+      <div class="menu-card-title">${t.cardTitle}</div>
+      <div class="menu-card-desc">${t.cardDesc}</div>
+      <div class="menu-card-footer">
+        <div class="menu-card-tag">${t.cardTag}</div>
+        <div class="menu-card-arrow">→</div>
+      </div>
+    </div>
+  `).join('');
+  document.getElementById('menuGrid').innerHTML = html;
+  document.querySelectorAll('.menu-card').forEach(card => {
+    card.addEventListener('click', () => openTrainer(card.dataset.trainer));
+  });
+}
+
+// =============================================================================
+// SHARED: Quiz state & helpers (for verb-conjugation trainers)
+// =============================================================================
+let quizState = null;
+
+function initQuizState(questions, options = {}) {
+  quizState = {
+    questions: shuffle(questions).slice(0, options.limit || 20),
+    current: 0,
+    correct: 0,
+    incorrect: 0,
+    showingFeedback: false,
+    mistakes: [],
+    reviewMode: false,
+    reviewRound: 0,
+    options: options
+  };
+}
+
+function startReviewQuiz(renderFn) {
+  quizState = {
+    ...quizState,
+    questions: shuffle(quizState.mistakes),
+    current: 0,
+    correct: 0,
+    incorrect: 0,
+    showingFeedback: false,
+    mistakes: [],
+    reviewMode: true,
+    reviewRound: quizState.reviewRound + 1
+  };
+  renderFn();
+}
+
+
+// =============================================================================
+// TRAINER: PRETÉRITO INDEFINIDO
+// =============================================================================
+const INDEFINIDO_VERBS = [
+  { inf: 'tener', meaning: 'мати', group: 'stem', forms: ['tuve','tuviste','tuvo','tuvimos','tuvisteis','tuvieron'], note: 'Основа tuv-, закінчення без наголосу.' },
+  { inf: 'estar', meaning: 'бути (де?)', group: 'stem', forms: ['estuve','estuviste','estuvo','estuvimos','estuvisteis','estuvieron'], note: 'Основа estuv- + закінчення без наголосу.' },
+  { inf: 'poder', meaning: 'могти', group: 'stem', forms: ['pude','pudiste','pudo','pudimos','pudisteis','pudieron'], note: 'Зміна o→u в основі.' },
+  { inf: 'poner', meaning: 'класти', group: 'stem', forms: ['puse','pusiste','puso','pusimos','pusisteis','pusieron'], note: 'Основа pus-.' },
+  { inf: 'saber', meaning: 'знати', group: 'stem', forms: ['supe','supiste','supo','supimos','supisteis','supieron'], note: 'Основа sup-. У preterito = «дізнатися».' },
+  { inf: 'hacer', meaning: 'робити', group: 'stem', forms: ['hice','hiciste','hizo','hicimos','hicisteis','hicieron'], note: 'Увага: у 3 ос. одн. — hiZo (через z).' },
+  { inf: 'querer', meaning: 'хотіти, кохати', group: 'stem', forms: ['quise','quisiste','quiso','quisimos','quisisteis','quisieron'], note: 'Основа quis-.' },
+  { inf: 'venir', meaning: 'приходити', group: 'stem', forms: ['vine','viniste','vino','vinimos','vinisteis','vinieron'], note: 'Основа vin-.' },
+  { inf: 'andar', meaning: 'ходити', group: 'stem', forms: ['anduve','anduviste','anduvo','anduvimos','anduvisteis','anduvieron'], note: 'Несподівана основа anduv-.' },
+  { inf: 'haber', meaning: 'бути (як допом.)', group: 'stem', forms: ['hube','hubiste','hubo','hubimos','hubisteis','hubieron'], note: 'У значенні «був» (безособово) — тільки hubo.' },
+  { inf: 'decir', meaning: 'казати', group: 'j-stem', forms: ['dije','dijiste','dijo','dijimos','dijisteis','dijeron'], note: 'Основа на J → 3 ос. мн. -eron, а не -ieron!' },
+  { inf: 'traer', meaning: 'приносити', group: 'j-stem', forms: ['traje','trajiste','trajo','trajimos','trajisteis','trajeron'], note: 'Основа traj- → trajeron.' },
+  { inf: 'conducir', meaning: 'вести (авто)', group: 'j-stem', forms: ['conduje','condujiste','condujo','condujimos','condujisteis','condujeron'], note: 'Усі -ducir: traducir, producir, reducir.' },
+  { inf: 'traducir', meaning: 'перекладати', group: 'j-stem', forms: ['traduje','tradujiste','tradujo','tradujimos','tradujisteis','tradujeron'], note: 'Поводиться як conducir.' },
+  { inf: 'pedir', meaning: 'просити', group: 'vowel', forms: ['pedí','pediste','pidió','pedimos','pedisteis','pidieron'], note: 'e→i ТІЛЬКИ в 3-й особі.' },
+  { inf: 'servir', meaning: 'подавати', group: 'vowel', forms: ['serví','serviste','sirvió','servimos','servisteis','sirvieron'], note: 'e→i у 3-й особі.' },
+  { inf: 'sentir', meaning: 'відчувати', group: 'vowel', forms: ['sentí','sentiste','sintió','sentimos','sentisteis','sintieron'], note: 'e→i у 3-й особі.' },
+  { inf: 'preferir', meaning: 'віддавати перевагу', group: 'vowel', forms: ['preferí','preferiste','prefirió','preferimos','preferisteis','prefirieron'], note: 'e→i у 3-й особі.' },
+  { inf: 'dormir', meaning: 'спати', group: 'vowel', forms: ['dormí','dormiste','durmió','dormimos','dormisteis','durmieron'], note: 'o→u ТІЛЬКИ в 3-й особі.' },
+  { inf: 'morir', meaning: 'помирати', group: 'vowel', forms: ['morí','moriste','murió','morimos','moristeis','murieron'], note: 'o→u у 3-й особі.' },
+  { inf: 'repetir', meaning: 'повторювати', group: 'vowel', forms: ['repetí','repetiste','repitió','repetimos','repetisteis','repitieron'], note: 'e→i у 3-й особі.' },
+  { inf: 'seguir', meaning: 'продовжувати', group: 'vowel', forms: ['seguí','seguiste','siguió','seguimos','seguisteis','siguieron'], note: 'e→i у 3-й особі.' },
+  { inf: 'leer', meaning: 'читати', group: 'iy', forms: ['leí','leíste','leyó','leímos','leísteis','leyeron'], note: 'i→y у 3-й особі (між голосними).' },
+  { inf: 'oír', meaning: 'чути', group: 'iy', forms: ['oí','oíste','oyó','oímos','oísteis','oyeron'], note: 'i→y у 3-й особі.' },
+  { inf: 'caer', meaning: 'падати', group: 'iy', forms: ['caí','caíste','cayó','caímos','caísteis','cayeron'], note: 'i→y у 3-й особі.' },
+  { inf: 'creer', meaning: 'вірити', group: 'iy', forms: ['creí','creíste','creyó','creímos','creísteis','creyeron'], note: 'i→y у 3-й особі.' },
+  { inf: 'construir', meaning: 'будувати', group: 'iy', forms: ['construí','construiste','construyó','construimos','construisteis','construyeron'], note: 'i→y у 3-й особі.' },
+  { inf: 'buscar', meaning: 'шукати', group: 'spelling', forms: ['busqué','buscaste','buscó','buscamos','buscasteis','buscaron'], note: 'c→qu в 1-й особі однини.' },
+  { inf: 'tocar', meaning: 'торкатися', group: 'spelling', forms: ['toqué','tocaste','tocó','tocamos','tocasteis','tocaron'], note: 'c→qu в 1-й особі.' },
+  { inf: 'llegar', meaning: 'прибувати', group: 'spelling', forms: ['llegué','llegaste','llegó','llegamos','llegasteis','llegaron'], note: 'g→gu в 1-й особі.' },
+  { inf: 'pagar', meaning: 'платити', group: 'spelling', forms: ['pagué','pagaste','pagó','pagamos','pagasteis','pagaron'], note: 'g→gu в 1-й особі.' },
+  { inf: 'jugar', meaning: 'грати', group: 'spelling', forms: ['jugué','jugaste','jugó','jugamos','jugasteis','jugaron'], note: 'g→gu в 1-й особі.' },
+  { inf: 'empezar', meaning: 'починати', group: 'spelling', forms: ['empecé','empezaste','empezó','empezamos','empezasteis','empezaron'], note: 'z→c в 1-й особі.' },
+  { inf: 'ser', meaning: 'бути (ким?)', group: 'special', forms: ['fui','fuiste','fue','fuimos','fuisteis','fueron'], note: 'УВАГА! Ser та ir мають ОДНАКОВІ форми.' },
+  { inf: 'ir', meaning: 'іти', group: 'special', forms: ['fui','fuiste','fue','fuimos','fuisteis','fueron'], note: 'УВАГА! Ir та ser мають ОДНАКОВІ форми.' },
+  { inf: 'dar', meaning: 'давати', group: 'special', forms: ['di','diste','dio','dimos','disteis','dieron'], note: 'Бере закінчення -ER/-IR без наголосів.' },
+  { inf: 'ver', meaning: 'бачити', group: 'special', forms: ['vi','viste','vio','vimos','visteis','vieron'], note: 'Без наголосів у vi/vio.' },
+];
+
+const INDEFINIDO_GROUPS = {
+  'stem': 'Особлива основа',
+  'j-stem': 'Основа на J',
+  'vowel': 'Чергування e→i, o→u',
+  'iy': 'Зміна i→y',
+  'spelling': 'Орфографічні',
+  'special': 'Унікальні'
+};
+
+function highlightForm(form) {
+  const m = form.match(/(aron|asteis|ieron|isteis|imos|aste|iste|amos|eron|í|é|ó|i|o)$/);
+  if (m) {
+    const ending = m[0];
+    const stem = form.slice(0, form.length - ending.length);
+    return `${stem}<span class="ending">${ending}</span>`;
+  }
+  return form;
+}
+
+function renderIndefinidoTrainer(tab) {
+  const root = document.getElementById('trainerContent');
+  if (tab === 'explore') renderIndefinidoExplore(root);
+  else if (tab === 'practice') renderIndefinidoSetup(root);
+  else if (tab === 'reference') renderIndefinidoReference(root);
+}
+
+function renderIndefinidoExplore(root) {
+  const chips = INDEFINIDO_VERBS.map((v, i) => `<button class="verb-chip ${i === 0 ? 'active' : ''}" data-idx="${i}">${v.inf}</button>`).join('');
+  root.innerHTML = `<div class="verb-selector">${chips}</div><div id="indVerbDisplay"></div>`;
+  root.querySelectorAll('.verb-chip').forEach(btn => {
+    btn.addEventListener('click', () => {
+      root.querySelectorAll('.verb-chip').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      renderIndefinidoVerbCard(parseInt(btn.dataset.idx));
+    });
+  });
+  renderIndefinidoVerbCard(0);
+}
+
+function renderIndefinidoVerbCard(idx) {
+  const v = INDEFINIDO_VERBS[idx];
+  const html = `
+    <div class="verb-card">
+      <div class="verb-header">
+        <div>
+          <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+            <div class="verb-title">${v.inf}</div>
+            <button class="speaker-btn speaker-btn-large" data-speak="${v.inf}">${SPEAKER_SVG}</button>
+          </div>
+          <div class="verb-translation">~ ${v.meaning}</div>
+        </div>
+        <div class="verb-stem">${INDEFINIDO_GROUPS[v.group]}</div>
+      </div>
+      <div class="conjugation-table">
+        ${v.forms.map((f, i) => `
+          <div class="conj-row">
+            <div class="pronoun">${PRONOUNS[i]}</div>
+            <button class="speaker-btn" data-speak="${f}">${SPEAKER_SVG}</button>
+            <div class="conjugated">${highlightForm(f)}</div>
+          </div>
+        `).join('')}
+      </div>
+      <div class="verb-note">✦ ${v.note}</div>
+    </div>
+  `;
+  document.getElementById('indVerbDisplay').innerHTML = html;
+  document.querySelectorAll('#indVerbDisplay [data-speak]').forEach(btn => attachSpeakHandler(btn, btn.dataset.speak));
+}
+
+function renderIndefinidoSetup(root) {
+  root.innerHTML = `
+    <div class="practice-setup">
+      <h2>Налаштуй тренування</h2>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--ink-soft);margin-bottom:20px;">Обери групи дієслів та особи.</p>
+      <div class="filter-group">
+        <span class="filter-label">~ групи дієслів ~</span>
+        <div class="filter-options" id="indGroupFilters">
+          ${Object.entries(INDEFINIDO_GROUPS).map(([k, label]) => `<button class="filter-option active" data-group="${k}">${label}</button>`).join('')}
+        </div>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">~ особи ~</span>
+        <div class="filter-options" id="indPersonFilters">
+          ${PRONOUNS.map((p, i) => `<button class="filter-option active" data-person="${i}">${p}</button>`).join('')}
+        </div>
+      </div>
+      <button class="start-btn" id="indStartBtn">Почати ¡Vamos!</button>
+    </div>
+  `;
+  root.querySelectorAll('.filter-option').forEach(btn => btn.addEventListener('click', () => btn.classList.toggle('active')));
+  document.getElementById('indStartBtn').addEventListener('click', startIndefinidoQuiz);
+}
+
+function startIndefinidoQuiz() {
+  const groups = Array.from(document.querySelectorAll('#indGroupFilters .filter-option.active')).map(b => b.dataset.group);
+  const persons = Array.from(document.querySelectorAll('#indPersonFilters .filter-option.active')).map(b => parseInt(b.dataset.person));
+  if (groups.length === 0 || persons.length === 0) { alert('Обери хоча б одну групу та одну особу.'); return; }
+  const filteredVerbs = INDEFINIDO_VERBS.filter(v => groups.includes(v.group));
+  const questions = [];
+  filteredVerbs.forEach(v => { persons.forEach(p => questions.push({ verb: v, person: p })); });
+  initQuizState(questions);
+  renderIndefinidoQuestion();
+}
+
+function renderIndefinidoQuestion() {
+  const q = quizState.questions[quizState.current];
+  const total = quizState.questions.length;
+  const progress = (quizState.current / total) * 100;
+  const root = document.getElementById('trainerContent');
+  root.innerHTML = `
+    <div class="quiz-card">
+      ${quizState.reviewMode ? `<div class="review-badge">⟲ Раунд повторення ${quizState.reviewRound}</div>` : ''}
+      <div class="quiz-progress">
+        <span>${quizState.current + 1}/${total}</span>
+        <div class="progress-bar"><div class="progress-fill" style="width:${progress}%"></div></div>
+        <span style="color:var(--olive);">✓ ${quizState.correct}</span>
+      </div>
+      <div class="quiz-prompt">провідміняй</div>
+      <div class="quiz-verb-row">
+        <div class="quiz-verb">${q.verb.inf}</div>
+        <button class="speaker-btn speaker-btn-large" id="indQuizSpeaker">${SPEAKER_SVG}</button>
+      </div>
+      <div class="quiz-meaning">~ ${q.verb.meaning}</div>
+      <div class="quiz-pronoun">${PRONOUNS[q.person]}</div>
+      <div><input type="text" id="quizInput" class="quiz-input" placeholder="напиши форму..." autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <div class="quiz-feedback" id="quizFeedback"></div>
+      <div class="quiz-actions" id="quizActions">
+        <button class="btn btn-primary" id="checkBtn">Перевірити</button>
+        <button class="btn" id="skipBtn">Не знаю</button>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="stat-value success">${quizState.correct}</div><div class="stat-label">правильно</div></div>
+        <div class="stat"><div class="stat-value error">${quizState.incorrect}</div><div class="stat-label">помилок</div></div>
+        <div class="stat"><div class="stat-value">${total - quizState.current}</div><div class="stat-label">залишилось</div></div>
+      </div>
+    </div>
+  `;
+  const input = document.getElementById('quizInput');
+  input.focus();
+  const announce = `${q.verb.inf}... ${PRONOUNS_SPEAK[q.person]}`;
+  const speaker = document.getElementById('indQuizSpeaker');
+  attachSpeakHandler(speaker, announce);
+  if (soundEnabled) {
+    setTimeout(() => {
+      speaker.classList.add('playing');
+      speak(announce, { onend: () => speaker.classList.remove('playing') });
+    }, voicesReady ? 200 : 500);
+  }
+  document.getElementById('checkBtn').addEventListener('click', () => checkIndefinidoAnswer());
+  document.getElementById('skipBtn').addEventListener('click', () => skipIndefinidoAnswer());
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') { if (quizState.showingFeedback) nextIndefinidoQuestion(); else checkIndefinidoAnswer(); }
+  });
+}
+
+function checkIndefinidoAnswer() {
+  if (quizState.showingFeedback) { nextIndefinidoQuestion(); return; }
+  const q = quizState.questions[quizState.current];
+  const expected = q.verb.forms[q.person];
+  const input = document.getElementById('quizInput');
+  const answer = input.value;
+  if (!answer.trim()) return;
+  const result = isCorrectAnswer(answer, expected);
+  const feedback = document.getElementById('quizFeedback');
+  quizState.showingFeedback = true;
+  if (result === 'perfect') {
+    quizState.correct++;
+    input.classList.add('correct');
+    feedback.className = 'quiz-feedback correct';
+    feedback.innerHTML = `¡Perfecto! <strong>${expected}</strong> ✓`;
+  } else if (result === 'no-accent') {
+    quizState.correct++;
+    input.classList.add('correct');
+    feedback.className = 'quiz-feedback correct';
+    feedback.innerHTML = `Майже! Правильно: <strong>${expected}</strong> — не забудь про наголос!`;
+  } else {
+    quizState.incorrect++;
+    quizState.mistakes.push(q);
+    input.classList.add('incorrect');
+    feedback.className = 'quiz-feedback incorrect';
+    feedback.innerHTML = `Правильно: <strong>${expected}</strong>. ${q.verb.note}`;
+  }
+  const speakText = `${PRONOUNS_SPEAK[q.person]} ${expected}`;
+  setTimeout(() => speak(speakText, { rate: 0.8 }), 300);
+  document.getElementById('quizActions').innerHTML = `<button class="btn btn-primary" id="nextBtn">${quizState.current + 1 >= total() ? 'Результат' : 'Далі →'}</button>`;
+  document.getElementById('nextBtn').addEventListener('click', nextIndefinidoQuestion);
+}
+
+function total() { return quizState.questions.length; }
+
+function skipIndefinidoAnswer() {
+  const q = quizState.questions[quizState.current];
+  const expected = q.verb.forms[q.person];
+  quizState.incorrect++;
+  quizState.mistakes.push(q);
+  quizState.showingFeedback = true;
+  const feedback = document.getElementById('quizFeedback');
+  feedback.className = 'quiz-feedback incorrect';
+  feedback.innerHTML = `Правильно: <strong>${expected}</strong>. ${q.verb.note}`;
+  document.getElementById('quizInput').classList.add('incorrect');
+  const speakText = `${PRONOUNS_SPEAK[q.person]} ${expected}`;
+  setTimeout(() => speak(speakText, { rate: 0.8 }), 300);
+  document.getElementById('quizActions').innerHTML = `<button class="btn btn-primary" id="nextBtn">${quizState.current + 1 >= total() ? 'Результат' : 'Далі →'}</button>`;
+  document.getElementById('nextBtn').addEventListener('click', nextIndefinidoQuestion);
+}
+
+function nextIndefinidoQuestion() {
+  quizState.current++;
+  quizState.showingFeedback = false;
+  if (quizState.current >= quizState.questions.length) showIndefinidoResults();
+  else renderIndefinidoQuestion();
+}
+
+function showIndefinidoResults() {
+  const totalQ = quizState.questions.length;
+  const pct = Math.round((quizState.correct / totalQ) * 100);
+  const hasMistakes = quizState.mistakes.length > 0;
+  const isReview = quizState.reviewMode;
+  let emoji, title, subtitle;
+  if (isReview && !hasMistakes) { emoji = '🌹'; title = '¡Lo lograste!'; subtitle = 'Усі помилки виправлені — ти запам\'ятала їх назавжди'; }
+  else if (isReview && hasMistakes) { emoji = '🔄'; title = `Раунд ${quizState.reviewRound}`; subtitle = `Ще ${quizState.mistakes.length} ${pluralize(quizState.mistakes.length, 'форма', 'форми', 'форм')} потребують уваги`; }
+  else if (pct === 100) { emoji = '🌹'; title = '¡Magnífico!'; subtitle = 'Ти володієш цим часом досконало'; }
+  else if (pct >= 80) { emoji = '✨'; title = '¡Muy bien!'; subtitle = 'Майже бездоганно — продовжуй!'; }
+  else if (pct >= 60) { emoji = '🍷'; title = '¡Bien hecho!'; subtitle = 'Гарний результат, але є над чим попрацювати'; }
+  else if (pct >= 40) { emoji = '📖'; title = 'Sigue practicando'; subtitle = 'Повернись до теорії та спробуй ще раз'; }
+  else { emoji = '🌱'; title = 'Empieza de nuevo'; subtitle = 'Не здавайся!'; }
+  let actions = hasMistakes
+    ? `<button class="btn btn-primary" id="reviewBtn">${isReview ? `Повторити ще раз (${quizState.mistakes.length})` : `Заучити помилки (${quizState.mistakes.length}) →`}</button><button class="btn" id="restartBtn">Нова сесія</button>`
+    : `<button class="btn btn-primary" id="restartBtn">Ще раз</button><button class="btn" id="backBtn2">Налаштування</button>`;
+  let mistakesList = '';
+  if (hasMistakes) {
+    const unique = {};
+    quizState.mistakes.forEach(m => { unique[`${m.verb.inf}-${m.person}`] = m; });
+    const items = Object.values(unique).slice(0, 8);
+    mistakesList = `
+      <div class="mistakes-preview">
+        <div class="mistakes-title">${isReview ? 'Залишилось закріпити:' : 'Над чим попрацюємо:'}</div>
+        <div class="mistakes-chips">
+          ${items.map(m => `<div class="mistake-chip"><span class="mc-pronoun">${PRONOUNS[m.person]}</span><span class="mc-form">${m.verb.forms[m.person]}</span></div>`).join('')}
+          ${Object.values(unique).length > 8 ? `<div class="mistake-chip more">+ ${Object.values(unique).length - 8}</div>` : ''}
+        </div>
+      </div>`;
+  }
+  document.getElementById('trainerContent').innerHTML = `
+    <div class="results">
+      <div class="results-emoji">${emoji}</div>
+      <div class="results-title">${title}</div>
+      <div class="results-subtitle">${subtitle}</div>
+      ${!isReview || (isReview && !hasMistakes) ? `<div class="results-score">${pct}%</div><div class="results-score-label">${quizState.correct} з ${totalQ} правильно${isReview ? ` · раунд ${quizState.reviewRound}` : ''}</div>` :
+        `<div style="margin:24px 0;"><div style="font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:600;color:var(--olive);">${quizState.correct}<span style="color:var(--ink-soft);font-size:1.5rem;"> / ${totalQ}</span></div><div style="font-family:'Caveat',cursive;font-size:1.2rem;color:var(--ink-soft);margin-top:4px;">виправлено цього раунду</div></div>`}
+      ${mistakesList}
+      <div class="quiz-actions">${actions}</div>
+    </div>`;
+  if (hasMistakes) {
+    document.getElementById('reviewBtn').addEventListener('click', () => startReviewQuiz(renderIndefinidoQuestion));
+    document.getElementById('restartBtn').addEventListener('click', () => renderIndefinidoSetup(document.getElementById('trainerContent')));
+  } else {
+    document.getElementById('restartBtn').addEventListener('click', startIndefinidoQuiz);
+    document.getElementById('backBtn2').addEventListener('click', () => renderIndefinidoSetup(document.getElementById('trainerContent')));
+  }
+}
+
+function renderIndefinidoReference(root) {
+  root.innerHTML = `
+    <div class="reference-intro">
+      <h2>Усе, що треба знати</h2>
+      <p>Pretérito indefinido — доконаний минулий час. Дії, що завершилися у конкретний момент. Українською: «зробив», «прийшов», «сказав».</p>
+    </div>
+    <div class="reference-section">
+      <h3 class="ref-section-title"><span class="num">i.</span>Коли вживати</h3>
+      <p class="ref-text">Для конкретних подій у минулому з чітким моментом завершення. <strong>Маркери часу:</strong> ayer, anoche, la semana pasada, el año pasado, en 2010, hace dos días, una vez.</p>
+      <div class="example-box"><div class="es"><b>Ayer fui</b> al cine.</div><div class="uk">Учора я ходив у кіно.</div></div>
+      <div class="example-box"><div class="es"><b>El año pasado estuve</b> en Madrid.</div><div class="uk">Минулого року я був у Мадриді.</div></div>
+    </div>
+    <div class="reference-section">
+      <h3 class="ref-section-title"><span class="num">ii.</span>Закінчення правильних дієслів</h3>
+      <table class="endings-table">
+        <thead><tr><th>Особа</th><th>-AR</th><th>-ER / -IR</th></tr></thead>
+        <tbody>
+          <tr><td><i>yo</i></td><td class="ending">-é</td><td class="ending">-í</td></tr>
+          <tr><td><i>tú</i></td><td class="ending">-aste</td><td class="ending">-iste</td></tr>
+          <tr><td><i>él/ella</i></td><td class="ending">-ó</td><td class="ending">-ió</td></tr>
+          <tr><td><i>nosotros</i></td><td class="ending">-amos</td><td class="ending">-imos</td></tr>
+          <tr><td><i>vosotros</i></td><td class="ending">-asteis</td><td class="ending">-isteis</td></tr>
+          <tr><td><i>ellos/ellas</i></td><td class="ending">-aron</td><td class="ending">-ieron</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="reference-section">
+      <h3 class="ref-section-title"><span class="num">iii.</span>Особлива основа</h3>
+      <p class="ref-text">Спільні закінчення без наголосу: <span style="color:var(--terracotta);font-weight:600">-e, -iste, -o, -imos, -isteis, -ieron</span>.</p>
+      <table class="endings-table">
+        <thead><tr><th>Інфінітив</th><th>Основа</th><th>Yo</th></tr></thead>
+        <tbody>
+          <tr><td><i>tener</i></td><td>tuv-</td><td>tuve</td></tr>
+          <tr><td><i>estar</i></td><td>estuv-</td><td>estuve</td></tr>
+          <tr><td><i>poder</i></td><td>pud-</td><td>pude</td></tr>
+          <tr><td><i>hacer</i></td><td>hic- / hiz-</td><td>hice</td></tr>
+          <tr><td><i>decir</i></td><td>dij-</td><td>dije</td></tr>
+        </tbody>
+      </table>
+      <p class="ref-text"><strong>Увага:</strong> після j (decir, traer) у 3-й ос. мн. — <span style="color:var(--terracotta);font-weight:600">-eron</span>, а не -ieron.</p>
+    </div>
+    <div class="reference-section">
+      <h3 class="ref-section-title"><span class="num">iv.</span>Чергування e→i, o→u</h3>
+      <p class="ref-text">Тільки в 3-й особі дієслів на -ir: <i>pedir → pidió, dormir → durmió</i>. Сюди: pedir, servir, sentir, dormir, morir, preferir, repetir, seguir.</p>
+    </div>
+    <div class="reference-section">
+      <h3 class="ref-section-title"><span class="num">v.</span>Орфографічні зміни</h3>
+      <p class="ref-text">У 1-й особі однини:</p>
+      <ul style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;line-height:1.8;color:var(--ink);padding-left:24px;">
+        <li><strong>-car → -qué</strong>: buscar → bus<b style="color:var(--terracotta)">qué</b></li>
+        <li><strong>-gar → -gué</strong>: llegar → lle<b style="color:var(--terracotta)">gué</b></li>
+        <li><strong>-zar → -cé</strong>: empezar → empe<b style="color:var(--terracotta)">cé</b></li>
+      </ul>
+    </div>
+    <div class="reference-section">
+      <h3 class="ref-section-title"><span class="num">vi.</span>SER, IR і DAR</h3>
+      <p class="ref-text"><strong>Ser</strong> та <strong>ir</strong> мають <strong>однакову форму</strong>! <i>Fui profesor</i> — Я був учителем; <i>Fui a Madrid</i> — Я поїхав у Мадрид.</p>
+      <p class="ref-text"><strong>Dar</strong>: <i>di, diste, dio, dimos, disteis, dieron</i>.</p>
+    </div>
+  `;
+}
+
+
+// =============================================================================
+// TRAINER: PRETÉRITO PERFECTO
+// =============================================================================
+// haber (presente) + participio
+const PERFECTO_HABER = ['he', 'has', 'ha', 'hemos', 'habéis', 'han'];
+
+const PERFECTO_VERBS = [
+  // Regular -ar
+  { inf: 'hablar', meaning: 'говорити', part: 'hablado', regular: true, group: 'regular-ar' },
+  { inf: 'trabajar', meaning: 'працювати', part: 'trabajado', regular: true, group: 'regular-ar' },
+  { inf: 'estudiar', meaning: 'вчитися', part: 'estudiado', regular: true, group: 'regular-ar' },
+  { inf: 'comprar', meaning: 'купувати', part: 'comprado', regular: true, group: 'regular-ar' },
+  { inf: 'viajar', meaning: 'подорожувати', part: 'viajado', regular: true, group: 'regular-ar' },
+  // Regular -er/-ir
+  { inf: 'comer', meaning: 'їсти', part: 'comido', regular: true, group: 'regular-er-ir' },
+  { inf: 'beber', meaning: 'пити', part: 'bebido', regular: true, group: 'regular-er-ir' },
+  { inf: 'vivir', meaning: 'жити', part: 'vivido', regular: true, group: 'regular-er-ir' },
+  { inf: 'salir', meaning: 'виходити', part: 'salido', regular: true, group: 'regular-er-ir' },
+  { inf: 'dormir', meaning: 'спати', part: 'dormido', regular: true, group: 'regular-er-ir' },
+  // Irregular participles
+  { inf: 'hacer', meaning: 'робити', part: 'hecho', regular: false, group: 'irregular', note: 'hacer → hecho (не hacido!)' },
+  { inf: 'decir', meaning: 'казати', part: 'dicho', regular: false, group: 'irregular', note: 'decir → dicho (не decido!)' },
+  { inf: 'ver', meaning: 'бачити', part: 'visto', regular: false, group: 'irregular', note: 'ver → visto' },
+  { inf: 'escribir', meaning: 'писати', part: 'escrito', regular: false, group: 'irregular', note: 'escribir → escrito' },
+  { inf: 'abrir', meaning: 'відкривати', part: 'abierto', regular: false, group: 'irregular', note: 'abrir → abierto' },
+  { inf: 'volver', meaning: 'повертатися', part: 'vuelto', regular: false, group: 'irregular', note: 'volver → vuelto' },
+  { inf: 'poner', meaning: 'класти', part: 'puesto', regular: false, group: 'irregular', note: 'poner → puesto' },
+  { inf: 'romper', meaning: 'ламати', part: 'roto', regular: false, group: 'irregular', note: 'romper → roto' },
+  { inf: 'morir', meaning: 'помирати', part: 'muerto', regular: false, group: 'irregular', note: 'morir → muerto' },
+  { inf: 'descubrir', meaning: 'відкривати (нове)', part: 'descubierto', regular: false, group: 'irregular', note: 'descubrir → descubierto' },
+];
+
+const PERFECTO_GROUPS = {
+  'regular-ar': 'Правильні -AR (→ -ado)',
+  'regular-er-ir': 'Правильні -ER/-IR (→ -ido)',
+  'irregular': 'Неправильні participios'
+};
+
+function getPerfectoForm(verb, person) {
+  const haber = PERFECTO_HABER[person];
+  return `${haber} ${verb.part}`;
+}
+
+function renderPerfectoTrainer(tab) {
+  const root = document.getElementById('trainerContent');
+  if (tab === 'explore') renderPerfectoExplore(root);
+  else if (tab === 'practice') renderPerfectoSetup(root);
+  else if (tab === 'reference') renderPerfectoReference(root);
+}
+
+function renderPerfectoExplore(root) {
+  const chips = PERFECTO_VERBS.map((v, i) => `<button class="verb-chip ${i === 0 ? 'active' : ''}" data-idx="${i}">${v.inf}</button>`).join('');
+  root.innerHTML = `<div class="verb-selector">${chips}</div><div id="perfVerbDisplay"></div>`;
+  root.querySelectorAll('.verb-chip').forEach(btn => {
+    btn.addEventListener('click', () => {
+      root.querySelectorAll('.verb-chip').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      renderPerfectoVerbCard(parseInt(btn.dataset.idx));
+    });
+  });
+  renderPerfectoVerbCard(0);
+}
+
+function renderPerfectoVerbCard(idx) {
+  const v = PERFECTO_VERBS[idx];
+  const html = `
+    <div class="verb-card">
+      <div class="verb-header">
+        <div>
+          <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+            <div class="verb-title">${v.inf}</div>
+            <button class="speaker-btn speaker-btn-large" data-speak="${v.inf}">${SPEAKER_SVG}</button>
+          </div>
+          <div class="verb-translation">~ ${v.meaning}</div>
+        </div>
+        <div class="verb-stem">${PERFECTO_GROUPS[v.group]}</div>
+      </div>
+      <div style="text-align:center;margin-bottom:20px;font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--ink-soft);">
+        Participio: <span style="color:var(--terracotta);font-weight:600;font-style:normal;">${v.part}</span>
+        <button class="speaker-btn" data-speak="${v.part}" style="margin-left:8px;vertical-align:middle;">${SPEAKER_SVG}</button>
+      </div>
+      <div class="conjugation-table">
+        ${PERFECTO_HABER.map((h, i) => {
+          const form = `${h} ${v.part}`;
+          return `<div class="conj-row">
+            <div class="pronoun">${PRONOUNS[i]}</div>
+            <button class="speaker-btn" data-speak="${form}">${SPEAKER_SVG}</button>
+            <div class="conjugated"><span style="color:var(--terracotta);">${h}</span> ${v.part}</div>
+          </div>`;
+        }).join('')}
+      </div>
+      ${v.note ? `<div class="verb-note">✦ ${v.note}</div>` : `<div class="verb-note">✦ Правильне participio: -ar → -ado, -er/-ir → -ido</div>`}
+    </div>
+  `;
+  document.getElementById('perfVerbDisplay').innerHTML = html;
+  document.querySelectorAll('#perfVerbDisplay [data-speak]').forEach(btn => attachSpeakHandler(btn, btn.dataset.speak));
+}
+
+function renderPerfectoSetup(root) {
+  root.innerHTML = `
+    <div class="practice-setup">
+      <h2>Налаштуй тренування</h2>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--ink-soft);margin-bottom:20px;">Обери групи та особи.</p>
+      <div class="filter-group">
+        <span class="filter-label">~ групи дієслів ~</span>
+        <div class="filter-options" id="perfGroupFilters">
+          ${Object.entries(PERFECTO_GROUPS).map(([k, label]) => `<button class="filter-option active" data-group="${k}">${label}</button>`).join('')}
+        </div>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">~ особи ~</span>
+        <div class="filter-options" id="perfPersonFilters">
+          ${PRONOUNS.map((p, i) => `<button class="filter-option active" data-person="${i}">${p}</button>`).join('')}
+        </div>
+      </div>
+      <button class="start-btn" id="perfStartBtn">Почати ¡Vamos!</button>
+    </div>
+  `;
+  root.querySelectorAll('.filter-option').forEach(btn => btn.addEventListener('click', () => btn.classList.toggle('active')));
+  document.getElementById('perfStartBtn').addEventListener('click', startPerfectoQuiz);
+}
+
+function startPerfectoQuiz() {
+  const groups = Array.from(document.querySelectorAll('#perfGroupFilters .filter-option.active')).map(b => b.dataset.group);
+  const persons = Array.from(document.querySelectorAll('#perfPersonFilters .filter-option.active')).map(b => parseInt(b.dataset.person));
+  if (groups.length === 0 || persons.length === 0) { alert('Обери хоча б одну групу та одну особу.'); return; }
+  const filtered = PERFECTO_VERBS.filter(v => groups.includes(v.group));
+  const questions = [];
+  filtered.forEach(v => { persons.forEach(p => questions.push({ verb: v, person: p, expected: getPerfectoForm(v, p) })); });
+  initQuizState(questions);
+  renderPerfectoQuestion();
+}
+
+function renderPerfectoQuestion() {
+  const q = quizState.questions[quizState.current];
+  const totalQ = quizState.questions.length;
+  const progress = (quizState.current / totalQ) * 100;
+  document.getElementById('trainerContent').innerHTML = `
+    <div class="quiz-card">
+      ${quizState.reviewMode ? `<div class="review-badge">⟲ Раунд повторення ${quizState.reviewRound}</div>` : ''}
+      <div class="quiz-progress">
+        <span>${quizState.current + 1}/${totalQ}</span>
+        <div class="progress-bar"><div class="progress-fill" style="width:${progress}%"></div></div>
+        <span style="color:var(--olive);">✓ ${quizState.correct}</span>
+      </div>
+      <div class="quiz-prompt">провідміняй у Pretérito Perfecto</div>
+      <div class="quiz-verb-row">
+        <div class="quiz-verb">${q.verb.inf}</div>
+        <button class="speaker-btn speaker-btn-large" id="perfQuizSpeaker">${SPEAKER_SVG}</button>
+      </div>
+      <div class="quiz-meaning">~ ${q.verb.meaning}</div>
+      <div class="quiz-pronoun">${PRONOUNS[q.person]}</div>
+      <div><input type="text" id="quizInput" class="quiz-input" placeholder="напр. he hablado..." autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <div class="quiz-feedback" id="quizFeedback"></div>
+      <div class="quiz-actions" id="quizActions">
+        <button class="btn btn-primary" id="checkBtn">Перевірити</button>
+        <button class="btn" id="skipBtn">Не знаю</button>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="stat-value success">${quizState.correct}</div><div class="stat-label">правильно</div></div>
+        <div class="stat"><div class="stat-value error">${quizState.incorrect}</div><div class="stat-label">помилок</div></div>
+        <div class="stat"><div class="stat-value">${totalQ - quizState.current}</div><div class="stat-label">залишилось</div></div>
+      </div>
+    </div>
+  `;
+  const input = document.getElementById('quizInput');
+  input.focus();
+  const announce = `${q.verb.inf}... ${PRONOUNS_SPEAK[q.person]}`;
+  const speaker = document.getElementById('perfQuizSpeaker');
+  attachSpeakHandler(speaker, announce);
+  if (soundEnabled) {
+    setTimeout(() => { speaker.classList.add('playing'); speak(announce, { onend: () => speaker.classList.remove('playing') }); }, voicesReady ? 200 : 500);
+  }
+  document.getElementById('checkBtn').addEventListener('click', checkPerfectoAnswer);
+  document.getElementById('skipBtn').addEventListener('click', skipPerfectoAnswer);
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') { if (quizState.showingFeedback) nextPerfectoQuestion(); else checkPerfectoAnswer(); } });
+}
+
+function checkPerfectoAnswer() {
+  if (quizState.showingFeedback) { nextPerfectoQuestion(); return; }
+  const q = quizState.questions[quizState.current];
+  const expected = q.expected;
+  const input = document.getElementById('quizInput');
+  const answer = input.value;
+  if (!answer.trim()) return;
+  const result = isCorrectAnswer(answer, expected);
+  const feedback = document.getElementById('quizFeedback');
+  quizState.showingFeedback = true;
+  if (result === 'perfect' || result === 'no-accent') {
+    quizState.correct++;
+    input.classList.add('correct');
+    feedback.className = 'quiz-feedback correct';
+    feedback.innerHTML = `¡Perfecto! <strong>${expected}</strong> ✓`;
+  } else {
+    quizState.incorrect++;
+    quizState.mistakes.push(q);
+    input.classList.add('incorrect');
+    feedback.className = 'quiz-feedback incorrect';
+    const note = q.verb.note || `Правильне participio: ${q.verb.part}`;
+    feedback.innerHTML = `Правильно: <strong>${expected}</strong>. ${note}`;
+  }
+  const speakText = `${PRONOUNS_SPEAK[q.person]} ${expected}`;
+  setTimeout(() => speak(speakText, { rate: 0.8 }), 300);
+  document.getElementById('quizActions').innerHTML = `<button class="btn btn-primary" id="nextBtn">${quizState.current + 1 >= quizState.questions.length ? 'Результат' : 'Далі →'}</button>`;
+  document.getElementById('nextBtn').addEventListener('click', nextPerfectoQuestion);
+}
+
+function skipPerfectoAnswer() {
+  const q = quizState.questions[quizState.current];
+  quizState.incorrect++;
+  quizState.mistakes.push(q);
+  quizState.showingFeedback = true;
+  const feedback = document.getElementById('quizFeedback');
+  feedback.className = 'quiz-feedback incorrect';
+  const note = q.verb.note || `Правильне participio: ${q.verb.part}`;
+  feedback.innerHTML = `Правильно: <strong>${q.expected}</strong>. ${note}`;
+  document.getElementById('quizInput').classList.add('incorrect');
+  const speakText = `${PRONOUNS_SPEAK[q.person]} ${q.expected}`;
+  setTimeout(() => speak(speakText, { rate: 0.8 }), 300);
+  document.getElementById('quizActions').innerHTML = `<button class="btn btn-primary" id="nextBtn">${quizState.current + 1 >= quizState.questions.length ? 'Результат' : 'Далі →'}</button>`;
+  document.getElementById('nextBtn').addEventListener('click', nextPerfectoQuestion);
+}
+
+function nextPerfectoQuestion() {
+  quizState.current++;
+  quizState.showingFeedback = false;
+  if (quizState.current >= quizState.questions.length) showPerfectoResults();
+  else renderPerfectoQuestion();
+}
+
+function showPerfectoResults() {
+  showGenericResults({
+    renderQuestion: renderPerfectoQuestion,
+    renderSetup: () => renderPerfectoSetup(document.getElementById('trainerContent')),
+    startQuiz: startPerfectoQuiz,
+    formatMistake: m => `<div class="mistake-chip"><span class="mc-pronoun">${PRONOUNS[m.person]}</span><span class="mc-form">${m.expected}</span></div>`,
+    mistakeKey: m => `${m.verb.inf}-${m.person}`
+  });
+}
+
+// Generic results renderer for trainers that follow the same pattern
+function showGenericResults(opts) {
+  const totalQ = quizState.questions.length;
+  const pct = Math.round((quizState.correct / totalQ) * 100);
+  const hasMistakes = quizState.mistakes.length > 0;
+  const isReview = quizState.reviewMode;
+  let emoji, title, subtitle;
+  if (isReview && !hasMistakes) { emoji = '🌹'; title = '¡Lo lograste!'; subtitle = 'Усі помилки виправлені — ти запам\'ятала їх назавжди'; }
+  else if (isReview && hasMistakes) { emoji = '🔄'; title = `Раунд ${quizState.reviewRound}`; subtitle = `Ще ${quizState.mistakes.length} ${pluralize(quizState.mistakes.length, 'питання', 'питання', 'питань')} потребують уваги`; }
+  else if (pct === 100) { emoji = '🌹'; title = '¡Magnífico!'; subtitle = 'Бездоганно!'; }
+  else if (pct >= 80) { emoji = '✨'; title = '¡Muy bien!'; subtitle = 'Майже ідеально — продовжуй!'; }
+  else if (pct >= 60) { emoji = '🍷'; title = '¡Bien hecho!'; subtitle = 'Гарний результат'; }
+  else if (pct >= 40) { emoji = '📖'; title = 'Sigue practicando'; subtitle = 'Повернись до теорії'; }
+  else { emoji = '🌱'; title = 'Empieza de nuevo'; subtitle = 'Не здавайся!'; }
+  let actions = hasMistakes
+    ? `<button class="btn btn-primary" id="reviewBtn">${isReview ? `Повторити ще раз (${quizState.mistakes.length})` : `Заучити помилки (${quizState.mistakes.length}) →`}</button><button class="btn" id="restartBtn">Нова сесія</button>`
+    : `<button class="btn btn-primary" id="restartBtn">Ще раз</button><button class="btn" id="backBtn2">Налаштування</button>`;
+  let mistakesList = '';
+  if (hasMistakes) {
+    const unique = {};
+    quizState.mistakes.forEach(m => { unique[opts.mistakeKey(m)] = m; });
+    const items = Object.values(unique).slice(0, 8);
+    mistakesList = `<div class="mistakes-preview"><div class="mistakes-title">${isReview ? 'Залишилось закріпити:' : 'Над чим попрацюємо:'}</div><div class="mistakes-chips">${items.map(opts.formatMistake).join('')}${Object.values(unique).length > 8 ? `<div class="mistake-chip more">+ ${Object.values(unique).length - 8}</div>` : ''}</div></div>`;
+  }
+  document.getElementById('trainerContent').innerHTML = `
+    <div class="results">
+      <div class="results-emoji">${emoji}</div>
+      <div class="results-title">${title}</div>
+      <div class="results-subtitle">${subtitle}</div>
+      ${!isReview || (isReview && !hasMistakes) ? `<div class="results-score">${pct}%</div><div class="results-score-label">${quizState.correct} з ${totalQ} правильно${isReview ? ` · раунд ${quizState.reviewRound}` : ''}</div>` :
+        `<div style="margin:24px 0;"><div style="font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:600;color:var(--olive);">${quizState.correct}<span style="color:var(--ink-soft);font-size:1.5rem;"> / ${totalQ}</span></div><div style="font-family:'Caveat',cursive;font-size:1.2rem;color:var(--ink-soft);margin-top:4px;">виправлено цього раунду</div></div>`}
+      ${mistakesList}
+      <div class="quiz-actions">${actions}</div>
+    </div>`;
+  if (hasMistakes) {
+    document.getElementById('reviewBtn').addEventListener('click', () => startReviewQuiz(opts.renderQuestion));
+    document.getElementById('restartBtn').addEventListener('click', opts.renderSetup);
+  } else {
+    document.getElementById('restartBtn').addEventListener('click', opts.startQuiz);
+    document.getElementById('backBtn2').addEventListener('click', opts.renderSetup);
+  }
+}
+
+function renderPerfectoReference(root) {
+  root.innerHTML = `
+    <div class="reference-intro">
+      <h2>Pretérito Perfecto</h2>
+      <p>Доконаний теперішній. Минула дія, що має зв'язок з теперішнім моментом — або тільки що сталася, або сталася в період, який ще не завершився.</p>
+    </div>
+    <div class="reference-section">
+      <h3 class="ref-section-title"><span class="num">i.</span>Формула</h3>
+      <p class="ref-text"><strong>haber</strong> (у presente) + <strong>participio</strong></p>
+      <table class="endings-table">
+        <thead><tr><th>Особа</th><th>Haber</th></tr></thead>
+        <tbody>
+          <tr><td><i>yo</i></td><td class="ending">he</td></tr>
+          <tr><td><i>tú</i></td><td class="ending">has</td></tr>
+          <tr><td><i>él/ella</i></td><td class="ending">ha</td></tr>
+          <tr><td><i>nosotros</i></td><td class="ending">hemos</td></tr>
+          <tr><td><i>vosotros</i></td><td class="ending">habéis</td></tr>
+          <tr><td><i>ellos/ellas</i></td><td class="ending">han</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="reference-section">
+      <h3 class="ref-section-title"><span class="num">ii.</span>Утворення participio</h3>
+      <p class="ref-text">Правильні: <strong>-ar → -ado</strong>, <strong>-er/-ir → -ido</strong></p>
+      <ul style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;line-height:1.8;color:var(--ink);padding-left:24px;">
+        <li>hablar → hablado</li>
+        <li>comer → comido</li>
+        <li>vivir → vivido</li>
+      </ul>
+    </div>
+    <div class="reference-section">
+      <h3 class="ref-section-title"><span class="num">iii.</span>Неправильні participios</h3>
+      <table class="endings-table">
+        <thead><tr><th>Інфінітив</th><th>Participio</th></tr></thead>
+        <tbody>
+          <tr><td><i>hacer</i></td><td class="ending">hecho</td></tr>
+          <tr><td><i>decir</i></td><td class="ending">dicho</td></tr>
+          <tr><td><i>ver</i></td><td class="ending">visto</td></tr>
+          <tr><td><i>escribir</i></td><td class="ending">escrito</td></tr>
+          <tr><td><i>abrir</i></td><td class="ending">abierto</td></tr>
+          <tr><td><i>volver</i></td><td class="ending">vuelto</td></tr>
+          <tr><td><i>poner</i></td><td class="ending">puesto</td></tr>
+          <tr><td><i>romper</i></td><td class="ending">roto</td></tr>
+          <tr><td><i>morir</i></td><td class="ending">muerto</td></tr>
+          <tr><td><i>descubrir</i></td><td class="ending">descubierto</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="reference-section">
+      <h3 class="ref-section-title"><span class="num">iv.</span>Коли вживати</h3>
+      <p class="ref-text"><strong>Маркери часу:</strong> hoy, esta mañana, esta semana, este mes, este año, ya, todavía, nunca, alguna vez, últimamente, hace un rato.</p>
+      <div class="example-box"><div class="es"><b>Hoy he comido</b> paella.</div><div class="uk">Сьогодні я їв паелью.</div></div>
+      <div class="example-box"><div class="es">¿<b>Has visto</b> esta película?</div><div class="uk">Ти бачив цей фільм? (колись у житті)</div></div>
+      <div class="example-box"><div class="es">Todavía no <b>he terminado</b>.</div><div class="uk">Я ще не закінчив.</div></div>
+    </div>
+    <div class="reference-section">
+      <h3 class="ref-section-title"><span class="num">v.</span>Перфекто vs Індефінідо</h3>
+      <p class="ref-text"><strong>Perfecto</strong> — зв'язок з теперішнім (hoy, este año, ya, nunca).<br><strong>Indefinido</strong> — конкретний момент у минулому (ayer, en 2010, hace dos años).</p>
+      <div class="example-box"><div class="es"><b>Esta mañana he desayunado</b> tostadas. (perfecto)</div><div class="uk">Сьогодні зранку я снідав тостами.</div></div>
+      <div class="example-box"><div class="es"><b>Ayer desayuné</b> tostadas. (indefinido)</div><div class="uk">Учора я снідав тостами.</div></div>
+    </div>
+  `;
+}
+
+
+// =============================================================================
+// TRAINER: GERUNDIO
+// =============================================================================
+const GERUNDIO_VERBS = [
+  // Regular -ar
+  { inf: 'hablar', meaning: 'говорити', form: 'hablando', group: 'regular-ar' },
+  { inf: 'trabajar', meaning: 'працювати', form: 'trabajando', group: 'regular-ar' },
+  { inf: 'estudiar', meaning: 'вчитися', form: 'estudiando', group: 'regular-ar' },
+  { inf: 'comprar', meaning: 'купувати', form: 'comprando', group: 'regular-ar' },
+  { inf: 'cantar', meaning: 'співати', form: 'cantando', group: 'regular-ar' },
+  // Regular -er/-ir
+  { inf: 'comer', meaning: 'їсти', form: 'comiendo', group: 'regular-er-ir' },
+  { inf: 'beber', meaning: 'пити', form: 'bebiendo', group: 'regular-er-ir' },
+  { inf: 'aprender', meaning: 'вчити', form: 'aprendiendo', group: 'regular-er-ir' },
+  { inf: 'vivir', meaning: 'жити', form: 'viviendo', group: 'regular-er-ir' },
+  { inf: 'escribir', meaning: 'писати', form: 'escribiendo', group: 'regular-er-ir' },
+  // e→i (only -ir)
+  { inf: 'pedir', meaning: 'просити', form: 'pidiendo', group: 'vowel', note: 'e→i: pedir → pidiendo' },
+  { inf: 'servir', meaning: 'подавати', form: 'sirviendo', group: 'vowel', note: 'e→i: servir → sirviendo' },
+  { inf: 'sentir', meaning: 'відчувати', form: 'sintiendo', group: 'vowel', note: 'e→i: sentir → sintiendo' },
+  { inf: 'preferir', meaning: 'віддавати перевагу', form: 'prefiriendo', group: 'vowel', note: 'e→i: preferir → prefiriendo' },
+  { inf: 'decir', meaning: 'казати', form: 'diciendo', group: 'vowel', note: 'e→i: decir → diciendo' },
+  { inf: 'venir', meaning: 'приходити', form: 'viniendo', group: 'vowel', note: 'e→i: venir → viniendo' },
+  // o→u
+  { inf: 'dormir', meaning: 'спати', form: 'durmiendo', group: 'vowel', note: 'o→u: dormir → durmiendo' },
+  { inf: 'morir', meaning: 'помирати', form: 'muriendo', group: 'vowel', note: 'o→u: morir → muriendo' },
+  // i→y (between vowels)
+  { inf: 'leer', meaning: 'читати', form: 'leyendo', group: 'iy', note: 'i→y: leer → leyendo' },
+  { inf: 'oír', meaning: 'чути', form: 'oyendo', group: 'iy', note: 'i→y: oír → oyendo' },
+  { inf: 'caer', meaning: 'падати', form: 'cayendo', group: 'iy', note: 'i→y: caer → cayendo' },
+  { inf: 'construir', meaning: 'будувати', form: 'construyendo', group: 'iy', note: 'i→y: construir → construyendo' },
+  // Special
+  { inf: 'ir', meaning: 'іти', form: 'yendo', group: 'special', note: 'УВАГА! ir → yendo (унікально)' },
+  { inf: 'poder', meaning: 'могти', form: 'pudiendo', group: 'special', note: 'o→u: poder → pudiendo' },
+];
+
+const GERUNDIO_GROUPS = {
+  'regular-ar': '-AR (→ -ando)',
+  'regular-er-ir': '-ER/-IR (→ -iendo)',
+  'vowel': 'Чергування e→i, o→u',
+  'iy': 'i→y між голосними',
+  'special': 'Особливі'
+};
+
+function renderGerundioTrainer(tab) {
+  const root = document.getElementById('trainerContent');
+  if (tab === 'explore') renderGerundioExplore(root);
+  else if (tab === 'practice') renderGerundioSetup(root);
+  else if (tab === 'reference') renderGerundioReference(root);
+}
+
+function renderGerundioExplore(root) {
+  // Group verbs by category for cleaner display
+  const grouped = {};
+  GERUNDIO_VERBS.forEach(v => {
+    if (!grouped[v.group]) grouped[v.group] = [];
+    grouped[v.group].push(v);
+  });
+  const html = Object.entries(grouped).map(([gKey, verbs]) => `
+    <div class="reference-section">
+      <h3 class="ref-section-title">${GERUNDIO_GROUPS[gKey]}</h3>
+      <table class="endings-table">
+        <thead><tr><th>Інфінітив</th><th>Переклад</th><th>Gerundio</th><th></th></tr></thead>
+        <tbody>
+          ${verbs.map(v => `
+            <tr>
+              <td><i>${v.inf}</i></td>
+              <td style="font-family:'Caveat',cursive;color:var(--terracotta);">~ ${v.meaning}</td>
+              <td class="ending">${v.form}</td>
+              <td style="width:40px;"><button class="speaker-btn" data-speak="${v.form}">${SPEAKER_SVG}</button></td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    </div>
+  `).join('');
+  root.innerHTML = html;
+  root.querySelectorAll('[data-speak]').forEach(btn => attachSpeakHandler(btn, btn.dataset.speak));
+}
+
+function renderGerundioSetup(root) {
+  root.innerHTML = `
+    <div class="practice-setup">
+      <h2>Налаштуй тренування</h2>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--ink-soft);margin-bottom:20px;">Обери групи дієслів.</p>
+      <div class="filter-group">
+        <span class="filter-label">~ групи ~</span>
+        <div class="filter-options" id="gerGroupFilters">
+          ${Object.entries(GERUNDIO_GROUPS).map(([k, label]) => `<button class="filter-option active" data-group="${k}">${label}</button>`).join('')}
+        </div>
+      </div>
+      <button class="start-btn" id="gerStartBtn">Почати ¡Vamos!</button>
+    </div>
+  `;
+  root.querySelectorAll('.filter-option').forEach(btn => btn.addEventListener('click', () => btn.classList.toggle('active')));
+  document.getElementById('gerStartBtn').addEventListener('click', startGerundioQuiz);
+}
+
+function startGerundioQuiz() {
+  const groups = Array.from(document.querySelectorAll('#gerGroupFilters .filter-option.active')).map(b => b.dataset.group);
+  if (groups.length === 0) { alert('Обери хоча б одну групу.'); return; }
+  const filtered = GERUNDIO_VERBS.filter(v => groups.includes(v.group));
+  const questions = filtered.map(v => ({ verb: v, expected: v.form }));
+  initQuizState(questions);
+  renderGerundioQuestion();
+}
+
+function renderGerundioQuestion() {
+  const q = quizState.questions[quizState.current];
+  const totalQ = quizState.questions.length;
+  const progress = (quizState.current / totalQ) * 100;
+  document.getElementById('trainerContent').innerHTML = `
+    <div class="quiz-card">
+      ${quizState.reviewMode ? `<div class="review-badge">⟲ Раунд повторення ${quizState.reviewRound}</div>` : ''}
+      <div class="quiz-progress">
+        <span>${quizState.current + 1}/${totalQ}</span>
+        <div class="progress-bar"><div class="progress-fill" style="width:${progress}%"></div></div>
+        <span style="color:var(--olive);">✓ ${quizState.correct}</span>
+      </div>
+      <div class="quiz-prompt">утвори gerundio</div>
+      <div class="quiz-verb-row">
+        <div class="quiz-verb">${q.verb.inf}</div>
+        <button class="speaker-btn speaker-btn-large" id="gerQuizSpeaker">${SPEAKER_SVG}</button>
+      </div>
+      <div class="quiz-meaning">~ ${q.verb.meaning}</div>
+      <div style="margin: 20px 0;"><input type="text" id="quizInput" class="quiz-input" placeholder="напр. hablando..." autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <div class="quiz-feedback" id="quizFeedback"></div>
+      <div class="quiz-actions" id="quizActions">
+        <button class="btn btn-primary" id="checkBtn">Перевірити</button>
+        <button class="btn" id="skipBtn">Не знаю</button>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="stat-value success">${quizState.correct}</div><div class="stat-label">правильно</div></div>
+        <div class="stat"><div class="stat-value error">${quizState.incorrect}</div><div class="stat-label">помилок</div></div>
+        <div class="stat"><div class="stat-value">${totalQ - quizState.current}</div><div class="stat-label">залишилось</div></div>
+      </div>
+    </div>
+  `;
+  const input = document.getElementById('quizInput');
+  input.focus();
+  const speaker = document.getElementById('gerQuizSpeaker');
+  attachSpeakHandler(speaker, q.verb.inf);
+  if (soundEnabled) {
+    setTimeout(() => { speaker.classList.add('playing'); speak(q.verb.inf, { onend: () => speaker.classList.remove('playing') }); }, voicesReady ? 200 : 500);
+  }
+  document.getElementById('checkBtn').addEventListener('click', checkGerundioAnswer);
+  document.getElementById('skipBtn').addEventListener('click', skipGerundioAnswer);
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') { if (quizState.showingFeedback) nextGerundioQuestion(); else checkGerundioAnswer(); } });
+}
+
+function checkGerundioAnswer() {
+  if (quizState.showingFeedback) { nextGerundioQuestion(); return; }
+  const q = quizState.questions[quizState.current];
+  const input = document.getElementById('quizInput');
+  const answer = input.value;
+  if (!answer.trim()) return;
+  const result = isCorrectAnswer(answer, q.expected);
+  const feedback = document.getElementById('quizFeedback');
+  quizState.showingFeedback = true;
+  if (result === 'perfect' || result === 'no-accent') {
+    quizState.correct++;
+    input.classList.add('correct');
+    feedback.className = 'quiz-feedback correct';
+    feedback.innerHTML = `¡Perfecto! <strong>${q.expected}</strong> ✓`;
+  } else {
+    quizState.incorrect++;
+    quizState.mistakes.push(q);
+    input.classList.add('incorrect');
+    feedback.className = 'quiz-feedback incorrect';
+    feedback.innerHTML = `Правильно: <strong>${q.expected}</strong>. ${q.verb.note || 'Правильне утворення -ando/-iendo'}`;
+  }
+  setTimeout(() => speak(q.expected, { rate: 0.8 }), 300);
+  document.getElementById('quizActions').innerHTML = `<button class="btn btn-primary" id="nextBtn">${quizState.current + 1 >= quizState.questions.length ? 'Результат' : 'Далі →'}</button>`;
+  document.getElementById('nextBtn').addEventListener('click', nextGerundioQuestion);
+}
+
+function skipGerundioAnswer() {
+  const q = quizState.questions[quizState.current];
+  quizState.incorrect++;
+  quizState.mistakes.push(q);
+  quizState.showingFeedback = true;
+  const feedback = document.getElementById('quizFeedback');
+  feedback.className = 'quiz-feedback incorrect';
+  feedback.innerHTML = `Правильно: <strong>${q.expected}</strong>. ${q.verb.note || 'Правильне утворення -ando/-iendo'}`;
+  document.getElementById('quizInput').classList.add('incorrect');
+  setTimeout(() => speak(q.expected, { rate: 0.8 }), 300);
+  document.getElementById('quizActions').innerHTML = `<button class="btn btn-primary" id="nextBtn">${quizState.current + 1 >= quizState.questions.length ? 'Результат' : 'Далі →'}</button>`;
+  document.getElementById('nextBtn').addEventListener('click', nextGerundioQuestion);
+}
+
+function nextGerundioQuestion() {
+  quizState.current++;
+  quizState.showingFeedback = false;
+  if (quizState.current >= quizState.questions.length) showGerundioResults();
+  else renderGerundioQuestion();
+}
+
+function showGerundioResults() {
+  showGenericResults({
+    renderQuestion: renderGerundioQuestion,
+    renderSetup: () => renderGerundioSetup(document.getElementById('trainerContent')),
+    startQuiz: startGerundioQuiz,
+    formatMistake: m => `<div class="mistake-chip"><span class="mc-pronoun">${m.verb.inf}</span><span class="mc-form">${m.expected}</span></div>`,
+    mistakeKey: m => m.verb.inf
+  });
+}
+
+function renderGerundioReference(root) {
+  root.innerHTML = `
+    <div class="reference-intro">
+      <h2>Gerundio</h2>
+      <p>Форма дієслова на -ando / -iendo. Перекладається українським дієприслівником «роблячи, кажучи, читаючи» або інфінітивом залежно від конструкції.</p>
+    </div>
+    <div class="reference-section">
+      <h3 class="ref-section-title"><span class="num">i.</span>Утворення</h3>
+      <p class="ref-text">Правильні дієслова:</p>
+      <ul style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;line-height:1.8;color:var(--ink);padding-left:24px;">
+        <li><strong>-ar → -ando</strong>: hablar → habl<b style="color:var(--terracotta)">ando</b></li>
+        <li><strong>-er/-ir → -iendo</strong>: comer → com<b style="color:var(--terracotta)">iendo</b>, vivir → viv<b style="color:var(--terracotta)">iendo</b></li>
+      </ul>
+    </div>
+    <div class="reference-section">
+      <h3 class="ref-section-title"><span class="num">ii.</span>Чергування</h3>
+      <p class="ref-text">Деякі дієслова на -ir змінюють голосну в основі:</p>
+      <table class="endings-table">
+        <thead><tr><th>Зміна</th><th>Приклад</th></tr></thead>
+        <tbody>
+          <tr><td><strong>e → i</strong></td><td>pedir → <span style="color:var(--terracotta);font-weight:600;">pidiendo</span>, decir → diciendo, sentir → sintiendo</td></tr>
+          <tr><td><strong>o → u</strong></td><td>dormir → <span style="color:var(--terracotta);font-weight:600;">durmiendo</span>, morir → muriendo</td></tr>
+          <tr><td><strong>i → y</strong></td><td>leer → <span style="color:var(--terracotta);font-weight:600;">leyendo</span>, oír → oyendo, construir → construyendo</td></tr>
+        </tbody>
+      </table>
+      <p class="ref-text"><strong>Особливо:</strong> <i>ir → <span style="color:var(--terracotta);font-weight:600;">yendo</span></i> (унікальна форма!)</p>
+    </div>
+    <div class="reference-section">
+      <h3 class="ref-section-title"><span class="num">iii.</span>Estar + gerundio (тривала дія)</h3>
+      <p class="ref-text">Найчастіше використання: показати дію, що триває просто зараз або у конкретний момент.</p>
+      <div class="example-box"><div class="es"><b>Estoy estudiando</b> español.</div><div class="uk">Я зараз вивчаю іспанську.</div></div>
+      <div class="example-box"><div class="es">¿Qué <b>estás haciendo</b>?</div><div class="uk">Що ти робиш?</div></div>
+      <div class="example-box"><div class="es">Ayer a las 8 <b>estábamos cenando</b>.</div><div class="uk">Учора о 8-й ми вечеряли.</div></div>
+    </div>
+    <div class="reference-section">
+      <h3 class="ref-section-title"><span class="num">iv.</span>Інші конструкції</h3>
+      <p class="ref-text"><strong>Seguir + gerundio</strong> — продовжувати робити:</p>
+      <div class="example-box"><div class="es"><b>Sigo trabajando</b> en la misma empresa.</div><div class="uk">Я продовжую працювати в тій самій компанії.</div></div>
+      <p class="ref-text"><strong>Llevar + час + gerundio</strong> — робити (вже) скільки часу:</p>
+      <div class="example-box"><div class="es"><b>Llevo dos años estudiando</b> español.</div><div class="uk">Я вже два роки вивчаю іспанську.</div></div>
+      <p class="ref-text"><strong>Самостійно</strong> — як дієприслівник:</p>
+      <div class="example-box"><div class="es"><b>Caminando</b> por la calle, vi a Juan.</div><div class="uk">Йдучи вулицею, я побачив Хуана.</div></div>
+    </div>
+  `;
+}
+
+
+// =============================================================================
+// TRAINER: DURACIÓN (desde / hace / desde hace / llevar)
+// =============================================================================
+const DURACION_QUESTIONS = [
+  // desde + точка в часі
+  { sentence: 'Vivo en Madrid ___ 2020.', uk: 'Я живу в Мадриді з 2020 року.', answer: 'desde', options: ['desde', 'hace', 'desde hace'], explanation: 'desde + точка в часі (рік, місяць, дата)' },
+  { sentence: 'Trabajo aquí ___ enero.', uk: 'Я працюю тут з січня.', answer: 'desde', options: ['desde', 'hace', 'desde hace'], explanation: 'desde + точка в часі' },
+  { sentence: 'No le veo ___ el verano pasado.', uk: 'Я не бачу його з минулого літа.', answer: 'desde', options: ['desde', 'hace', 'desde hace'], explanation: 'desde + конкретний момент у минулому' },
+  { sentence: 'Estamos juntos ___ marzo.', uk: 'Ми разом з березня.', answer: 'desde', options: ['desde', 'hace', 'desde hace'], explanation: 'desde + місяць' },
+  { sentence: 'Conozco a Ana ___ niños.', uk: 'Я знаю Ану з дитинства.', answer: 'desde', options: ['desde', 'hace', 'desde hace'], explanation: 'desde + момент у минулому' },
+  // hace + тривалість + завершена дія (indefinido)
+  { sentence: 'Terminé la universidad ___ dos años.', uk: 'Я закінчив університет два роки тому.', answer: 'hace', options: ['desde', 'hace', 'desde hace'], explanation: 'hace + тривалість для ЗАВЕРШЕНОЇ дії (= тому)' },
+  { sentence: 'Llegué a España ___ tres meses.', uk: 'Я приїхав до Іспанії три місяці тому.', answer: 'hace', options: ['desde', 'hace', 'desde hace'], explanation: 'hace = «тому» (минула подія)' },
+  { sentence: 'Compré este coche ___ un año.', uk: 'Я купив цю машину рік тому.', answer: 'hace', options: ['desde', 'hace', 'desde hace'], explanation: 'hace + тривалість = тому' },
+  { sentence: 'Nos conocimos ___ cinco años.', uk: 'Ми познайомились п\'ять років тому.', answer: 'hace', options: ['desde', 'hace', 'desde hace'], explanation: 'hace = «тому»' },
+  { sentence: 'Volví de México ___ una semana.', uk: 'Я повернувся з Мексики тиждень тому.', answer: 'hace', options: ['desde', 'hace', 'desde hace'], explanation: 'hace + тривалість для завершеної дії' },
+  // desde hace + тривалість + теперішня тривала дія
+  { sentence: 'Estudio español ___ tres años.', uk: 'Я вивчаю іспанську вже три роки.', answer: 'desde hace', options: ['desde', 'hace', 'desde hace'], explanation: 'desde hace + тривалість для дії, що ТРИВАЄ досі' },
+  { sentence: 'Trabajo aquí ___ seis meses.', uk: 'Я працюю тут уже шість місяців.', answer: 'desde hace', options: ['desde', 'hace', 'desde hace'], explanation: 'desde hace + тривалість (дія ще триває)' },
+  { sentence: 'No fumo ___ un año.', uk: 'Я не курю вже рік.', answer: 'desde hace', options: ['desde', 'hace', 'desde hace'], explanation: 'desde hace + тривалість дії, що триває' },
+  { sentence: 'Estoy enferma ___ dos días.', uk: 'Я хвора вже два дні.', answer: 'desde hace', options: ['desde', 'hace', 'desde hace'], explanation: 'desde hace + тривалість стану' },
+  { sentence: 'Vivimos juntos ___ diez años.', uk: 'Ми живемо разом уже десять років.', answer: 'desde hace', options: ['desde', 'hace', 'desde hace'], explanation: 'desde hace = «вже стільки часу»' },
+  // mixed practice
+  { sentence: 'Conozco a María ___ 2015.', uk: 'Я знаю Марію з 2015 року.', answer: 'desde', options: ['desde', 'hace', 'desde hace'], explanation: 'desde + рік' },
+  { sentence: 'Visité París ___ dos meses.', uk: 'Я відвідав Париж два місяці тому.', answer: 'hace', options: ['desde', 'hace', 'desde hace'], explanation: 'hace + час = «тому» (завершена дія)' },
+  { sentence: 'Espero el autobús ___ veinte minutos.', uk: 'Я чекаю автобус уже 20 хвилин.', answer: 'desde hace', options: ['desde', 'hace', 'desde hace'], explanation: 'desde hace + тривалість (дія триває)' },
+  { sentence: 'Estoy aquí ___ las ocho.', uk: 'Я тут з восьмої.', answer: 'desde', options: ['desde', 'hace', 'desde hace'], explanation: 'desde + конкретний час' },
+  { sentence: 'Mi hermano se casó ___ tres años.', uk: 'Мій брат одружився три роки тому.', answer: 'hace', options: ['desde', 'hace', 'desde hace'], explanation: 'hace = «тому» (завершена подія)' },
+];
+
+function renderDuracionTrainer(tab) {
+  const root = document.getElementById('trainerContent');
+  if (tab === 'practice') renderDuracionSetup(root);
+  else if (tab === 'reference') renderDuracionReference(root);
+}
+
+function renderDuracionSetup(root) {
+  root.innerHTML = `
+    <div class="practice-setup">
+      <h2>Налаштуй тренування</h2>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--ink-soft);margin-bottom:20px;">Обери формат вправ.</p>
+      <div class="filter-group">
+        <span class="filter-label">~ тип вправи ~</span>
+        <div class="filter-options" id="durModeFilters">
+          <button class="filter-option active" data-mode="multiple">Вибір з варіантів</button>
+          <button class="filter-option" data-mode="fill">Вписати слово</button>
+          <button class="filter-option" data-mode="mixed">Усе разом</button>
+        </div>
+      </div>
+      <button class="start-btn" id="durStartBtn">Почати ¡Vamos!</button>
+    </div>
+    <div style="margin-top:32px;padding:20px;background:rgba(212,136,43,0.1);border:1px dashed var(--ochre);border-radius:4px;">
+      <div style="font-family:'Caveat',cursive;font-size:1.2rem;color:var(--terracotta);margin-bottom:8px;">~ швидке нагадування ~</div>
+      <ul style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;line-height:1.7;color:var(--ink);padding-left:24px;">
+        <li><strong>desde</strong> + точка в часі (2020, enero, las ocho)</li>
+        <li><strong>hace</strong> + тривалість + завершена дія = «тому»</li>
+        <li><strong>desde hace</strong> + тривалість + дія, що ще триває</li>
+      </ul>
+    </div>
+  `;
+  root.querySelectorAll('#durModeFilters .filter-option').forEach(btn => {
+    btn.addEventListener('click', () => {
+      root.querySelectorAll('#durModeFilters .filter-option').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+  document.getElementById('durStartBtn').addEventListener('click', startDuracionQuiz);
+}
+
+function startDuracionQuiz() {
+  const mode = document.querySelector('#durModeFilters .filter-option.active').dataset.mode;
+  const questions = shuffle(DURACION_QUESTIONS).map(q => ({
+    ...q,
+    quizMode: mode === 'mixed' ? (Math.random() < 0.5 ? 'multiple' : 'fill') : mode
+  }));
+  initQuizState(questions, { limit: 15 });
+  renderDuracionQuestion();
+}
+
+function renderDuracionQuestion() {
+  const q = quizState.questions[quizState.current];
+  const totalQ = quizState.questions.length;
+  const progress = (quizState.current / totalQ) * 100;
+  const sentenceWithBlank = q.sentence.replace('___', '<span class="blank">___</span>');
+  let inputArea = '';
+  if (q.quizMode === 'multiple') {
+    inputArea = `
+      <div class="choice-grid">
+        ${shuffle(q.options).map(opt => `<button class="choice-btn" data-choice="${opt}">${opt}</button>`).join('')}
+      </div>
+    `;
+  } else {
+    inputArea = `
+      <div><input type="text" id="quizInput" class="quiz-input" placeholder="desde / hace / desde hace" autocomplete="off" autocapitalize="off" spellcheck="false" style="font-size:1.2rem;"></div>
+    `;
+  }
+  document.getElementById('trainerContent').innerHTML = `
+    <div class="quiz-card">
+      ${quizState.reviewMode ? `<div class="review-badge">⟲ Раунд повторення ${quizState.reviewRound}</div>` : ''}
+      <div class="quiz-progress">
+        <span>${quizState.current + 1}/${totalQ}</span>
+        <div class="progress-bar"><div class="progress-fill" style="width:${progress}%"></div></div>
+        <span style="color:var(--olive);">✓ ${quizState.correct}</span>
+      </div>
+      <div class="quiz-prompt">встав правильне слово</div>
+      <div class="quiz-sentence">${sentenceWithBlank}</div>
+      <div class="quiz-hint">~ ${q.uk} ~</div>
+      ${inputArea}
+      <div class="quiz-feedback" id="quizFeedback"></div>
+      <div class="quiz-actions" id="quizActions">
+        ${q.quizMode === 'fill' ? `<button class="btn btn-primary" id="checkBtn">Перевірити</button><button class="btn" id="skipBtn">Не знаю</button>` : `<button class="btn" id="skipBtn">Не знаю</button>`}
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="stat-value success">${quizState.correct}</div><div class="stat-label">правильно</div></div>
+        <div class="stat"><div class="stat-value error">${quizState.incorrect}</div><div class="stat-label">помилок</div></div>
+        <div class="stat"><div class="stat-value">${totalQ - quizState.current}</div><div class="stat-label">залишилось</div></div>
+      </div>
+    </div>
+  `;
+  if (q.quizMode === 'multiple') {
+    document.querySelectorAll('.choice-btn').forEach(btn => {
+      btn.addEventListener('click', () => handleDuracionChoice(btn.dataset.choice, btn));
+    });
+  } else {
+    const input = document.getElementById('quizInput');
+    input.focus();
+    document.getElementById('checkBtn').addEventListener('click', checkDuracionAnswer);
+    input.addEventListener('keydown', e => { if (e.key === 'Enter') { if (quizState.showingFeedback) nextDuracionQuestion(); else checkDuracionAnswer(); } });
+  }
+  document.getElementById('skipBtn').addEventListener('click', skipDuracionAnswer);
+  // Speak the sentence (replace blank with answer? no — read with pause for blank)
+  if (soundEnabled) {
+    const readText = q.sentence.replace('___', '... mmm ...');
+    setTimeout(() => speak(readText, { rate: 0.85 }), voicesReady ? 200 : 500);
+  }
+}
+
+function handleDuracionChoice(choice, btn) {
+  if (quizState.showingFeedback) return;
+  const q = quizState.questions[quizState.current];
+  const feedback = document.getElementById('quizFeedback');
+  quizState.showingFeedback = true;
+  const buttons = document.querySelectorAll('.choice-btn');
+  buttons.forEach(b => { b.disabled = true; if (b.dataset.choice === q.answer) b.classList.add('correct'); });
+  if (choice === q.answer) {
+    quizState.correct++;
+    feedback.className = 'quiz-feedback correct';
+    feedback.innerHTML = `¡Perfecto! <strong>${q.answer}</strong> ✓ <br><span style="font-style:normal;font-family:'Manrope',sans-serif;font-size:0.9rem;color:var(--ink-soft);">${q.explanation}</span>`;
+  } else {
+    quizState.incorrect++;
+    quizState.mistakes.push(q);
+    btn.classList.add('incorrect');
+    feedback.className = 'quiz-feedback incorrect';
+    feedback.innerHTML = `Правильно: <strong>${q.answer}</strong>. <br><span style="font-style:normal;font-family:'Manrope',sans-serif;font-size:0.9rem;color:var(--ink-soft);">${q.explanation}</span>`;
+  }
+  setTimeout(() => speak(q.sentence.replace('___', q.answer), { rate: 0.85 }), 300);
+  document.getElementById('quizActions').innerHTML = `<button class="btn btn-primary" id="nextBtn">${quizState.current + 1 >= quizState.questions.length ? 'Результат' : 'Далі →'}</button>`;
+  document.getElementById('nextBtn').addEventListener('click', nextDuracionQuestion);
+}
+
+function checkDuracionAnswer() {
+  if (quizState.showingFeedback) { nextDuracionQuestion(); return; }
+  const q = quizState.questions[quizState.current];
+  const input = document.getElementById('quizInput');
+  const answer = input.value;
+  if (!answer.trim()) return;
+  const result = isCorrectAnswer(answer, q.answer);
+  const feedback = document.getElementById('quizFeedback');
+  quizState.showingFeedback = true;
+  if (result === 'perfect' || result === 'no-accent') {
+    quizState.correct++;
+    input.classList.add('correct');
+    feedback.className = 'quiz-feedback correct';
+    feedback.innerHTML = `¡Perfecto! <strong>${q.answer}</strong> ✓ <br><span style="font-style:normal;font-family:'Manrope',sans-serif;font-size:0.9rem;color:var(--ink-soft);">${q.explanation}</span>`;
+  } else {
+    quizState.incorrect++;
+    quizState.mistakes.push(q);
+    input.classList.add('incorrect');
+    feedback.className = 'quiz-feedback incorrect';
+    feedback.innerHTML = `Правильно: <strong>${q.answer}</strong>. <br><span style="font-style:normal;font-family:'Manrope',sans-serif;font-size:0.9rem;color:var(--ink-soft);">${q.explanation}</span>`;
+  }
+  setTimeout(() => speak(q.sentence.replace('___', q.answer), { rate: 0.85 }), 300);
+  document.getElementById('quizActions').innerHTML = `<button class="btn btn-primary" id="nextBtn">${quizState.current + 1 >= quizState.questions.length ? 'Результат' : 'Далі →'}</button>`;
+  document.getElementById('nextBtn').addEventListener('click', nextDuracionQuestion);
+}
+
+function skipDuracionAnswer() {
+  const q = quizState.questions[quizState.current];
+  if (quizState.showingFeedback) return;
+  quizState.incorrect++;
+  quizState.mistakes.push(q);
+  quizState.showingFeedback = true;
+  const feedback = document.getElementById('quizFeedback');
+  feedback.className = 'quiz-feedback incorrect';
+  feedback.innerHTML = `Правильно: <strong>${q.answer}</strong>. <br><span style="font-style:normal;font-family:'Manrope',sans-serif;font-size:0.9rem;color:var(--ink-soft);">${q.explanation}</span>`;
+  const input = document.getElementById('quizInput');
+  if (input) input.classList.add('incorrect');
+  document.querySelectorAll('.choice-btn').forEach(b => { b.disabled = true; if (b.dataset.choice === q.answer) b.classList.add('correct'); });
+  setTimeout(() => speak(q.sentence.replace('___', q.answer), { rate: 0.85 }), 300);
+  document.getElementById('quizActions').innerHTML = `<button class="btn btn-primary" id="nextBtn">${quizState.current + 1 >= quizState.questions.length ? 'Результат' : 'Далі →'}</button>`;
+  document.getElementById('nextBtn').addEventListener('click', nextDuracionQuestion);
+}
+
+function nextDuracionQuestion() {
+  quizState.current++;
+  quizState.showingFeedback = false;
+  if (quizState.current >= quizState.questions.length) showDuracionResults();
+  else renderDuracionQuestion();
+}
+
+function showDuracionResults() {
+  showGenericResults({
+    renderQuestion: renderDuracionQuestion,
+    renderSetup: () => renderDuracionSetup(document.getElementById('trainerContent')),
+    startQuiz: startDuracionQuiz,
+    formatMistake: m => `<div class="mistake-chip"><span class="mc-form">${m.answer}</span></div>`,
+    mistakeKey: m => m.sentence
+  });
+}
+
+function renderDuracionReference(root) {
+  root.innerHTML = `
+    <div class="reference-intro">
+      <h2>Тривалість дії</h2>
+      <p>Чотири способи говорити про час: <i>desde, hace, desde hace, llevar</i>. Найважче — обрати правильний.</p>
+    </div>
+    <div class="reference-section">
+      <h3 class="ref-section-title"><span class="num">i.</span>desde — «з якого моменту»</h3>
+      <p class="ref-text"><strong>desde + точка в часі</strong> (рік, місяць, дата, година, подія).</p>
+      <p class="ref-text">Питання: «з якого часу?» (¿Desde cuándo?)</p>
+      <div class="example-box"><div class="es">Vivo aquí <b>desde 2020</b>.</div><div class="uk">Я живу тут з 2020 року.</div></div>
+      <div class="example-box"><div class="es">Trabajo aquí <b>desde enero</b>.</div><div class="uk">Я працюю тут з січня.</div></div>
+      <div class="example-box"><div class="es"><b>Desde</b> ayer no le veo.</div><div class="uk">Я не бачу його з учора.</div></div>
+    </div>
+    <div class="reference-section">
+      <h3 class="ref-section-title"><span class="num">ii.</span>hace — «тому»</h3>
+      <p class="ref-text"><strong>hace + тривалість + ЗАВЕРШЕНА дія</strong> (зазвичай у pretérito indefinido).</p>
+      <p class="ref-text">Питання: «коли?» (¿Cuándo?)</p>
+      <p class="ref-text">Українською = <strong>«тому»</strong>: годину тому, два роки тому.</p>
+      <div class="example-box"><div class="es">Terminé la universidad <b>hace dos años</b>.</div><div class="uk">Я закінчив університет два роки тому.</div></div>
+      <div class="example-box"><div class="es">Llegué <b>hace una hora</b>.</div><div class="uk">Я прибув годину тому.</div></div>
+      <div class="example-box"><div class="es"><b>Hace tres meses</b> me mudé.</div><div class="uk">Три місяці тому я переїхав.</div></div>
+    </div>
+    <div class="reference-section">
+      <h3 class="ref-section-title"><span class="num">iii.</span>desde hace — «вже стільки часу»</h3>
+      <p class="ref-text"><strong>desde hace + тривалість + дія, що ще ТРИВАЄ</strong> (у presente).</p>
+      <p class="ref-text">Питання: «скільки часу?» (¿Cuánto tiempo hace que...?)</p>
+      <p class="ref-text">Українською = <strong>«вже»</strong>: вже два роки, вже годину.</p>
+      <div class="example-box"><div class="es">Estudio español <b>desde hace tres años</b>.</div><div class="uk">Я вивчаю іспанську вже три роки.</div></div>
+      <div class="example-box"><div class="es">Estamos casados <b>desde hace diez años</b>.</div><div class="uk">Ми одружені вже десять років.</div></div>
+      <div class="example-box"><div class="es">Vivo aquí <b>desde hace seis meses</b>.</div><div class="uk">Я живу тут уже шість місяців.</div></div>
+    </div>
+    <div class="reference-section">
+      <h3 class="ref-section-title"><span class="num">iv.</span>llevar + (час) + gerundio</h3>
+      <p class="ref-text">Альтернатива до <i>desde hace</i> для дій, що ще тривають. Те саме значення, інша конструкція:</p>
+      <div class="example-box"><div class="es"><b>Llevo</b> tres años <b>estudiando</b> español.</div><div class="uk">Я вже три роки вивчаю іспанську.</div></div>
+      <div class="example-box"><div class="es"><b>Llevamos</b> dos horas <b>esperando</b>.</div><div class="uk">Ми вже дві години чекаємо.</div></div>
+      <p class="ref-text"><strong>Без gerundio</strong> — також можна (з прикметниками, місцем):</p>
+      <div class="example-box"><div class="es"><b>Llevo</b> aquí dos horas.</div><div class="uk">Я тут уже дві години.</div></div>
+    </div>
+    <div class="reference-section">
+      <h3 class="ref-section-title"><span class="num">v.</span>Порівняння (запам'ятай!)</h3>
+      <table class="endings-table">
+        <thead><tr><th>Слово</th><th>Час дії</th><th>Українською</th></tr></thead>
+        <tbody>
+          <tr><td><strong>desde</strong></td><td>з конкретного моменту</td><td>з / від</td></tr>
+          <tr><td><strong>hace</strong></td><td>завершена дія</td><td>тому</td></tr>
+          <tr><td><strong>desde hace</strong></td><td>дія ще триває</td><td>вже</td></tr>
+          <tr><td><strong>llevar + ger.</strong></td><td>дія ще триває</td><td>вже (роблю)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+
+// =============================================================================
+// TRAINER: COMPLEMENTOS OD / OI
+// =============================================================================
+// OD: me, te, lo, la, nos, os, los, las
+// OI: me, te, le, nos, os, les
+// le + lo/la/los/las → se lo / se la / se los / se las
+const COMPLEMENTOS_QUESTIONS = [
+  // === OD (Objeto Directo) ===
+  { sentence: 'Veo a María. → ___ veo.', uk: 'Я бачу Марію. → Я її бачу.', answer: 'la', options: ['lo', 'la', 'le'], explanation: 'María (жін. рід, одн.) = la', type: 'od' },
+  { sentence: 'Veo a Juan. → ___ veo.', uk: 'Я бачу Хуана. → Я його бачу.', answer: 'lo', options: ['lo', 'la', 'le'], explanation: 'Juan (чол. рід, одн.) = lo', type: 'od' },
+  { sentence: 'Compro el libro. → ___ compro.', uk: 'Я купую книжку. → Я її купую.', answer: 'lo', options: ['lo', 'la', 'le'], explanation: 'el libro (чол. рід, одн.) = lo', type: 'od' },
+  { sentence: 'Como la manzana. → ___ como.', uk: 'Я їм яблуко. → Я його їм.', answer: 'la', options: ['lo', 'la', 'le'], explanation: 'la manzana (жін. рід, одн.) = la', type: 'od' },
+  { sentence: 'Leo los libros. → ___ leo.', uk: 'Я читаю книжки. → Я їх читаю.', answer: 'los', options: ['lo', 'los', 'las'], explanation: 'los libros (чол. рід, мн.) = los', type: 'od' },
+  { sentence: 'Compro las flores. → ___ compro.', uk: 'Я купую квіти. → Я їх купую.', answer: 'las', options: ['los', 'las', 'les'], explanation: 'las flores (жін. рід, мн.) = las', type: 'od' },
+  { sentence: 'Veo a mis amigos. → ___ veo.', uk: 'Я бачу друзів. → Я їх бачу.', answer: 'los', options: ['los', 'las', 'les'], explanation: 'mis amigos (чол. рід, мн.) = los', type: 'od' },
+  { sentence: 'Conozco a Ana y Lucía. → ___ conozco.', uk: 'Я знаю Ану та Лусію. → Я їх знаю.', answer: 'las', options: ['los', 'las', 'les'], explanation: 'Ana y Lucía (жін. рід, мн.) = las', type: 'od' },
+  // === OI (Objeto Indirecto) ===
+  { sentence: 'Doy el libro a Juan. → ___ doy el libro.', uk: 'Я даю книжку Хуану. → Я даю йому книжку.', answer: 'le', options: ['lo', 'la', 'le'], explanation: 'кому даю? — Juan (одн.) → le (непрямий додаток)', type: 'oi' },
+  { sentence: 'Escribo a María. → ___ escribo.', uk: 'Я пишу Марії. → Я їй пишу.', answer: 'le', options: ['la', 'le', 'les'], explanation: 'кому пишу? — María → le (для одн. — і чол., і жін.)', type: 'oi' },
+  { sentence: 'Digo la verdad a mis padres. → ___ digo la verdad.', uk: 'Я кажу правду батькам. → Я кажу їм правду.', answer: 'les', options: ['los', 'les', 'las'], explanation: 'кому кажу? — mis padres (мн.) → les', type: 'oi' },
+  { sentence: '___ regalo flores a mi madre.', uk: 'Я дарую квіти мамі (їй).', answer: 'le', options: ['la', 'le', 'les'], explanation: 'кому дарую? — a mi madre → le', type: 'oi' },
+  { sentence: '¿___ has dicho a Pedro lo que pasó?', uk: 'Ти сказав Педро (йому), що сталося?', answer: 'le', options: ['lo', 'le', 'les'], explanation: 'кому сказав? — a Pedro → le', type: 'oi' },
+  { sentence: '___ doy las gracias a vosotros.', uk: 'Я дякую вам (вам).', answer: 'os', options: ['os', 'les', 'nos'], explanation: 'вам = os', type: 'oi' },
+  // === me/te/nos/os (1st & 2nd person — same for OD and OI) ===
+  { sentence: 'Mi madre ___ llama todos los días.', uk: 'Мама дзвонить мені щодня.', answer: 'me', options: ['me', 'te', 'le'], explanation: 'мене / мені = me', type: 'mixed' },
+  { sentence: '¿___ ayudas con la tarea?', uk: 'Ти мені допоможеш з домашкою?', answer: 'me', options: ['me', 'te', 'le'], explanation: 'мені = me', type: 'mixed' },
+  { sentence: 'Yo ___ quiero mucho.', uk: 'Я тебе дуже люблю.', answer: 'te', options: ['me', 'te', 'le'], explanation: 'тебе = te', type: 'mixed' },
+  { sentence: 'Ellos ___ invitan a la fiesta.', uk: 'Вони нас запрошують на вечірку.', answer: 'nos', options: ['nos', 'os', 'les'], explanation: 'нас = nos', type: 'mixed' },
+  // === Combinaciones: se lo / se la / se los / se las (le/les + lo/la/los/las) ===
+  { sentence: 'Doy el libro a Juan. → ___ ___ doy.', uk: 'Я даю книжку Хуану. → Я даю йому її.', answer: 'se lo', options: ['le lo', 'se lo', 'le la'], explanation: 'le + lo = se lo. Перед lo/la/los/las слово le ЗАВЖДИ стає se!', type: 'combo' },
+  { sentence: 'Compro la flor a María. → ___ ___ compro.', uk: 'Я купую квітку Марії. → Я купую її їй.', answer: 'se la', options: ['le la', 'se la', 'le lo'], explanation: 'le + la = se la (le не може стояти поруч з lo/la/los/las)', type: 'combo' },
+  { sentence: 'Damos los regalos a los niños. → ___ ___ damos.', uk: 'Ми даємо подарунки дітям. → Ми даємо їх їм.', answer: 'se los', options: ['les los', 'se los', 'les les'], explanation: 'les + los = se los', type: 'combo' },
+];
+
+function renderComplementosTrainer(tab) {
+  const root = document.getElementById('trainerContent');
+  if (tab === 'practice') renderComplementosSetup(root);
+  else if (tab === 'reference') renderComplementosReference(root);
+}
+
+function renderComplementosSetup(root) {
+  root.innerHTML = `
+    <div class="practice-setup">
+      <h2>Налаштуй тренування</h2>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--ink-soft);margin-bottom:20px;">Обери тип додатка та формат вправ.</p>
+      <div class="filter-group">
+        <span class="filter-label">~ тип додатка ~</span>
+        <div class="filter-options" id="compTypeFilters">
+          <button class="filter-option active" data-type="od">OD (прямий)</button>
+          <button class="filter-option active" data-type="oi">OI (непрямий)</button>
+          <button class="filter-option active" data-type="mixed">me / te / nos / os</button>
+          <button class="filter-option active" data-type="combo">se lo / se la</button>
+        </div>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">~ тип вправи ~</span>
+        <div class="filter-options" id="compModeFilters">
+          <button class="filter-option active" data-mode="multiple">Вибір з варіантів</button>
+          <button class="filter-option" data-mode="fill">Вписати слово</button>
+          <button class="filter-option" data-mode="mixed">Усе разом</button>
+        </div>
+      </div>
+      <button class="start-btn" id="compStartBtn">Почати ¡Vamos!</button>
+    </div>
+    <div style="margin-top:32px;padding:20px;background:rgba(212,136,43,0.1);border:1px dashed var(--ochre);border-radius:4px;">
+      <div style="font-family:'Caveat',cursive;font-size:1.2rem;color:var(--terracotta);margin-bottom:8px;">~ підказка ~</div>
+      <ul style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;line-height:1.7;color:var(--ink);padding-left:24px;">
+        <li><strong>OD</strong> (кого? що?): me, te, <span style="color:var(--terracotta);">lo, la</span>, nos, os, <span style="color:var(--terracotta);">los, las</span></li>
+        <li><strong>OI</strong> (кому? чому?): me, te, <span style="color:var(--terracotta);">le</span>, nos, os, <span style="color:var(--terracotta);">les</span></li>
+        <li><strong>le/les + lo/la/los/las → se lo / se la / ...</strong></li>
+      </ul>
+    </div>
+  `;
+  root.querySelectorAll('.filter-option').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (btn.closest('#compModeFilters')) {
+        root.querySelectorAll('#compModeFilters .filter-option').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      } else {
+        btn.classList.toggle('active');
+      }
+    });
+  });
+  document.getElementById('compStartBtn').addEventListener('click', startComplementosQuiz);
+}
+
+function startComplementosQuiz() {
+  const types = Array.from(document.querySelectorAll('#compTypeFilters .filter-option.active')).map(b => b.dataset.type);
+  const mode = document.querySelector('#compModeFilters .filter-option.active').dataset.mode;
+  if (types.length === 0) { alert('Обери хоча б один тип додатка.'); return; }
+  const filtered = COMPLEMENTOS_QUESTIONS.filter(q => types.includes(q.type));
+  if (filtered.length === 0) { alert('Немає питань для обраних типів.'); return; }
+  const questions = shuffle(filtered).map(q => ({
+    ...q,
+    quizMode: mode === 'mixed' ? (Math.random() < 0.5 ? 'multiple' : 'fill') : mode
+  }));
+  initQuizState(questions, { limit: 15 });
+  renderComplementosQuestion();
+}
+
+function renderComplementosQuestion() {
+  const q = quizState.questions[quizState.current];
+  const totalQ = quizState.questions.length;
+  const progress = (quizState.current / totalQ) * 100;
+  // Replace ___ ___ (combo) or ___ with blank
+  let sentenceWithBlank = q.sentence;
+  if (q.type === 'combo') {
+    sentenceWithBlank = q.sentence.replace('___ ___', '<span class="blank">______</span>');
+  } else {
+    sentenceWithBlank = q.sentence.replace('___', '<span class="blank">___</span>');
+  }
+  let inputArea = '';
+  if (q.quizMode === 'multiple') {
+    inputArea = `
+      <div class="choice-grid">
+        ${shuffle(q.options).map(opt => `<button class="choice-btn" data-choice="${opt}">${opt}</button>`).join('')}
+      </div>
+    `;
+  } else {
+    inputArea = `
+      <div><input type="text" id="quizInput" class="quiz-input" placeholder="${q.type === 'combo' ? 'напр. se lo' : 'напр. lo'}" autocomplete="off" autocapitalize="off" spellcheck="false" style="font-size:1.2rem;"></div>
+    `;
+  }
+  document.getElementById('trainerContent').innerHTML = `
+    <div class="quiz-card">
+      ${quizState.reviewMode ? `<div class="review-badge">⟲ Раунд повторення ${quizState.reviewRound}</div>` : ''}
+      <div class="quiz-progress">
+        <span>${quizState.current + 1}/${totalQ}</span>
+        <div class="progress-bar"><div class="progress-fill" style="width:${progress}%"></div></div>
+        <span style="color:var(--olive);">✓ ${quizState.correct}</span>
+      </div>
+      <div class="quiz-prompt">встав займенник</div>
+      <div class="quiz-sentence">${sentenceWithBlank}</div>
+      <div class="quiz-hint">~ ${q.uk} ~</div>
+      ${inputArea}
+      <div class="quiz-feedback" id="quizFeedback"></div>
+      <div class="quiz-actions" id="quizActions">
+        ${q.quizMode === 'fill' ? `<button class="btn btn-primary" id="checkBtn">Перевірити</button><button class="btn" id="skipBtn">Не знаю</button>` : `<button class="btn" id="skipBtn">Не знаю</button>`}
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="stat-value success">${quizState.correct}</div><div class="stat-label">правильно</div></div>
+        <div class="stat"><div class="stat-value error">${quizState.incorrect}</div><div class="stat-label">помилок</div></div>
+        <div class="stat"><div class="stat-value">${totalQ - quizState.current}</div><div class="stat-label">залишилось</div></div>
+      </div>
+    </div>
+  `;
+  if (q.quizMode === 'multiple') {
+    document.querySelectorAll('.choice-btn').forEach(btn => {
+      btn.addEventListener('click', () => handleComplementosChoice(btn.dataset.choice, btn));
+    });
+  } else {
+    const input = document.getElementById('quizInput');
+    input.focus();
+    document.getElementById('checkBtn').addEventListener('click', checkComplementosAnswer);
+    input.addEventListener('keydown', e => { if (e.key === 'Enter') { if (quizState.showingFeedback) nextComplementosQuestion(); else checkComplementosAnswer(); } });
+  }
+  document.getElementById('skipBtn').addEventListener('click', skipComplementosAnswer);
+}
+
+function handleComplementosChoice(choice, btn) {
+  if (quizState.showingFeedback) return;
+  const q = quizState.questions[quizState.current];
+  const feedback = document.getElementById('quizFeedback');
+  quizState.showingFeedback = true;
+  const buttons = document.querySelectorAll('.choice-btn');
+  buttons.forEach(b => { b.disabled = true; if (b.dataset.choice === q.answer) b.classList.add('correct'); });
+  if (choice === q.answer) {
+    quizState.correct++;
+    feedback.className = 'quiz-feedback correct';
+    feedback.innerHTML = `¡Perfecto! <strong>${q.answer}</strong> ✓ <br><span style="font-style:normal;font-family:'Manrope',sans-serif;font-size:0.9rem;color:var(--ink-soft);">${q.explanation}</span>`;
+  } else {
+    quizState.incorrect++;
+    quizState.mistakes.push(q);
+    btn.classList.add('incorrect');
+    feedback.className = 'quiz-feedback incorrect';
+    feedback.innerHTML = `Правильно: <strong>${q.answer}</strong>. <br><span style="font-style:normal;font-family:'Manrope',sans-serif;font-size:0.9rem;color:var(--ink-soft);">${q.explanation}</span>`;
+  }
+  // Speak the full corrected sentence
+  const correctedSentence = q.type === 'combo' ? q.sentence.replace('___ ___', q.answer) : q.sentence.replace('___', q.answer);
+  setTimeout(() => speak(correctedSentence.replace('→', '...'), { rate: 0.85 }), 300);
+  document.getElementById('quizActions').innerHTML = `<button class="btn btn-primary" id="nextBtn">${quizState.current + 1 >= quizState.questions.length ? 'Результат' : 'Далі →'}</button>`;
+  document.getElementById('nextBtn').addEventListener('click', nextComplementosQuestion);
+}
+
+function checkComplementosAnswer() {
+  if (quizState.showingFeedback) { nextComplementosQuestion(); return; }
+  const q = quizState.questions[quizState.current];
+  const input = document.getElementById('quizInput');
+  const answer = input.value;
+  if (!answer.trim()) return;
+  const result = isCorrectAnswer(answer, q.answer);
+  const feedback = document.getElementById('quizFeedback');
+  quizState.showingFeedback = true;
+  if (result === 'perfect' || result === 'no-accent') {
+    quizState.correct++;
+    input.classList.add('correct');
+    feedback.className = 'quiz-feedback correct';
+    feedback.innerHTML = `¡Perfecto! <strong>${q.answer}</strong> ✓ <br><span style="font-style:normal;font-family:'Manrope',sans-serif;font-size:0.9rem;color:var(--ink-soft);">${q.explanation}</span>`;
+  } else {
+    quizState.incorrect++;
+    quizState.mistakes.push(q);
+    input.classList.add('incorrect');
+    feedback.className = 'quiz-feedback incorrect';
+    feedback.innerHTML = `Правильно: <strong>${q.answer}</strong>. <br><span style="font-style:normal;font-family:'Manrope',sans-serif;font-size:0.9rem;color:var(--ink-soft);">${q.explanation}</span>`;
+  }
+  const correctedSentence = q.type === 'combo' ? q.sentence.replace('___ ___', q.answer) : q.sentence.replace('___', q.answer);
+  setTimeout(() => speak(correctedSentence.replace('→', '...'), { rate: 0.85 }), 300);
+  document.getElementById('quizActions').innerHTML = `<button class="btn btn-primary" id="nextBtn">${quizState.current + 1 >= quizState.questions.length ? 'Результат' : 'Далі →'}</button>`;
+  document.getElementById('nextBtn').addEventListener('click', nextComplementosQuestion);
+}
+
+function skipComplementosAnswer() {
+  if (quizState.showingFeedback) return;
+  const q = quizState.questions[quizState.current];
+  quizState.incorrect++;
+  quizState.mistakes.push(q);
+  quizState.showingFeedback = true;
+  const feedback = document.getElementById('quizFeedback');
+  feedback.className = 'quiz-feedback incorrect';
+  feedback.innerHTML = `Правильно: <strong>${q.answer}</strong>. <br><span style="font-style:normal;font-family:'Manrope',sans-serif;font-size:0.9rem;color:var(--ink-soft);">${q.explanation}</span>`;
+  const input = document.getElementById('quizInput');
+  if (input) input.classList.add('incorrect');
+  document.querySelectorAll('.choice-btn').forEach(b => { b.disabled = true; if (b.dataset.choice === q.answer) b.classList.add('correct'); });
+  const correctedSentence = q.type === 'combo' ? q.sentence.replace('___ ___', q.answer) : q.sentence.replace('___', q.answer);
+  setTimeout(() => speak(correctedSentence.replace('→', '...'), { rate: 0.85 }), 300);
+  document.getElementById('quizActions').innerHTML = `<button class="btn btn-primary" id="nextBtn">${quizState.current + 1 >= quizState.questions.length ? 'Результат' : 'Далі →'}</button>`;
+  document.getElementById('nextBtn').addEventListener('click', nextComplementosQuestion);
+}
+
+function nextComplementosQuestion() {
+  quizState.current++;
+  quizState.showingFeedback = false;
+  if (quizState.current >= quizState.questions.length) showComplementosResults();
+  else renderComplementosQuestion();
+}
+
+function showComplementosResults() {
+  showGenericResults({
+    renderQuestion: renderComplementosQuestion,
+    renderSetup: () => renderComplementosSetup(document.getElementById('trainerContent')),
+    startQuiz: startComplementosQuiz,
+    formatMistake: m => `<div class="mistake-chip"><span class="mc-form">${m.answer}</span></div>`,
+    mistakeKey: m => m.sentence
+  });
+}
+
+function renderComplementosReference(root) {
+  root.innerHTML = `
+    <div class="reference-intro">
+      <h2>Complementos OD / OI</h2>
+      <p>Займенники, що замінюють прямий і непрямий додаток. Найскладніше для початківців — але без них не обійтись.</p>
+    </div>
+    <div class="reference-section">
+      <h3 class="ref-section-title"><span class="num">i.</span>Що таке OD і OI?</h3>
+      <p class="ref-text"><strong>OD (objeto directo)</strong> — прямий додаток. Питання: <i>кого? що?</i></p>
+      <p class="ref-text"><strong>OI (objeto indirecto)</strong> — непрямий додаток. Питання: <i>кому? чому?</i></p>
+      <div class="example-box"><div class="es">Doy <b style="color:var(--olive);">el libro</b> <b style="color:var(--terracotta);">a Juan</b>.</div><div class="uk"><span style="color:var(--olive);">Книжку</span> (що? — OD) даю <span style="color:var(--terracotta);">Хуану</span> (кому? — OI).</div></div>
+    </div>
+    <div class="reference-section">
+      <h3 class="ref-section-title"><span class="num">ii.</span>Таблиця займенників</h3>
+      <table class="endings-table">
+        <thead><tr><th>Особа</th><th>OD (кого/що)</th><th>OI (кому)</th></tr></thead>
+        <tbody>
+          <tr><td><i>я → мене / мені</i></td><td class="ending">me</td><td class="ending">me</td></tr>
+          <tr><td><i>ти → тебе / тобі</i></td><td class="ending">te</td><td class="ending">te</td></tr>
+          <tr><td><i>він → його / йому</i></td><td class="ending">lo</td><td class="ending">le</td></tr>
+          <tr><td><i>вона → її / їй</i></td><td class="ending">la</td><td class="ending">le</td></tr>
+          <tr><td><i>ми → нас / нам</i></td><td class="ending">nos</td><td class="ending">nos</td></tr>
+          <tr><td><i>ви → вас / вам</i></td><td class="ending">os</td><td class="ending">os</td></tr>
+          <tr><td><i>вони (чол.) → їх / їм</i></td><td class="ending">los</td><td class="ending">les</td></tr>
+          <tr><td><i>вони (жін.) → їх / їм</i></td><td class="ending">las</td><td class="ending">les</td></tr>
+        </tbody>
+      </table>
+      <p class="ref-text"><strong>Зверни увагу:</strong> me, te, nos, os — однакові для OD і OI. Різниця тільки у 3-й особі!</p>
+    </div>
+    <div class="reference-section">
+      <h3 class="ref-section-title"><span class="num">iii.</span>Місце займенника</h3>
+      <p class="ref-text"><strong>Перед</strong> відмінюваним дієсловом:</p>
+      <div class="example-box"><div class="es"><b>La</b> veo todos los días.</div><div class="uk">Я її бачу щодня.</div></div>
+      <div class="example-box"><div class="es">No <b>le</b> hablo.</div><div class="uk">Я з ним не розмовляю.</div></div>
+      <p class="ref-text"><strong>Після</strong> та з'єднано з інфінітивом, герундієм або наказовим способом:</p>
+      <div class="example-box"><div class="es">Voy a <b>verlo</b>. = <b>Lo</b> voy a ver.</div><div class="uk">Я збираюся його побачити.</div></div>
+      <div class="example-box"><div class="es">Estoy <b>llamándola</b>. = <b>La</b> estoy llamando.</div><div class="uk">Я її дзвоню.</div></div>
+    </div>
+    <div class="reference-section">
+      <h3 class="ref-section-title"><span class="num">iv.</span>Найважливіше: le + lo → se lo!</h3>
+      <p class="ref-text">Коли треба сказати «йому/їй (його/її)», тобто OI + OD у 3-й особі — <strong>le/les змінюється на se</strong>:</p>
+      <table class="endings-table">
+        <thead><tr><th>Було б</th><th>Стає</th></tr></thead>
+        <tbody>
+          <tr><td>le + lo</td><td class="ending">se lo</td></tr>
+          <tr><td>le + la</td><td class="ending">se la</td></tr>
+          <tr><td>le + los</td><td class="ending">se los</td></tr>
+          <tr><td>le + las</td><td class="ending">se las</td></tr>
+          <tr><td>les + lo/la/los/las</td><td class="ending">se lo / se la / se los / se las</td></tr>
+        </tbody>
+      </table>
+      <div class="example-box"><div class="es">Doy el libro a Juan. → <b>Se lo</b> doy.</div><div class="uk">Я даю книжку Хуану. → Я даю йому її.</div></div>
+      <div class="example-box"><div class="es">Compro flores a María. → <b>Se las</b> compro.</div><div class="uk">Я купую квіти Марії. → Я купую їх їй.</div></div>
+      <p class="ref-text" style="color:var(--terracotta);"><strong>Правило просте:</strong> le + lo = НЕ говорять. Тільки <strong>se lo</strong>!</p>
+    </div>
+    <div class="reference-section">
+      <h3 class="ref-section-title"><span class="num">v.</span>Порядок: спочатку OI, потім OD</h3>
+      <p class="ref-text">Коли є обидва займенники — <strong>OI завжди ПЕРШИЙ</strong>:</p>
+      <div class="example-box"><div class="es"><b style="color:var(--terracotta);">Me</b> <b style="color:var(--olive);">lo</b> dijiste ayer.</div><div class="uk">Ти мені <span style="color:var(--terracotta);">(OI)</span> це <span style="color:var(--olive);">(OD)</span> сказав учора.</div></div>
+      <div class="example-box"><div class="es"><b style="color:var(--terracotta);">Te</b> <b style="color:var(--olive);">la</b> regalo.</div><div class="uk">Я тобі <span style="color:var(--terracotta);">(OI)</span> її <span style="color:var(--olive);">(OD)</span> дарую.</div></div>
+    </div>
+  `;
+}
+
+// =============================================================================
+// INITIALIZE
+// =============================================================================
+renderMenu();
+showMenu();
+
+</script>
 </body>
 </html>
