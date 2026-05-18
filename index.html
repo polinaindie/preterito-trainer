@@ -301,22 +301,45 @@ function updateVoiceStatus() {
 if ('speechSynthesis' in window) {
   loadVoices();
   window.speechSynthesis.onvoiceschanged = loadVoices;
+  // Chrome bug workaround: speech synthesis can "go to sleep" after ~15s of
+  // inactivity, making subsequent speak() calls silently fail. Periodically
+  // pump pause/resume to keep it alive when nothing is queued.
+  setInterval(() => {
+    if (!window.speechSynthesis.speaking && !window.speechSynthesis.pending) {
+      window.speechSynthesis.pause();
+      window.speechSynthesis.resume();
+    }
+  }, 10000);
 }
 
 function speak(text, options = {}) {
   if (!soundEnabled) return;
   if (!('speechSynthesis' in window)) return;
   if (!voicesReady) loadVoices();
+  const wasSpeaking = window.speechSynthesis.speaking || window.speechSynthesis.pending;
   window.speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance(text.trim());
-  utterance.lang = 'es-ES';
-  if (spanishVoice) utterance.voice = spanishVoice;
-  utterance.rate = options.rate || 0.85;
-  utterance.pitch = 1.0;
-  utterance.volume = 1.0;
-  if (options.onstart) utterance.onstart = options.onstart;
-  if (options.onend) utterance.onend = options.onend;
-  setTimeout(() => window.speechSynthesis.speak(utterance), 50);
+  const doSpeak = () => {
+    const utterance = new SpeechSynthesisUtterance(text.trim());
+    utterance.lang = 'es-ES';
+    if (spanishVoice) utterance.voice = spanishVoice;
+    utterance.rate = options.rate || 0.85;
+    utterance.pitch = 1.0;
+    utterance.volume = 1.0;
+    if (options.onstart) utterance.onstart = options.onstart;
+    if (options.onend) utterance.onend = options.onend;
+    utterance.onerror = (e) => {
+      // 'canceled' and 'interrupted' are not real errors — they happen when we
+      // cancel an ongoing utterance to start a new one. Only log real problems.
+      if (e.error !== 'canceled' && e.error !== 'interrupted') {
+        console.warn('Speech error:', e.error);
+      }
+      if (options.onend) options.onend();
+    };
+    window.speechSynthesis.speak(utterance);
+  };
+  // Chrome bug: after cancel(), speak() called too soon gets swallowed.
+  // Wait longer if something was actively speaking.
+  setTimeout(doSpeak, wasSpeaking ? 250 : 50);
 }
 
 const SPEAKER_SVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>`;
@@ -359,6 +382,32 @@ function shuffle(arr) {
     [a[i], a[j]] = [a[j], a[i]];
   }
   return a;
+}
+
+// Interleaved shuffle: groups items by `keyFn`, then shuffles within each
+// group AND shuffles group order per round, returning items in a "round-robin"
+// pattern. Ensures every unique key appears once before any key appears twice.
+// Example: verbs A,B,C with 2 forms each → A1,B1,C1, A2,B2,C2 (each shuffled).
+function interleavedShuffle(arr, keyFn) {
+  const groups = {};
+  arr.forEach(item => {
+    const k = keyFn(item);
+    (groups[k] = groups[k] || []).push(item);
+  });
+  // Shuffle inside each group
+  const groupKeys = shuffle(Object.keys(groups));
+  const shuffledGroups = groupKeys.map(k => shuffle(groups[k]));
+  // Find max group size; do round-robin
+  const maxLen = Math.max(...shuffledGroups.map(g => g.length));
+  const result = [];
+  for (let round = 0; round < maxLen; round++) {
+    // Reshuffle group order each round so it doesn't feel repetitive
+    const roundOrder = shuffle(shuffledGroups.map((g, i) => i));
+    roundOrder.forEach(gi => {
+      if (shuffledGroups[gi][round]) result.push(shuffledGroups[gi][round]);
+    });
+  }
+  return result;
 }
 
 function normalize(s) {
@@ -534,8 +583,9 @@ function renderMenu() {
 let quizState = null;
 
 function initQuizState(questions, options = {}) {
+  const shuffled = options.shuffleFn ? options.shuffleFn(questions) : shuffle(questions);
   quizState = {
-    questions: options.limit ? shuffle(questions).slice(0, options.limit) : shuffle(questions),
+    questions: options.limit ? shuffled.slice(0, options.limit) : shuffled,
     current: 0,
     correct: 0,
     incorrect: 0,
@@ -706,7 +756,7 @@ function startIndefinidoQuiz() {
   const filteredVerbs = INDEFINIDO_VERBS.filter(v => groups.includes(v.group));
   const questions = [];
   filteredVerbs.forEach(v => { persons.forEach(p => questions.push({ verb: v, person: p })); });
-  initQuizState(questions);
+  initQuizState(questions, { shuffleFn: arr => interleavedShuffle(arr, q => q.verb.inf) });
   renderIndefinidoQuestion();
 }
 
@@ -1078,7 +1128,7 @@ function startPerfectoQuiz() {
   const filtered = PERFECTO_VERBS.filter(v => groups.includes(v.group));
   const questions = [];
   filtered.forEach(v => { persons.forEach(p => questions.push({ verb: v, person: p, expected: getPerfectoForm(v, p) })); });
-  initQuizState(questions);
+  initQuizState(questions, { shuffleFn: arr => interleavedShuffle(arr, q => q.verb.inf) });
   renderPerfectoQuestion();
 }
 
